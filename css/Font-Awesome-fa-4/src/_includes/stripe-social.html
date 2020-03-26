@@ -1,0 +1,28 @@
+<div class="hidden-print" id="social-buttons">
+    <div class="container">
+        {% include newsletter-subscribe.html %}
+        <ul class="list-inline">
+            <li>
+                <iframe allowtransparency="true" class="github-btn" frameborder="0" height="20px" scrolling="0"
+                        src="https://ghbtns.com/github-btn.html?user=FortAwesome&repo=Font-Awesome&type=watch&count=true"
+                        width="100px"></iframe>
+            </li>
+            <li>
+                <iframe allowtransparency="true" class="github-btn" frameborder="0" height="20px" scrolling="0"
+                        src="https://ghbtns.com/github-btn.html?user=FortAwesome&repo=Font-Awesome&type=fork&count=true"
+                        width="102px"></iframe>
+            </li>
+            <li class="follow-btn">
+                <a class="twitter-follow-button" data-link-color="#000000" data-show-count="true"
+                   href="https://twitter.com/{{ site.fontawesome.twitter }}">Follow @{{ site.fontawesome.twitter }}</a>
+            </li>
+            <li class="tweet-btn hidden-phone">
+                <a class="twitter-share-button" data-count="horizontal"
+                   data-counturl="{{ site.fontawesome.legacy_url }}"
+                   data-related="{{ site.fontawesome.author.twitter }}:Creator of Font Awesome"
+                   data-text="Font Awesome, the iconic font and CSS framework" data-url="{{ site.fontawesome.url }}"
+                   data-via="{{ site.fontawesome.twitter }}" href="https://twitter.com/share">Tweet</a>
+            </li>
+        </ul>
+    </div>
+</div>
