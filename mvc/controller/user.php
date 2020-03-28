@@ -37,6 +37,7 @@ class UserController
     }
 
 
+
     public function login()
     {
         if (isset($_POST['userEmail'])) {
@@ -65,6 +66,7 @@ class UserController
             if ($hashedPassword == $record['userPassword']) {
                 $_SESSION['userEmail'] = $record['userEmail'];
                 $_SESSION['userId'] = $record['userId'];
+                $_SESSION['userAccess'] = $record['userAccess'];
                 message('success', "شما با موفقیت وارد شده اید. جهت ورود به صفحه اصلی " . '<a href="/MainProject/page/home"> کلیک </a>' . 'کنید', true);
             } else {
                 message('fail', "گذرواژه شما نادرست است", true);

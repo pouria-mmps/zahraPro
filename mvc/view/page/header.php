@@ -65,12 +65,26 @@
         <i class="fa fa-pinterest-p menu-icon"></i>محصولات
     </a>
 
-    <?php if (!$isGuest) { ?>
-        <a class="menu-item" href="/MainProject/productsman/myorders"><img src="/MainProject/image/EmptyProfile.png"
-                                                                           class="profile-img" alt="پروفایل">
+    <?php if ($isGuest) {
+        goto a;
+    } elseif (!$isGuest && $_SESSION['userAccess'] == 'user') { ?>
+        <a class="menu-item" href="/MainProject/productsman/myorders">
+            <img src="/MainProject/image/EmptyProfile.png" class="profile-img" alt="پروفایل">
             <span style="font-size: medium;"><?= $_SESSION['userEmail'] ?></span>
+            <span style="margin-right: 7px;">کاربر</span>
         </a>
-    <?php } ?>
+    <?php } elseif (!$isGuest && $_SESSION['userAccess'] == 'user,admin') { ?>
+        <a class="menu-item" href="/MainProject/productsman/myorders">
+            <img src="/MainProject/image/EmptyProfile.png" class="profile-img" alt="پروفایل">
+            <span style="font-size: medium;"><?= $_SESSION['userEmail'] ?></span>
+            <span style="margin-right: 7px;">مدیرسایت</span>
+        </a>
+
+        <a href="<?= baseUrl() ?>productsman/manager" class="menu-item">
+            <i class="fa fa-pinterest-p menu-icon"></i> فرم مدیریت سایت
+        </a>
+    <?php }
+    a: ?>
 </div>
 
 
