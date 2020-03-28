@@ -7,6 +7,7 @@ class UserController
     }
 
 
+
     public function address()
     {
         $tranName = $_POST['tranName'];
@@ -21,6 +22,7 @@ class UserController
 
         UserModel::insert2($tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPostCode, $userEmail);
     }
+
 
 
     public function logout()
@@ -155,6 +157,7 @@ class UserController
         }
     }
 
+
     public function removeFromWish($type, $perfumeId)
     {
         $db = Db::getInstance();
@@ -170,6 +173,7 @@ class UserController
             'resourceType' => $type,
         ));
     }
+
 
     public function addToWish($type, $perfumeId)
     {

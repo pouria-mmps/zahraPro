@@ -8,6 +8,7 @@ class ProductsmanController
     }
 
 
+
     public function address()
     {
         $db = Db::getInstance();
@@ -15,6 +16,7 @@ class ProductsmanController
         $data['users'] = $users;
         View::render("./mvc/view/page/address.php", $data);
     }
+
 
 
     public function myorders()
@@ -29,6 +31,7 @@ class ProductsmanController
         $data['orders'] = $orders;
         View::render("./mvc/view/page/myorders.php", $data);
     }
+
 
     public function getLatestCardOrCreate()
     {
@@ -50,6 +53,7 @@ class ProductsmanController
         $lastestCart = $this->findLatestCart();
         return $lastestCart;
     }
+
 
     private function findLatestCart()
     {
@@ -94,6 +98,7 @@ class ProductsmanController
         return null;
     }
 
+
     public function search()
     {
         $sortType = $_POST['sortType'];
@@ -113,6 +118,7 @@ class ProductsmanController
         }
     }
 
+
     public function previewCart()
     {
         $db = Db::getInstance();
@@ -126,6 +132,7 @@ class ProductsmanController
         View::render("./mvc/view/payment/cart-preview.php", $data);
     }
 
+
     public function removeFromCart($orderId)
     {
         $db = Db::getInstance();
@@ -137,6 +144,7 @@ class ProductsmanController
 
         $this->refreshCartPreview($cart);
     }
+
 
     public function refreshCartPreview($cart = null)
     {
@@ -170,6 +178,7 @@ class ProductsmanController
 
         echo json_encode($data);
     }
+
 
     public function addToCart($perfumeId)
     {

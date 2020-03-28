@@ -4,7 +4,7 @@ include("./mvc/view/page/header.php");
 ?>
 
 <a id="button"></a>
-<br><br><br>
+<br><br>
 
 
 <div id="box-slide">

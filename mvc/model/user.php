@@ -5,8 +5,8 @@ class UserModel
     public static function insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $userPassword, $userAddress)
     {
         $db = Db::getInstance();
-        $db->insert("INSERT INTO user (userName,userFamilyName,userGender,userTell,userMobile,userEmail,userPassword,userAddress)
-            VALUES ('$userName','$userFamilyName','$userGender','$userTell','$userMobile','$userEmail','$userPassword','$userAddress')"
+        $db->insert("INSERT INTO user (userName,userFamilyName,userGender,userAccess,userTell,userMobile,userEmail,userPassword,userAddress)
+            VALUES ('$userName','$userFamilyName','$userGender','user','$userTell','$userMobile','$userEmail','$userPassword','$userAddress')"
         );
     }
 
