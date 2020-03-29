@@ -33,11 +33,6 @@ class ProductsmanController
     }
 
 
-    public function manager()
-    {
-        View::render("./mvc/view/page/manager.php");
-    }
-
 
     public function getLatestCardOrCreate()
     {

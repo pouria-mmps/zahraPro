@@ -80,7 +80,7 @@
             <span style="margin-right: 7px;">مدیرسایت</span>
         </a>
 
-        <a href="<?= baseUrl() ?>productsman/manager" class="menu-item">
+        <a href="<?= baseUrl() ?>page/manager" class="menu-item">
             <i class="fa fa-pinterest-p menu-icon"></i> فرم مدیریت سایت
         </a>
     <?php }

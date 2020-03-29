@@ -20,4 +20,16 @@ class PageController
         $data['perfumes'] = $perfumes;
         View::render("./mvc/view/page/details.php", $data);
     }
+
+
+    public function manager()
+    {
+        View::render("./mvc/view/page/manager.php");
+    }
+
+
+    public function productsCrud()
+    {
+        View::render("./mvc/view/page/productsCrud.php");
+    }
 }
