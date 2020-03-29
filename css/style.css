@@ -202,6 +202,7 @@ a.menu-item {
     vertical-align: middle;
 }
 
+
 /* Slideshow container */
 .slideshow-container {
     margin: auto;
@@ -363,6 +364,7 @@ h3 {
     text-align: center;
 }
 
+
 /* Login Form */
 .frm-log {
     margin-top: 60px;
@@ -389,7 +391,7 @@ h3 {
 }
 
 /* Login Button */
-#btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg {
+#btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders {
     width: 25%;
     color: #777;
     border: none;
@@ -399,9 +401,9 @@ h3 {
     font-size: large;
     border-radius: 5px;
     margin-right: 10px;
+    transition: all 0.3s;
     text-decoration: none;
     vertical-align: center;
-    transition: all 0.3s;
     background-color: #f0eeee;
     border-bottom: 3px solid #cbc8c8;
 }
@@ -421,9 +423,14 @@ h3 {
     margin-right: 50px;
 }
 
-#btn-submit:hover, #btn-submit-reg:hover {
+.btn-sale-myorders {
+    margin-right: 200px;
+}
+
+#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover {
     color: #fff;
     transition: all 0.3s;
+    text-decoration: none;
     background-color: #a1cfb8;
     border-bottom: 3px solid #78af93;;
 }
@@ -1192,29 +1199,6 @@ td {
 .myorder-total {
     margin: 10px 5px 10px;
     font-size: medium;
-}
-
-.btn-sale-myorders {
-    color: #0e0e0e;
-    padding: 12px 8px;
-    border-radius: 5px;
-    margin-right: 220px;
-    background-color: red;
-}
-
-.btn-sale-myorders:hover {
-    color: white;
-    cursor: pointer;
-    text-decoration: none;
-    background-color: #0e90d2;
-}
-
-.arrow-myorder {
-    margin-left: 5px;
-}
-
-.arrow-myorder:hover {
-    color: white;
 }
 
 

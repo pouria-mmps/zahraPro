@@ -14,13 +14,11 @@ if (isset($_SESSION['userEmail'])) {
             <td class="th-myorder">تعداد کالا</td>
             <td class="th-myorder">قیمت اعمال شده با تخفیف</td>
         </tr>
-
         <br>
 
         <?php foreach ($orders as $perfume) {
             $perfumePriceWithDiscount = $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100);
             $totalPrice += $perfume['quantity'] * $perfumePriceWithDiscount; ?>
-
             <tr>
                 <td>
                     <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg"
@@ -48,18 +46,23 @@ if (isset($_SESSION['userEmail'])) {
                 <span class="cart-preview-newPrice myorder-discountPrice"><?= $perfume['quantity'] * $perfumePriceWithDiscount; ?>  تومان
                 </td>
             </tr>
-
         <?php } ?>
 
         <td class="th-myorder" colspan="6">
             مبلغ قابل پرداخت:<span class="myorder-total"><?= $totalPrice ?> تومان</span>
         </td>
     </table>
-
     <br><br>
 
-    <a class="btn-sale-myorders" href="/MainProject/productsman/address"><i
-                class="fa fa-arrow-circle-o-right arrow-myorder"></i>ادامه فرآیند خرید</a>
+    <?php if ($totalPrice == 0) { ?>
+        <a class="btn-sale-myorders" href="/MainProject/productsman/address" style="visibility: hidden;">
+        </a>
+    <?php } else { ?>
+        <a class="btn-sale-myorders" href="/MainProject/productsman/address">
+            <i class="fa fa-arrow-circle-o-right arrow-myorder" style="text-decoration: none; margin-left:7px;"></i>ادامه
+            فرآیند خرید
+        </a>
+    <?php } ?>
 
 <?php } else {
     message('fail', "ابتدا وارد حساب کاربری خود شوید.", true);
@@ -69,6 +72,12 @@ if (isset($_SESSION['userEmail'])) {
 
 
 <script>
+    <?php if($totalPrice == 0){ ?>
+    $(document).ready(function () {
+        jQuery(this).css("line-height", "50px");
+        alert('برای ادامه فرآیند خرید\n لطفا محصولی را در سبد خرید خود اضافه کنید.');
+    });
+    <?php }?>
 
     function removeProduct(perfumeId) {
         $.ajax({
@@ -79,6 +88,14 @@ if (isset($_SESSION['userEmail'])) {
             location.reload();
         });
     }
+
+    $(document).ready(function () {
+        $('.btn-sale-myorders').click(function () {
+            <?php if ($totalPrice == 0) { ?>
+            alert("a");
+            <?php } ?>
+        });
+    });
 
     jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
     jQuery('.quantity').each(function () {
@@ -113,9 +130,3 @@ if (isset($_SESSION['userEmail'])) {
 
     });
 </script>
-
-
-
-
-
-
