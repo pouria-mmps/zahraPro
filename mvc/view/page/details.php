@@ -158,7 +158,7 @@ include("./mvc/view/page/header.php");
                     <span> سوییس </span>
                 <?php } elseif ($perfume['countryId'] == 6) {
                     ?>
-                    <span> برزیل </span>
+                    <span> اسپانیا </span>
                 <?php } ?>
             </div>
 
@@ -166,10 +166,12 @@ include("./mvc/view/page/header.php");
                 <?php
                 if ($perfume['jenderId'] == 1) {
                     ?>
-                    <span> بانوان </span>
-                <?php } else {
-                    ?>
                     <span> آقایان </span>
+                <?php } elseif ($perfume['jenderId'] == 2) {
+                    ?>
+                    <span> بانوان </span>
+                <?php } else { ?>
+                    <span> مشترک </span>
                 <?php } ?>
             </div>
 

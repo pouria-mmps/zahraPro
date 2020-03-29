@@ -41,7 +41,6 @@
                                                                                        style="padding:0 5px 0 5px;"></i>جزییات
                 </button>
             </form>
-
         </div>
     </div>
 <?php } ?>
