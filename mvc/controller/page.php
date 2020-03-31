@@ -30,6 +30,10 @@ class PageController
 
     public function productsCrud()
     {
-        View::render("./mvc/view/page/productsCrud.php");
+        $db = Db::getInstance();
+        $products = $db->query("SELECT * FROM perfume");
+        $data['products'] = $products;
+
+        View::render("./mvc/view/page/productsCrud.php", $data);
     }
 }
