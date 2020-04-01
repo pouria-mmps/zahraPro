@@ -42,23 +42,23 @@ include("./mvc/view/page/header.php");
             </div>
 
 
-            <?php if ($perfume['rate'] >= 0 && $perfume['rate'] <= 20) { ?>
+            <?php if ($perfume['showCounter'] >= 0 && $perfume['showCounter'] <= 20) { ?>
                 <div class="star-detail">
                     <i class="fa fa-star"></i>
                 </div>
-            <?php } elseif ($perfume['rate'] > 20 && $perfume['rate'] <= 40) { ?>
+            <?php } elseif ($perfume['showCounter'] > 20 && $perfume['showCounter'] <= 40) { ?>
                 <div class="star-detail">
                     <?php for ($i = 1; $i <= 2; $i++) { ?>
                         <i class="fa fa-star"></i>
                     <?php } ?>
                 </div>
-            <?php } elseif ($perfume['rate'] > 40 && $perfume['rate'] <= 60) { ?>
+            <?php } elseif ($perfume['showCounter'] > 40 && $perfume['showCounter'] <= 60) { ?>
                 <div class="star-detail">
                     <?php for ($i = 1; $i <= 3; $i++) { ?>
                         <i class="fa fa-star"></i>
                     <?php } ?>
                 </div>
-            <?php } elseif ($perfume['rate'] > 60 && $perfume['rate'] <= 80) { ?>
+            <?php } elseif ($perfume['showCounter'] > 60 && $perfume['showCounter'] <= 80) { ?>
                 <div class="star-detail">
                     <?php for ($i = 1; $i <= 4; $i++) { ?>
                         <i class="fa fa-star"></i>

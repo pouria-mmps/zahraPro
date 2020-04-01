@@ -863,7 +863,7 @@ div.scrollmenu-products {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
-    border-bottom: 3px solid #78af93;;
+    border-bottom: 3px solid #78af93;
 }
 
 
@@ -1548,6 +1548,76 @@ button {
     .cancelbtn, .signupbtn {
         width: 100%;
     }
+}
+
+
+/* Products CRUD */
+.th-p-crud {
+    padding: 15px;
+    font-size: large;
+    background-color: #f2f2f2;
+}
+
+.productImg-p-crud {
+    width: 90px;
+    height: 90px;
+    margin: 5px 0;
+}
+
+.frm-p-crud {
+    margin-top: -15px;
+    margin-left: 80px;
+}
+
+.btn-updateCrud {
+    width: 80px;
+    color: #777;
+    cursor: pointer;
+    margin-top: -25px;
+    padding-right: 5px;
+    position: absolute;
+    border-radius: 5px;
+    transition: all 0.3s;
+    background-color: #f0eeee;
+    border-bottom: 3px solid #cbc8c8;
+}
+
+.btn-updateCrud:hover {
+    color: #fff;
+    transition: all 0.3s;
+    background-color: #a1cfb8;
+    border-bottom: 3px solid #78af93;
+}
+
+.btn-deleteCrud {
+    width: 80px;
+    color: #777;
+    cursor: pointer;
+    margin-top: 5px;
+    padding-right: 5px;
+    position: absolute;
+    border-radius: 5px;
+    transition: all 0.3s;
+    background-color: #f0eeee;
+    border-bottom: 3px solid #cbc8c8;
+}
+
+.btn-deleteCrud:hover {
+    color: #fff;
+    transition: all 0.3s;
+    background-color: #a1cfb8;
+    border-bottom: 3px solid #78af93;
+}
+
+
+/* Update CRUD Page */
+.box-updateCrud {
+    width: 50%;
+    border-radius: 7px;
+    border: 1px solid #888;
+    margin: 5% auto 15% auto;
+    background-color: #fefefe;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
 

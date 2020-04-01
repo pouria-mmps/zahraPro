@@ -31,9 +31,33 @@ class PageController
     public function productsCrud()
     {
         $db = Db::getInstance();
-        $products = $db->query("SELECT * FROM perfume");
+        $products = $db->query("SELECT * FROM perfume LEFT OUTER JOIN brand ON perfume.brandId=brand.brandId LEFT OUTER JOIN jender ON perfume.jenderId=jender.jenderId LEFT OUTER JOIN country ON perfume.countryId=country.countryId");
         $data['products'] = $products;
 
         View::render("./mvc/view/page/productsCrud.php", $data);
     }
+
+
+    public function updateCrud()
+    {
+        $perfumeId = $_POST['perfumeId'];
+
+        $db = Db::getInstance();
+        $perfumes = $db->query("SELECT * FROM perfume LEFT OUTER JOIN perfume_density ON perfume.densityId=perfume_density.densityId LEFT OUTER JOIN brand ON perfume.brandId=brand.brandId LEFT OUTER JOIN jender ON perfume.jenderId=jender.jenderId LEFT OUTER JOIN country ON perfume.countryId=country.countryId WHERE perfumeId='$perfumeId'");
+        $data['perfumes'] = $perfumes;
+
+        View::render("./mvc/view/page/updateCrud.php", $data);
+    }
+
+
+    public function checkProductCrud()
+    {
+    }
+
+
+    public function deleteCrud()
+    {
+        View::render("./mvc/view/page/deleteCrud.php");
+    }
+
 }
