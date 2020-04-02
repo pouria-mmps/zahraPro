@@ -4,7 +4,15 @@ include("./mvc/view/page/managerHeader.php");
 
 <a id="button"></a>
 
-<br><br>
+<!-- Search Box -->
+<span class="search-product">
+    <span style="margin-right: 100px;font-size: 15px;font-weight: bold;color:#555;">جستجو</span>
+    <label for="search"></label>
+        <input type="search" value="" id="keyword" class="search-products"
+               placeholder="نام محصول یا برند مورد نظرتان را جستجو کنید">
+</span>
+
+
 <table style="width: 90%;">
     <tr>
         <td class="th-p-crud">عکس عطر</td>
@@ -60,9 +68,9 @@ include("./mvc/view/page/managerHeader.php");
             </td>
 
             <td style="padding: 20px;">
-                <form class="frm-p-crud" action="<?= baseUrl() ?>page/updateCrud/<?= $perfume['perfumeId'] ?>"
+                <form class="frm-p-crud" action="<?= baseUrl() ?>page/updateProduct/<?= $perfume['perfumeId'] ?>"
                       method="post">
-                    <button value="updateCrud" id="updateCrud-btn" class="btn-updateCrud">
+                    <button value="updateProduct" id="updateProduct-btn" class="btn-updateProduct">
                         <label hidden>
                             <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
                         </label>
@@ -70,8 +78,8 @@ include("./mvc/view/page/managerHeader.php");
                     </button>
                 </form>
 
-                <!--<form class="frm-log-crud" action="<?= baseUrl() ?>page/deleteCrud/<?= $perfume['perfumeId'] ?>" method="post">
-                    <button value="deleteCrud" id="deleteCrud-btn" class="btn-deleteCrud">
+                <!--<form class="frm-log-crud" action="<?= baseUrl() ?>page/deleteLogicProduct/<?= $perfume['perfumeId'] ?>" method="post">
+                    <button value="deleteCrud" id="deleteCrud-btn" class="btn-deleteProduct">
                         <label hidden>
                             <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
                         </label>

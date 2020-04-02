@@ -390,7 +390,7 @@ h3 {
 }
 
 /* Login Button */
-#btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders {
+#btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct {
     width: 25%;
     color: #777;
     border: none;
@@ -426,7 +426,7 @@ h3 {
     margin-right: 200px;
 }
 
-#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover {
+#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, #btn-submit-uproduct:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
@@ -434,7 +434,7 @@ h3 {
     border-bottom: 3px solid #78af93;;
 }
 
-#btn-cancel:hover, #btn-cancel-reg:hover {
+#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -470,7 +470,7 @@ h3 {
     margin-right: 90px;
 }
 
-.frm-txt {
+.frm-txt, .frm-p-txt {
     color: #777;
     font-size: large;
 }
@@ -529,6 +529,11 @@ input[type=radio] {
     background: #f1f1f1;
     margin: 5px 75px 22px 0;
     display: inline-block;
+}
+
+#btn-submit-uproduct, #btn-cancel-uproduct {
+    margin-right: 70px;
+    margin-bottom: 30px;
 }
 
 
@@ -1569,7 +1574,7 @@ button {
     margin-left: 80px;
 }
 
-.btn-updateCrud {
+.btn-updateProduct {
     width: 80px;
     color: #777;
     cursor: pointer;
@@ -1582,14 +1587,14 @@ button {
     border-bottom: 3px solid #cbc8c8;
 }
 
-.btn-updateCrud:hover {
+.btn-updateProduct:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
     border-bottom: 3px solid #78af93;
 }
 
-.btn-deleteCrud {
+.btn-deleteProduct {
     width: 80px;
     color: #777;
     cursor: pointer;
@@ -1602,7 +1607,7 @@ button {
     border-bottom: 3px solid #cbc8c8;
 }
 
-.btn-deleteCrud:hover {
+.btn-deleteProduct:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
@@ -1611,13 +1616,91 @@ button {
 
 
 /* Update CRUD Page */
-.box-updateCrud {
+.box-updateProduct {
     width: 50%;
     border-radius: 7px;
     border: 1px solid #888;
     margin: 5% auto 15% auto;
     background-color: #fefefe;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+}
+
+.frm-product-crud {
+    margin-top: 60px;
+    margin-right: 90px;
+}
+
+.frm-p-txt {
+    font-size: medium;
+}
+
+.frm-perfume-name, .frm-density, .frm-jender, .frm-brand, .frm-type-smell, .frm-structrue-smell, .frm-discount, .frm-price, .frm-country, .frm-breif, .frm-discription {
+    width: 55%;
+    border: none;
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    background: #f1f1f1;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+}
+
+.frm-perfume-name:focus, .frm-density:focus, .frm-jender:focus, .frm-brand:focus, .frm-type-smell:focus, .frm-structrue-smell:focus, .frm-discount:focus, .frm-price:focus, .frm-country:focus, .frm-breif:focus, .frm-discription:focus {
+    outline: none;
+    background-color: #ddd;
+}
+
+
+.frm-perfume-name {
+    margin-right: 77px;
+}
+
+.frm-density {
+    margin-right: 54px;
+}
+
+.frm-jender {
+    margin-right: 80px;
+}
+
+.frm-brand {
+    margin-right: 100px;
+}
+
+.frm-type-smell {
+    margin-right: 62px;
+}
+
+.frm-structrue-smell {
+    margin-right: 43px;
+}
+
+.frm-discount {
+    margin-right: 84px;
+}
+
+.frm-price {
+    margin-right: 94px;
+}
+
+.frm-country {
+    margin-right: 46px;
+}
+
+.frm-breif, .frm-discription {
+    width: 55%;
+    border: none;
+    height: 145px;
+    padding: 15px;
+    font-size: 16px;
+    margin-right: 30px;
+    background: #f1f1f1;
+    display: inline-block;
+}
+
+.frm-discription {
+    margin-right: 50px;
+    height: 192px;
 }
 
 
