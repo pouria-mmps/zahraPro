@@ -37,11 +37,11 @@
 <!-- Navigation Bar -->
 <div class="navbar">
     <a href="<?= baseUrl() ?>page/productsManager" class="menu-item">
-        <i class="fa fa-home menu-icon"></i>مدیریت محصولات
+        <i class="fa fa-pinterest-p menu-icon"></i>مدیریت محصولات
     </a>
 
     <a href="<?= baseUrl() ?>page/................." class="menu-item">
-        <i class="fa fa-pinterest-p menu-icon"></i>مدیریت کاربران
+        <i class="fa fa-user-circle menu-icon"></i>مدیریت کاربران
     </a>
 
     <a class="menu-item" href="<?= baseUrl() ?>productsman/myorders">

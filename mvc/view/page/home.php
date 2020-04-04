@@ -103,7 +103,7 @@ include("./mvc/view/page/header.php");
 
 <div class="products scrollmenu-products">
     <?php foreach ($perfumes as $perfume) {
-        if ($perfume['jenderId'] == 1) {
+        if ($perfume['jenderId'] == 1 && $perfume['deleteLogic'] == 1) {
             ?>
             <div class="product-panel-grid" style="margin-top: -10px;margin-right: 30px;margin-left: 30px">
                 <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg" alt="عطر">
@@ -154,7 +154,7 @@ include("./mvc/view/page/header.php");
 
 <div class="products scrollmenu-products">
     <?php foreach ($perfumes as $perfume) {
-        if ($perfume['jenderId'] == 2) {
+        if ($perfume['jenderId'] == 2 && $perfume['deleteLogic'] == 1) {
             ?>
 
             <div class="product-panel-grid" style="margin-top: -10px;margin-right: 30px;margin-left: 30px">

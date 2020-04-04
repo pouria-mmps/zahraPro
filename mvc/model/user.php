@@ -17,16 +17,14 @@ class UserModel
         return $record;
     }
 
-    public static function fetch_Duplicate_Perfume($perfumeName, $densityTitle, $jenderType, $brandName, $typeSmell, $structrueSmell, $discount, $price, $countryName, $breif, $discription)
+    public static function fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $countryId, $breif, $discription)
     {
         $db = Db::getInstance();
 
-        $record = $db->first("SELECT * FROM perfume
-                                    LEFT OUTER JOIN perfume_density ON perfume.densityId = perfume_density.densityId
-                                    LEFT OUTER JOIN jender ON perfume.jenderId = jender.jenderId
-                                    LEFT OUTER JOIN brand ON perfume.brandId = brand.brandId
-                                    LEFT OUTER JOIN country ON perfume.countryId = country.countryId WHERE perfumeName='$perfumeName' AND densityTitle='$densityTitle' AND jenderType='$jenderType' AND brandName='$brandName' AND typeSmell='$typeSmell' AND structrueSmell='$structrueSmell' AND discount='$discount' AND price='$price' AND countryName='$countryName' AND breif='$breif' AND discription='$discription'");
-        return $record;
+        $record = $db->first("SELECT perfumeId FROM perfume WHERE perfumeName='$perfumeName' AND densityId='$densityId' AND jenderId='$jenderId' AND brandId='$brandId' AND typeSmell='$typeSmell' AND structrueSmell='$structrueSmell' AND discount='$discount' AND price='$price' AND countryId='$countryId' AND breif='$breif' AND discription='$discription'");
+        if ($record != null && $record != $perfumeId) {
+            message('fail', " عطر موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/page/updateProduct"> کلیک </a>' . 'کنید', true);
+        }
     }
 
     public static function insert2($tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPostCode, $userEmail)

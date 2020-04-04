@@ -434,7 +434,7 @@ h3 {
     border-bottom: 3px solid #78af93;;
 }
 
-#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover {
+#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deleteProduct:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -533,7 +533,7 @@ input[type=radio] {
 
 #btn-submit-uproduct, #btn-cancel-uproduct {
     margin-right: 70px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 
@@ -1599,19 +1599,12 @@ button {
     color: #777;
     cursor: pointer;
     margin-top: 5px;
-    padding-right: 5px;
+    margin-right: -40px;
     position: absolute;
     border-radius: 5px;
     transition: all 0.3s;
     background-color: #f0eeee;
     border-bottom: 3px solid #cbc8c8;
-}
-
-.btn-deleteProduct:hover {
-    color: #fff;
-    transition: all 0.3s;
-    background-color: #a1cfb8;
-    border-bottom: 3px solid #78af93;
 }
 
 
@@ -1634,7 +1627,7 @@ button {
     font-size: medium;
 }
 
-.frm-perfume-name, .frm-type-smell, .frm-structrue-smell, .frm-discount, .frm-price, .frm-country, .frm-breif, .frm-discription {
+.frm-perfume-name, .frm-type-smell, .frm-structrue-smell, .frm-discount, .frm-price, .frm-breif, .frm-discription {
     width: 55%;
     border: none;
     padding: 15px;
@@ -1668,10 +1661,6 @@ button {
 
 .frm-price {
     margin-right: 94px;
-}
-
-.frm-country {
-    margin-right: 46px;
 }
 
 .frm-breif, .frm-discription {

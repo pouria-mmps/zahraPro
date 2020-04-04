@@ -1,14 +1,17 @@
-<?php foreach ($perfumes as $perfume) { ?>
+<?php foreach ($perfumes as $perfume) {
+    if ($perfume['deleteLogic'] == 1) {
+        ?>
 
-    <div class="product-panel-linear"
-         style="margin-top: 40px;background-color: #f7f5f5;box-shadow: 1px 1px 10px 1px #b2b2b2;">
-        <div class="product-thumb-wrapper-linear">
-            <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg-linear" alt="عطر">
-        </div>
+        <div class="product-panel-linear"
+             style="margin-top: 40px;background-color: #f7f5f5;box-shadow: 1px 1px 10px 1px #b2b2b2;">
+            <div class="product-thumb-wrapper-linear">
+                <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg-linear"
+                     alt="عطر">
+            </div>
 
-        <div class="product-panel-rightside">
+            <div class="product-panel-rightside">
 
-            <span class="product-Name-linear"><?= $perfume['persionName'] ?> <?= $perfume['perfumeName'] ?></span>
+                <span class="product-Name-linear"><?= $perfume['persionName'] ?> <?= $perfume['perfumeName'] ?></span>
 
             <?php if ($perfume['discount'] > 0) { ?>
                 <span class="discount-btn-linear">فروش ویژه</span>
@@ -41,9 +44,10 @@
                                                                                        style="padding:0 5px 0 5px;"></i>جزییات
                 </button>
             </form>
+            </div>
         </div>
-    </div>
-<?php } ?>
+    <?php }
+} ?>
 
 
     <br><br><br><br><br><br><br><br>

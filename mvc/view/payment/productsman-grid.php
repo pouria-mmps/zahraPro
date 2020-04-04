@@ -1,15 +1,17 @@
 <div style="margin-top: -80px">
-    <?php foreach ($perfumes as $perfume) { ?>
-        <div class="product-panel-grid" style="margin-top: 30px;">
-            <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg" alt="عطر">
+    <?php foreach ($perfumes as $perfume) {
+        if ($perfume['deleteLogic'] == 1) {
+            ?>
+            <div class="product-panel-grid" style="margin-top: 30px;">
+                <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg" alt="عطر">
 
-            <span class="product-persionName"><?= $perfume['persionName'] ?></span>
-            <span class="product-perfumeName"><?= $perfume['perfumeName'] ?></span>
+                <span class="product-persionName"><?= $perfume['persionName'] ?></span>
+                <span class="product-perfumeName"><?= $perfume['perfumeName'] ?></span>
 
-            <?php if ($perfume['discount'] > 0) { ?>
-                <span class="discount-btn">فروش ویژه</span>
-            <?php } else { ?>
-                <span class="sale-btn">موجود</span>
+                <?php if ($perfume['discount'] > 0) { ?>
+                    <span class="discount-btn">فروش ویژه</span>
+                <?php } else { ?>
+                    <span class="sale-btn">موجود</span>
             <?php } ?>
 
             <div class="priceWraper">
@@ -36,8 +38,9 @@
                 </button>
             </form>
 
-        </div>
-    <?php } ?>
+            </div>
+        <?php }
+    } ?>
 </div>
 
 <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
