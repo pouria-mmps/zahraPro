@@ -22,7 +22,7 @@ class UserModel
         $db = Db::getInstance();
 
         $record = $db->first("SELECT perfumeId FROM perfume WHERE perfumeName='$perfumeName' AND densityId='$densityId' AND jenderId='$jenderId' AND brandId='$brandId' AND typeSmell='$typeSmell' AND structrueSmell='$structrueSmell' AND discount='$discount' AND price='$price' AND countryId='$countryId' AND breif='$breif' AND discription='$discription'");
-        if ($record != null && $record != $perfumeId) {
+        if ($record != null && (null == $perfumeId || $record != $perfumeId)) {
             message('fail', " عطر موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/page/updateProduct"> کلیک </a>' . 'کنید', true);
         }
     }

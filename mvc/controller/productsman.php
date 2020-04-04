@@ -8,7 +8,6 @@ class ProductsmanController
     }
 
 
-
     public function address()
     {
         $db = Db::getInstance();
@@ -16,7 +15,6 @@ class ProductsmanController
         $data['users'] = $users;
         View::render("./mvc/view/page/address.php", $data);
     }
-
 
 
     public function myorders()
@@ -31,7 +29,6 @@ class ProductsmanController
         $data['orders'] = $orders;
         View::render("./mvc/view/page/myorders.php", $data);
     }
-
 
 
     public function getLatestCardOrCreate()

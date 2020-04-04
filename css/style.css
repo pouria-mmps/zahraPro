@@ -390,7 +390,7 @@ h3 {
 }
 
 /* Login Button */
-#btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct {
+#btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct, .insert-product {
     width: 25%;
     color: #777;
     border: none;
@@ -426,12 +426,16 @@ h3 {
     margin-right: 200px;
 }
 
-#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, #btn-submit-uproduct:hover {
+#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, #btn-submit-uproduct:hover, .insert-product:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
     background-color: #a1cfb8;
-    border-bottom: 3px solid #78af93;;
+    border-bottom: 3px solid #78af93;
+}
+
+.insert-product:hover {
+    border: none;
 }
 
 #btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deleteProduct:hover {
@@ -1737,6 +1741,16 @@ button {
 
 .select-items div:hover, .same-as-selected {
     background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Insert Product */
+.insert-product {
+    width: auto;
+    border: none;
+    padding: 10px;
+    margin-right: 50px;
+    border-radius: 20px;
 }
 
 

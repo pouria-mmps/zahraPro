@@ -130,4 +130,49 @@ class PageController
         $db->modify("UPDATE perfume SET deleteLogic=2 WHERE perfumeId='$perfumeId'");
         message('success', "حذف انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید', true);
     }
+
+
+    public function insertProduct()
+    {
+        $db = Db::getInstance();
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+        $countrys = $db->query("SELECT * FROM country");
+        $data['countrys'] = $countrys;
+
+        View::render("./mvc/view/page/insertProduct.php", $data);
+    }
+
+
+    public function insertProductChecking()
+    {
+        $perfumeId = null;
+        $perfumeName = $_POST['perfumeName'];
+        $densityId = $_POST['densityId'];
+        $jenderId = $_POST['jenderId'];
+        $brandId = $_POST['brandId'];
+        $typeSmell = $_POST['typeSmell'];
+        $structrueSmell = $_POST['structrueSmell'];
+        $discount = $_POST['discount'];
+        $price = $_POST['price'];
+        $countryId = $_POST['countryId'];
+        $deleteLogic = 1;
+        $breif = $_POST['breif'];
+        $discription = $_POST['discription'];
+
+        $record = UserModel::fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $countryId, $breif, $discription);
+
+        $db = Db::getInstance();
+        $db->insert("INSERT INTO perfume (perfumeName,densityId,jenderId,brandId,typeSmell,structrueSmell,discount,price,countryId,deleteLogic,breif,discription)
+            VALUES ('$perfumeName','$densityId','$jenderId','$brandId','$typeSmell','$structrueSmell','$discount','$price','$countryId','$deleteLogic','$breif','$discription')"
+        );
+    }
 }

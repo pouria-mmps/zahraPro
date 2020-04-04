@@ -11,7 +11,11 @@ include("./mvc/view/page/managerHeader.php");
         <input type="search" value="" id="keyword" class="search-products"
                placeholder="نام محصول یا برند مورد نظرتان را جستجو کنید">
 </span>
+<br>
 
+<a href="/MainProject/page/insertProduct" style="text-decoration: none;">
+    <span class="fa fa-plus insert-product"></span>
+</a>
 
 <table style="width: 90%;">
     <tr>
@@ -28,6 +32,7 @@ include("./mvc/view/page/managerHeader.php");
         <td class="th-p-crud">عملیات</td>
     </tr>
     <br>
+
     <?php $i = 1 ?>
     <?php foreach ($products as $perfume) {
         if ($perfume['deleteLogic'] == 1) {
