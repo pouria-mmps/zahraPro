@@ -1,6 +1,6 @@
 <!-- Slide Show IMG -->
 <?php
-include("./mvc/view/page/header.php");
+    include("./mvc/view/page/header.php");
 ?>
 
 <a id="button"></a>

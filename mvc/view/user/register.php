@@ -65,11 +65,6 @@ require_once("./mvc/view/page/header.php");
 
         <br><br><br>
 
-        <label class="frm-txt">آدرس</label>
-        <textarea class="frm-input-textarea" name="userAddress" placeholder="آدرس خود را وارد کنید"></textarea>
-
-        <br><br><br>
-
         <!--BTN-Register-->
         <button value="register" id="btn-submit-reg"><i class="fa fa-user-plus"></i>ثبت اطلاعات کاربری</button>
 

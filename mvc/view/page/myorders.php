@@ -55,10 +55,9 @@ if (isset($_SESSION['userEmail'])) {
     <br><br>
 
     <?php if ($totalPrice == 0) { ?>
-        <a class="btn-sale-myorders" href="/MainProject/productsman/address" style="visibility: hidden;">
-        </a>
+        <span> </span>
     <?php } else { ?>
-        <a class="btn-sale-myorders" href="/MainProject/productsman/address">
+        <a class="btn-sale-myorders" href="/MainProject/productsman/getaddress">
             <i class="fa fa-arrow-circle-o-right arrow-myorder" style="text-decoration: none; margin-left:7px;"></i>ادامه
             فرآیند خرید
         </a>

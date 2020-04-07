@@ -1511,7 +1511,7 @@ button {
     border-bottom: 3px solid #78af93;;
 }
 
-.cancelbtn:hover {
+.cancelbtn:hover, #delete-address-btn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -1578,7 +1578,7 @@ button {
     margin-left: 80px;
 }
 
-.btn-updateProduct {
+.btn-updateProduct, #select-address-btn, #delete-address-btn {
     width: 80px;
     color: #777;
     cursor: pointer;
@@ -1591,7 +1591,7 @@ button {
     border-bottom: 3px solid #cbc8c8;
 }
 
-.btn-updateProduct:hover {
+.btn-updateProduct:hover, #select-address-btn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
@@ -1751,6 +1751,18 @@ button {
     padding: 10px;
     margin-right: 50px;
     border-radius: 20px;
+}
+
+
+/* Insert Address */
+#select-address-btn {
+    margin-top: -35px;
+    margin-right: -40px;
+}
+
+#delete-address-btn {
+    margin-top: -2px;
+    margin-right: -40px;
 }
 
 

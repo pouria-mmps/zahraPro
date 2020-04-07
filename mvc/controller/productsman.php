@@ -8,12 +8,46 @@ class ProductsmanController
     }
 
 
-    public function address()
+    public function getaddress()
     {
         $db = Db::getInstance();
-        $users = $db->query("SELECT * FROM user");
-        $data['users'] = $users;
-        View::render("./mvc/view/page/address.php", $data);
+
+        $addresses = $db->query("SELECT * FROM address");
+        $data['addresses'] = $addresses;
+        View::render("./mvc/view/page/getaddress.php", $data);
+    }
+
+
+    public function insertAddress()
+    {
+        View::render("./mvc/view/page/insertAddress.php");
+    }
+
+
+    public function addAddressToTable()
+    {
+        $db = Db::getInstance();
+
+        $userId = $_POST['userId'];
+        $tranName = $_POST['tranName'];
+        $tranLName = $_POST['tranLName'];
+        $tranTell = $_POST['tranTell'];
+        $tranPhone = $_POST['tranPhone'];
+        $tranAddress = $_POST['tranAddress'];
+        $tranPCode = $_POST['tranPCode'];
+
+        UserModel::insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode);
+        message('success', " افزودن آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید', true);
+    }
+
+
+    public function deleteAddress()
+    {
+        $db = Db::getInstance();
+        $addressId = $_POST['addressId'];
+
+        $db->insert("DELETE FROM address WHERE addressId='$addressId'");
+        message('success', "حذف آدرس انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید', true);
     }
 
 

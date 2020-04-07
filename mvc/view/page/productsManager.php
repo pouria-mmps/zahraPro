@@ -82,8 +82,8 @@ include("./mvc/view/page/managerHeader.php");
                 <?= $perfume['price'] ?>
             </td>
 
-            <td style="padding: 20px;">
-                <form class="frm-p-crud" action="<?= baseUrl() ?>page/updateProduct/<?= $perfume['perfumeId'] ?>"
+                <td>
+                    <form class="frm-p-crud" action="<?= baseUrl() ?>page/updateProduct/<?= $perfume['perfumeId'] ?>"
                       method="post">
                     <button value="updateProduct" id="updateProduct-btn" class="btn-updateProduct">
                         <label hidden>

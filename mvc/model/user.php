@@ -27,11 +27,11 @@ class UserModel
         }
     }
 
-    public static function insert2($tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPostCode, $userEmail)
+    public static function insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode)
     {
         $db = Db::getInstance();
-        $db->insert("INSERT INTO factor (tranName,tranLName,tranTell,tranPhone,tranAddress,tranPostCode,userEmail)
-            VALUES ('$tranName','$tranLName','$tranTell','$tranPhone','$tranAddress','$tranPostCode','$userEmail')"
+        $db->insert("INSERT INTO address (userId,tranName,tranLName,tranTell,tranPhone,tranAddress,tranPCode)
+            VALUES ('$userId','$tranName','$tranLName','$tranTell','$tranPhone','$tranAddress','$tranPCode')"
         );
     }
 }

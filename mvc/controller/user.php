@@ -7,24 +7,6 @@ class UserController
     }
 
 
-
-    public function address()
-    {
-        $tranName = $_POST['tranName'];
-        $tranLName = $_POST['tranLName'];
-        $tranTell = $_POST['tranTell'];
-        $tranPhone = $_POST['tranPhone'];
-        $tranAddress = $_POST['tranAddress'];
-        $tranPostCode = $_POST['tranPostCode'];
-        $userEmail = $_POST['userEmail'];
-
-        $record = UserModel::fetch_by_email($userEmail);
-
-        UserModel::insert2($tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPostCode, $userEmail);
-    }
-
-
-
     public function logout()
     {
         session_destroy();
@@ -35,7 +17,6 @@ class UserController
 
         initializeSettings();
     }
-
 
 
     public function login()
@@ -103,7 +84,6 @@ class UserController
         $userEmail = $_POST['userEmail'];
         $userPassword = $_POST['userPassword'];
         $userPasswordConfirm = $_POST['userPasswordConfirm'];
-        $userAddress = $_POST['userAddress'];
 
         require_once("./mvc/view/page/header.php");
 
@@ -126,7 +106,7 @@ class UserController
         }
 
         $hashedPassword = md5($userPassword);
-        UserModel::insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $hashedPassword, $userAddress);
+        UserModel::insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $hashedPassword);
         message('success', "با موفقیت ثبت نام شدید" . '<br><br><br>' . $userName . " " . $userFamilyName . ' برای ادامه لطفا' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید', true);
     }
 
