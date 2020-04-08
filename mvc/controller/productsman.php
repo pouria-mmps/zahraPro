@@ -35,8 +35,8 @@ class ProductsmanController
         $tranPhone = $_POST['tranPhone'];
         $tranAddress = $_POST['tranAddress'];
         $tranPCode = $_POST['tranPCode'];
-
-        UserModel::insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode);
+        $deleteLogic = 1;
+        UserModel::insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode, $deleteLogic);
         message('success', " افزودن آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید', true);
     }
 
@@ -46,7 +46,8 @@ class ProductsmanController
         $db = Db::getInstance();
         $addressId = $_POST['addressId'];
 
-        $db->insert("DELETE FROM address WHERE addressId='$addressId'");
+        $db->modify("UPDATE address SET deleteLogic=2 WHERE addressId='$addressId'");
+
         message('success', "حذف آدرس انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید', true);
     }
 

@@ -5,10 +5,13 @@ include("./mvc/view/page/header.php");
 
 <a id="button"></a>
 <br><br>
+<h3 class="header-ftable"> آدرس خود را از جدول زیر انتخاب کنید یا در جدول اضافه کنید. </h3>
+<br>
 
 <a href="<?= baseUrl() ?>productsman/insertAddress" style="text-decoration: none;">
     <span class="fa fa-plus insert-product"></span>
 </a>
+
 
 <table style="width: 90%;">
     <tr>
@@ -25,7 +28,7 @@ include("./mvc/view/page/header.php");
 
     <?php $i = 1; ?>
     <?php foreach ($addresses as $address) {
-        if ($address['userId'] == $userId) { ?>
+        if ($address['userId'] == $userId && $address['deleteLogic'] == 1) { ?>
             <tr>
                 <td>
                     <?php
@@ -59,7 +62,7 @@ include("./mvc/view/page/header.php");
 
                 <td style="padding: 20px;">
                     <form class="frm-select-address"
-                          action="<?= baseUrl() ?>productsman/.............../<?= $address['addressId'] ?>"
+                          action="<?= baseUrl() ?>productsman/factor"
                           method="post">
                         <button value="select-address" id="select-address-btn" class="btn-select-address">
                             <label hidden>
@@ -84,7 +87,7 @@ include("./mvc/view/page/header.php");
         <?php }
     } ?>
 </table>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br>
 
 <?php
 include("./mvc/view/page/footer.php");
