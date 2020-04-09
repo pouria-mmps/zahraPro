@@ -34,4 +34,14 @@ class UserModel
             VALUES ('$userId','$tranName','$tranLName','$tranTell','$tranPhone','$tranAddress','$tranPCode','$deleteLogic')"
         );
     }
+
+    public static function fetch_Duplicate_Address($addressId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode)
+    {
+        $db = Db::getInstance();
+
+        $record = $db->first("SELECT addressId FROM address WHERE tranName='$tranName' AND tranLName='$tranLName' AND tranTell='$tranTell' AND tranPhone='$tranPhone' AND tranAddress='$tranAddress' AND tranPCode='$tranPCode'");
+        if ($record != null && (null == $addressId || $record != $addressId)) {
+            message('fail', " آدرس موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/updateAddress"> کلیک </a>' . 'کنید', true);
+        }
+    }
 }

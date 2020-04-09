@@ -7,12 +7,12 @@ if (isset($_SESSION['userEmail'])) {
 
     <table>
         <tr>
-            <td class="th-myorder">محصول</td>
-            <td class="th-myorder">توضیحات</td>
-            <td class="th-myorder">قیمت واحد</td>
-            <td class="th-myorder">حذف کالا</td>
-            <td class="th-myorder">تعداد کالا</td>
-            <td class="th-myorder">قیمت اعمال شده با تخفیف</td>
+            <td class="th-myorder"> محصول</td>
+            <td class="th-myorder"> مشخصات محصول</td>
+            <td class="th-myorder"> قیمت واحد</td>
+            <td class="th-myorder"> حذف کالا</td>
+            <td class="th-myorder"> تعداد کالا</td>
+            <td class="th-myorder"> قیمت اعمال شده با تخفیف</td>
         </tr>
         <br>
 
@@ -43,7 +43,8 @@ if (isset($_SESSION['userEmail'])) {
                 </td>
 
                 <td>
-                <span class="cart-preview-newPrice myorder-discountPrice"><?= $perfume['quantity'] * $perfumePriceWithDiscount; ?>  تومان
+                    <span
+                        class="cart-preview-newPrice myorder-discountPrice"><?= $perfume['quantity'] * $perfumePriceWithDiscount; ?>  تومان
                 </td>
             </tr>
         <?php } ?>

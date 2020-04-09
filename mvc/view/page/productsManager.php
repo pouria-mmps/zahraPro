@@ -74,26 +74,27 @@ include("./mvc/view/page/managerHeader.php");
                 <?= $perfume['jenderType'] ?>
             </td>
 
-            <td>
-                <?= $perfume['discount'] ?>
-            </td>
-
-            <td style="padding: 10px;">
-                <?= $perfume['price'] ?>
-            </td>
-
                 <td>
-                    <form class="frm-p-crud" action="<?= baseUrl() ?>page/updateProduct/<?= $perfume['perfumeId'] ?>"
-                      method="post">
-                    <button value="updateProduct" id="updateProduct-btn" class="btn-updateProduct">
-                        <label hidden>
-                            <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
-                        </label>
-                        <i class="fa fa-pencil" style="padding:0 6px;font-size: small;"></i>ویرایش
-                    </button>
-                </form>
+                    <?= $perfume['discount'] ?>
+                </td>
 
-                <form class="frm-log-crud" action="<?= baseUrl() ?>page/deleteLogicProduct/<?= $perfume['perfumeId'] ?>"
+                <td style="padding: 10px;">
+                    <?= $perfume['price'] ?>
+                </td>
+
+                <td style="padding: 20px;">
+                    <form class="frm-p-crud" action="<?= baseUrl() ?>page/updateProduct/<?= $perfume['perfumeId'] ?>"
+                          method="post">
+                        <button value="updateProduct" id="updateProduct-btn" class="btn-updateProduct">
+                            <label hidden>
+                                <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
+                            </label>
+                            <i class="fa fa-pencil" style="padding:0 6px;font-size: small;"></i>ویرایش
+                        </button>
+                    </form>
+
+                    <form class="frm-log-crud"
+                          action="<?= baseUrl() ?>page/deleteLogicProduct/<?= $perfume['perfumeId'] ?>"
                       method="post">
                     <button value="deleteCrud" id="deleteCrud-btn" class="btn-deleteProduct">
                         <label hidden>

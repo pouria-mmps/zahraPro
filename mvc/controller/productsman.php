@@ -52,6 +52,81 @@ class ProductsmanController
     }
 
 
+    public function updateAddress()
+    {
+        $addressId = $_POST['addressId'];
+
+        $db = Db::getInstance();
+        $addresses = $db->query("SELECT * FROM address WHERE addressId='$addressId'");
+        $data['addresses'] = $addresses;
+
+        View::render("./mvc/view/page/updateAddress.php", $data);
+    }
+
+
+    public function updateAddressChecking()
+    {
+        $addressId = $_POST['addressId'];
+        $tranName = $_POST['tranName'];
+        $tranLName = $_POST['tranLName'];
+        $tranTell = $_POST['tranTell'];
+        $tranPhone = $_POST['tranPhone'];
+        $tranAddress = $_POST['tranAddress'];
+        $tranPCode = $_POST['tranPCode'];
+
+        $record = UserModel::fetch_Duplicate_Address($addressId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode);
+
+        $db = Db::getInstance();
+        $db->modify("UPDATE address 
+                           SET tranName=:tranName, tranLName=:tranLName, tranTell=:tranTell, tranPhone=:tranPhone, tranAddress=:tranAddress, tranPCode=:tranPCode WHERE addressId='$addressId'", array(
+            'tranName' => $tranName,
+            'tranLName' => $tranLName,
+            'tranTell' => $tranTell,
+            'tranPhone' => $tranPhone,
+            'tranAddress' => $tranAddress,
+            'tranPCode' => $tranPCode,
+        ));
+
+        message('success', " ویرایش آدرس با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید', true);
+    }
+
+
+    public function factor()
+    {
+        $cart = $this->getLatestCardOrCreate();
+        $addressId = $_POST['addressId'];
+        $userId = $_SESSION['userId'];
+        $db = Db::getInstance();
+
+        $addresses = $db->query("SELECT * FROM address WHERE addressId='$addressId' AND userId='$userId'");
+        $data['addresses'] = $addresses;
+
+        $cart = $this->getLatestCardOrCreate();
+        $orders = $db->query("SELECT * FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+        $data['orders'] = $orders;
+
+        $orders = $db->modify("UPDATE cart SET addressId=$addressId WHERE cart.cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+
+
+        $perfumes = $db->query("SELECT * FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId
+                                LEFT OUTER JOIN perfume_density ON perfume.densityId=perfume_density.densityId
+                                WHERE pym_order.cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+        $data['perfumes'] = $perfumes;
+
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+        View::render("./mvc/view/page/factor.php", $data);
+    }
+
+
     public function myorders()
     {
         $db = Db::getInstance();
@@ -217,6 +292,7 @@ class ProductsmanController
     {
         $db = Db::getInstance();
         $cart = $this->getLatestCardOrCreate();
+        $perfume = $db->first("SELECT price FROM perfume WHERE perfumeId='$perfumeId'");
 
         $foundOrder = $db->first("SELECT * FROM pym_order WHERE perfumeId=:perfumeId AND cartId=:cartId", array(
             'perfumeId' => $perfumeId,
@@ -229,10 +305,11 @@ class ProductsmanController
                 'quantity' => $foundOrder['quantity'] + 1,
             ));
         } else {
-            $db->insert("INSERT INTO pym_order (perfumeId, quantity, cartId) VALUES (:perfumeId, :quantity, :cartId)", array(
+            $db->insert("INSERT INTO pym_order (perfumeId, quantity, cartId, feeAmount) VALUES (:perfumeId, :quantity, :cartId, :feeAmount)", array(
                 'perfumeId' => $perfumeId,
                 'quantity' => 1,
                 'cartId' => $cart['cartId'],
+                'feeAmount' => $perfume['price'],
             ));
         }
 

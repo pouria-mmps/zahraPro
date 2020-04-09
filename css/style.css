@@ -390,7 +390,8 @@ h3 {
 }
 
 /* Login Button */
-#btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct, .insert-product {
+#btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
+.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress {
     width: 25%;
     color: #777;
     border: none;
@@ -405,6 +406,10 @@ h3 {
     vertical-align: center;
     background-color: #f0eeee;
     border-bottom: 3px solid #cbc8c8;
+}
+
+#btn-submit-uaddress, #btn-cancel-uaddress {
+    width: 20%;
 }
 
 #btn-submit-reg {
@@ -426,7 +431,8 @@ h3 {
     margin-right: 200px;
 }
 
-#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, #btn-submit-uproduct:hover, .insert-product:hover {
+#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, #btn-submit-uproduct:hover, .insert-product:hover,
+#btn-submit-uaddress:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
@@ -438,7 +444,7 @@ h3 {
     border: none;
 }
 
-#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deleteProduct:hover {
+#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deleteProduct:hover, #btn-cancel-uaddress:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -474,7 +480,7 @@ h3 {
     margin-right: 90px;
 }
 
-.frm-txt, .frm-p-txt {
+.frm-txt, .frm-p-txt, .frm-uaddress-txt {
     color: #777;
     font-size: large;
 }
@@ -535,7 +541,7 @@ input[type=radio] {
     display: inline-block;
 }
 
-#btn-submit-uproduct, #btn-cancel-uproduct {
+#btn-submit-uproduct, #btn-cancel-uproduct, #btn-submit-uaddress {
     margin-right: 70px;
     margin-bottom: 10px;
 }
@@ -1578,7 +1584,7 @@ button {
     margin-left: 80px;
 }
 
-.btn-updateProduct, #select-address-btn, #delete-address-btn {
+.btn-updateProduct, #select-address-btn, #delete-address-btn, #update-address-btn {
     width: 80px;
     color: #777;
     cursor: pointer;
@@ -1591,7 +1597,7 @@ button {
     border-bottom: 3px solid #cbc8c8;
 }
 
-.btn-updateProduct:hover, #select-address-btn:hover {
+.btn-updateProduct:hover, #select-address-btn:hover, #update-address-btn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
@@ -1613,7 +1619,7 @@ button {
 
 
 /* Update CRUD Page */
-.box-updateProduct {
+.box-updateProduct, .box-update-address {
     width: 50%;
     border-radius: 7px;
     border: 1px solid #888;
@@ -1631,7 +1637,8 @@ button {
     font-size: medium;
 }
 
-.frm-perfume-name, .frm-type-smell, .frm-structrue-smell, .frm-discount, .frm-price, .frm-breif, .frm-discription {
+.frm-perfume-name, .frm-type-smell, .frm-structrue-smell, .frm-discount, .frm-price, .frm-breif, .frm-discription, .frm-tran-name,
+.frm-tran-lname, .frm-tran-tell, .frm-tran-phone, .frm-tran-address, .frm-tran-pcode {
     width: 55%;
     border: none;
     padding: 15px;
@@ -1642,7 +1649,42 @@ button {
     display: inline-block;
 }
 
-.frm-perfume-name:focus, .frm-type-smell:focus, .frm-structrue-smell:focus, .frm-discount:focus, .frm-price:focus, .frm-country:focus, .frm-breif:focus, .frm-discription:focus {
+.frm-uaddress-txt {
+    margin-right: 65px;
+}
+
+.frm-tran-name, .frm-tran-lname, .frm-tran-tell, .frm-tran-phone, .frm-tran-address, .frm-tran-pcode {
+    width: 50%;
+}
+
+.frm-tran-name {
+    margin-right: 87px;
+}
+
+.frm-tran-lname {
+    margin-right: 30px;
+}
+
+.frm-tran-tell {
+    margin-right: 120px;
+}
+
+.frm-tran-phone {
+    margin-right: 80px;
+}
+
+.frm-tran-address {
+    margin-right: 150px;
+}
+
+.frm-tran-pcode {
+    margin-right: 140px;
+}
+
+
+.frm-perfume-name:focus, .frm-type-smell:focus, .frm-structrue-smell:focus, .frm-discount:focus, .frm-price:focus, .frm-country:focus,
+.frm-breif:focus, .frm-discription:focus, .frm-tran-name:focus, .frm-tran-lname:focus, .frm-tran-tell:focus, .frm-tran-phone:focus,
+.frm-tran-address:focus, .frm-tran-pcode:focus {
     outline: none;
     background-color: #ddd;
 }
@@ -1757,12 +1799,29 @@ button {
 /* Insert Address */
 #select-address-btn {
     margin-top: -35px;
-    margin-right: -40px;
+    margin-right: -90px;
 }
 
 #delete-address-btn {
-    margin-top: -2px;
-    margin-right: -40px;
+    width: 100px;
+    margin-top: 2px;
+    margin-right: -50px;
+}
+
+#update-address-btn {
+    margin-top: -51px;
+    margin-right: 10px;
+}
+
+/* Factor */
+.header-ftable {
+    color: #555;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.td-header {
+    background-color: white;
 }
 
 

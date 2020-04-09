@@ -22,7 +22,7 @@ include("./mvc/view/page/header.php");
         <td class="th-p-crud"> شماره تلفن همراه</td>
         <td class="th-p-crud"> آدرس پستی</td>
         <td class="th-p-crud"> کدپستی</td>
-        <td class="th-p-crud"> انتخاب آدرس</td>
+        <td class="th-p-crud"> عملیات</td>
     </tr>
     <br>
 
@@ -45,22 +45,23 @@ include("./mvc/view/page/header.php");
                     <?= $address['tranLName'] ?>
                 </td>
 
-                <td>
+                <td style="padding: 10px;">
                     <?= $address['tranTell'] ?>
                 </td>
-                <td>
+
+                <td style="padding: 10px;">
                     <?= $address['tranPhone'] ?>
                 </td>
 
-                <td style="padding: 45px;">
+                <td style="padding: 10px;">
                     <?= $address['tranAddress'] ?>
                 </td>
 
-                <td>
+                <td style="padding: 10px;">
                     <?= $address['tranPCode'] ?>
                 </td>
 
-                <td style="padding: 20px;">
+                <td style="padding: 50px 100px 50px 100px;">
                     <form class="frm-select-address"
                           action="<?= baseUrl() ?>productsman/factor"
                           method="post">
@@ -69,6 +70,17 @@ include("./mvc/view/page/header.php");
                                 <input type="hidden" name="addressId" value="<?= $address['addressId'] ?>">
                             </label>
                             <i class="fa fa-check-square-o" style="padding:0 6px;font-size: small;"></i>انتخاب
+                        </button>
+                    </form>
+
+                    <form class="frm-update-address"
+                          action="<?= baseUrl() ?>productsman/updateAddress/<?= $address['addressId'] ?>"
+                          method="post">
+                        <button value="updateAddress" id="update-address-btn" class="btn-update-address">
+                            <label hidden>
+                                <input type="hidden" name="addressId" value="<?= $address['addressId'] ?>">
+                            </label>
+                            <i class="fa fa-pencil" style="padding:0 6px;font-size: small;"></i>ویرایش
                         </button>
                     </form>
 

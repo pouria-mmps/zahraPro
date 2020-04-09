@@ -6,7 +6,7 @@ include("./mvc/view/page/managerHeader.php");
 
 
 <?php foreach ($perfumes as $perfume) { ?>
-    <div class="box-updateProduct">
+    <div class="box-updateProduct" style="width: 70%;">
         <form class="frm-product-crud" action="<?= baseUrl() ?>page/updateProductChecking" method="post">
 
             <label hidden>
@@ -23,7 +23,7 @@ include("./mvc/view/page/managerHeader.php");
                 <select class="sort-products theme-construction" id="densityId" name="densityId"
                         style="width: 55%;margin-right: 54px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
                     <?php foreach ($densitys as $density) {
-                        if ($perfume['jenderId'] == $density['densityId']) { ?>
+                        if ($perfume['densityId'] == $density['densityId']) { ?>
                             <option value="<?= $density['densityId'] ?>" selected
                                     style="text-align: left;"><?= $density['densityTitle'] ?></option>
                         <?php } else { ?>
