@@ -4,11 +4,10 @@ include("./mvc/view/page/header.php");
 <a id="button"></a>
 <br><br>
 
-<div>
-    <p class="txt-address">آدرس محل تحویل سفارش خود را اضافه کنید.</p>
-</div>
+<h3 class="txt-address">آدرس محل تحویل سفارش خود را اضافه کنید.</h3>
 
-<form class="modal-content" action="<?= baseUrl() ?>productsman/addAddressToTable" method="post">
+<form class="modal-content" action="<?= baseUrl() ?>productsman/addAddressToTable" method="post"
+      style="margin-top: 50px;">
     <div class="container">
         <input type="text" placeholder=" نام تحویل گیرنده " name="tranName" required class="frm-txt-address">
         <input type="text" placeholder=" نام خانوادگی تحویل گیرنده " name="tranLName" required class="frm-txt-address">
@@ -35,13 +34,17 @@ include("./mvc/view/page/footer.php");
 ?>
 
 <script>
-    // Get the modal
-    var modal = document.getElementById('id01');
-
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function (event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+    var btn = $('#button');
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
         }
-    }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, '300');
+    });
 </script>

@@ -1451,9 +1451,8 @@ td {
 
 
 .txt-address {
-    font-size: large;
-    margin-right: 50px;
-    display: inline-block;
+    color: #555;
+    text-align: center;
 }
 
 .btn-address {
@@ -1514,7 +1513,7 @@ button {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
-    border-bottom: 3px solid #78af93;;
+    border-bottom: 3px solid #78af93;
 }
 
 .cancelbtn:hover, #delete-address-btn:hover {
@@ -1579,12 +1578,18 @@ button {
     margin: 5px 0;
 }
 
+.Img-update-address {
+    width: 90px;
+    height: 90px;
+    margin: 10px;
+}
+
 .frm-p-crud {
     margin-top: -15px;
     margin-left: 80px;
 }
 
-.btn-updateProduct, #select-address-btn, #delete-address-btn, #update-address-btn {
+.btn-updateProduct, #select-address-btn, #delete-address-btn, #update-address-btn, #portal-btn {
     width: 80px;
     color: #777;
     cursor: pointer;
@@ -1597,7 +1602,13 @@ button {
     border-bottom: 3px solid #cbc8c8;
 }
 
-.btn-updateProduct:hover, #select-address-btn:hover, #update-address-btn:hover {
+#portal-btn {
+    width: 13%;
+    margin-top: 12px;
+    margin-right: 70px;
+}
+
+.btn-updateProduct:hover, #select-address-btn:hover, #update-address-btn:hover, #portal-btn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
@@ -1824,6 +1835,9 @@ button {
     background-color: white;
 }
 
+.tr-cart:hover {
+    background-color: white;
+}
 
 /* Img Footer */
 .footer-box {

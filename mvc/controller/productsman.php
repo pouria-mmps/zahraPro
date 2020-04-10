@@ -94,6 +94,7 @@ class ProductsmanController
     public function factor()
     {
         $cart = $this->getLatestCardOrCreate();
+
         $addressId = $_POST['addressId'];
         $userId = $_SESSION['userId'];
         $db = Db::getInstance();
@@ -101,29 +102,35 @@ class ProductsmanController
         $addresses = $db->query("SELECT * FROM address WHERE addressId='$addressId' AND userId='$userId'");
         $data['addresses'] = $addresses;
 
-        $cart = $this->getLatestCardOrCreate();
+
         $orders = $db->query("SELECT * FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
             'cartId' => $cart['cartId'],
         ));
         $data['orders'] = $orders;
+
 
         $orders = $db->modify("UPDATE cart SET addressId=$addressId WHERE cart.cartId=:cartId", array(
             'cartId' => $cart['cartId'],
         ));
 
 
-        $perfumes = $db->query("SELECT * FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId
-                                LEFT OUTER JOIN perfume_density ON perfume.densityId=perfume_density.densityId
-                                WHERE pym_order.cartId=:cartId", array(
-            'cartId' => $cart['cartId'],
-        ));
-        $data['perfumes'] = $perfumes;
-
-
         $densitys = $db->query("SELECT * FROM perfume_density");
         $data['densitys'] = $densitys;
 
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
         View::render("./mvc/view/page/factor.php", $data);
+    }
+
+
+    public function bankPortal()
+    {
+        View::render("./mvc/view/page/bankPortal.php");
     }
 
 
