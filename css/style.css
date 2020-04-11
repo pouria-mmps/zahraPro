@@ -47,10 +47,11 @@ body {
 /*Header*/
 /*Logo*/
 #imgLogo {
-    width: 200px;
-    height: 150px;
-    margin-right: 590px;
-    margin-bottom: 30px;
+    width: 440px;
+    height: 280px;
+    margin-top: -60px;
+    position: relative;
+    margin-right: 450px;
 }
 
 hr {
@@ -119,6 +120,7 @@ span.cart {
 .navbar {
     width: 100%;
     overflow: hidden;
+    margin-top: -40px;
     background-color: #e3e0e0;
     box-shadow: 1px 1px 10px 1px #aaaaaa;
 }

@@ -5,8 +5,7 @@ include("./mvc/view/page/header.php");
 
 <a id="button"></a>
 <br><br>
-<h3 class="header-ftable"> آدرس خود را از جدول زیر انتخاب کنید یا در جدول اضافه کنید. </h3>
-<br>
+<h3 class="header-ftable"> آدرس خود را از جدول زیر انتخاب یا در جدول اضافه کنید. </h3>
 
 <a href="<?= baseUrl() ?>productsman/insertAddress" style="text-decoration: none;">
     <span class="fa fa-plus insert-product"></span>

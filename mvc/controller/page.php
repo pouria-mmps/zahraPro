@@ -95,7 +95,7 @@ class PageController
             'discription' => $discription,
         ));
 
-        message('success', " ویرایش عطر با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید', true);
+        message('success', " ویرایش عطر با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -128,7 +128,7 @@ class PageController
 
         $db = Db::getInstance();
         $db->modify("UPDATE perfume SET deleteLogic=2 WHERE perfumeId='$perfumeId'");
-        message('success', "حذف انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید', true);
+        message('success', "حذف انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
     }
 
 

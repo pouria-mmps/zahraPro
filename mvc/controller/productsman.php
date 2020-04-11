@@ -11,10 +11,29 @@ class ProductsmanController
     public function getaddress()
     {
         $db = Db::getInstance();
+        $cart = $this->getLatestCardOrCreate();
 
-        $addresses = $db->query("SELECT * FROM address");
-        $data['addresses'] = $addresses;
-        View::render("./mvc/view/page/getaddress.php", $data);
+        $orders = $db->query("SELECT perfumeName,perfumeCounter,quantity FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+
+        foreach ($orders as $order) {
+            if ($order['perfumeCounter'] >= $order['quantity']) {
+                $flag = 1;
+            } else {
+                $flag = 0;
+                $names = $order['perfumeName'];
+                $quantity = $order['perfumeCounter'];
+            }
+        }
+
+        if ($flag == 1) {
+            $addresses = $db->query("SELECT * FROM address");
+            $data['addresses'] = $addresses;
+            View::render("./mvc/view/page/getaddress.php", $data);
+        } else {
+            message('fail', $quantity . ' عدد از عطر ' . $names . ' باقی مانده است. ' . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/myorders"> کلیک </a>' . 'کنید.', true);
+        }
     }
 
 
@@ -37,7 +56,7 @@ class ProductsmanController
         $tranPCode = $_POST['tranPCode'];
         $deleteLogic = 1;
         UserModel::insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode, $deleteLogic);
-        message('success', " افزودن آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید', true);
+        message('success', " افزودن آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -48,7 +67,7 @@ class ProductsmanController
 
         $db->modify("UPDATE address SET deleteLogic=2 WHERE addressId='$addressId'");
 
-        message('success', "حذف آدرس انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید', true);
+        message('success', "حذف آدرس انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -87,7 +106,7 @@ class ProductsmanController
             'tranPCode' => $tranPCode,
         ));
 
-        message('success', " ویرایش آدرس با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید', true);
+        message('success', " ویرایش آدرس با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -130,7 +149,52 @@ class ProductsmanController
 
     public function bankPortal()
     {
-        View::render("./mvc/view/page/bankPortal.php");
+        $totalPrice = 0;
+        $db = Db::getInstance();
+        $cart = $this->getLatestCardOrCreate();
+
+        $orders = $db->query("SELECT price,discount,feeAmount,orderId,quantity,perfumeCounter FROM pym_order 
+                                    LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+
+        foreach ($orders as $order) {
+            $perfumePriceWithDiscount = $order['price'] - ($order['price'] * $order['discount'] / 100);
+            $totalPrice += $order['quantity'] * $perfumePriceWithDiscount;
+            $orderId = $order['orderId'];
+
+            $db->modify("UPDATE perfume LEFT OUTER JOIN pym_order ON perfume.perfumeId=pym_order.perfumeId
+                                SET perfumeCounter=:perfumeCounter WHERE cartId=:cartId", array(
+                'cartId' => $cart['cartId'],
+                'perfumeCounter' => $order['perfumeCounter'] - 1,
+            ));
+
+            if ($order['feeAmount'] != $perfumePriceWithDiscount) {
+                $db->modify("UPDATE pym_order SET pym_order.feeAmount='$perfumePriceWithDiscount' WHERE pym_order.orderId='$orderId'");
+            } else {
+                $flag = 0;
+            }
+        }
+
+        $db->modify("UPDATE cart SET paymentPrice='$totalPrice' WHERE cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+
+        $db->modify("UPDATE cart SET payed=1 WHERE cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+
+        $trand = $db->first("SELECT tranName,tranLName,tranPhone FROM cart LEFT OUTER JOIN address ON cart.addressId=address.addressId WHERE cart.cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+        $data['trand'] = $trand;
+        $name = $trand['tranName'];
+        $lname = $trand['tranLName'];
+        $phone = $trand['tranPhone'];
+
+        //https://idpay.ir/pouria-mmps?amount=10000&name=%D9%85%D8%AD%D9%85%D8%AF&phone=09121234569&desc=%D8%AA%D8%AC%D9%87%DB%8C%D8%B2%D8%A7%D8%AA
+        header('Location:https://idpay.ir/pouria-mmps?amount=' . $totalPrice . '&name=' . $name . " " . $lname . '&phone=' . $phone . '&desc=خرید عطر از فروشگاه اینترنتی عطرشاپ');
+
     }
 
 
@@ -299,7 +363,9 @@ class ProductsmanController
     {
         $db = Db::getInstance();
         $cart = $this->getLatestCardOrCreate();
-        $perfume = $db->first("SELECT price FROM perfume WHERE perfumeId='$perfumeId'");
+        $perfume = $db->first("SELECT price,discount FROM perfume WHERE perfumeId='$perfumeId'");
+        $perfumePriceWithDiscount = $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100);
+
 
         $foundOrder = $db->first("SELECT * FROM pym_order WHERE perfumeId=:perfumeId AND cartId=:cartId", array(
             'perfumeId' => $perfumeId,
@@ -316,7 +382,7 @@ class ProductsmanController
                 'perfumeId' => $perfumeId,
                 'quantity' => 1,
                 'cartId' => $cart['cartId'],
-                'feeAmount' => $perfume['price'],
+                'feeAmount' => $perfumePriceWithDiscount,
             ));
         }
 

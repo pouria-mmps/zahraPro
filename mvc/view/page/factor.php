@@ -2,6 +2,7 @@
 require_once("PersianCalendar.php");
 include("./mvc/view/page/header.php");
 $userId = $_SESSION['userId'];
+$totalPrice2 = 0;
 ?>
 
 <a id="button"></a>
@@ -13,7 +14,7 @@ $userId = $_SESSION['userId'];
 
 <table style="width: 90%;margin-top: -150px;">
     <tr>
-        <td colspan="5" class="td-header">
+        <td colspan="6" class="td-header">
             <h2 class="header-ftable">فروشگاه اینترنتی عطرشاپ</h2>
             <h3 class="header-ftable" style="color: #777;">صورت حساب فروش کالا و خدمات</h3>
         </td>
@@ -67,6 +68,7 @@ $userId = $_SESSION['userId'];
         <td class="th-p-crud"> نام محصول</td>
         <td class="th-p-crud"> تعداد</td>
         <td class="th-p-crud"> قیمت واحد</td>
+        <td class="th-p-crud"> تخفیف</td>
         <td class="th-p-crud"> قیمت کل</td>
     </tr>
 
@@ -111,8 +113,15 @@ $userId = $_SESSION['userId'];
             </td>
 
             <td>
+                <span style="font-size: large;"><?= $product['discount'] ?></span> %
+            </td>
+
+            <td>
                 <span style="font-size: large;"><?= $totalPrice ?></span> تومان
             </td>
+            <?php
+            $totalPrice2 += $totalPrice;
+            ?>
         </tr>
         <br>
     <?php } ?>
@@ -124,7 +133,7 @@ $userId = $_SESSION['userId'];
       method="post">
     <button value="portal" id="portal-btn" class="btn-portal">
         <label hidden>
-            <input type="hidden" name="totalPrice" value="<?= $totalPrice ?>">
+            <input type="hidden" name="totalPrice" value="<?= $totalPrice2 + 20000 ?>">
         </label>
         <i class="fa fa-credit-card" style="padding-left:10px;font-size: small;"></i>
         <span style="font-size: medium;"> پرداخت و تکمیل خرید </span>
@@ -139,7 +148,7 @@ $userId = $_SESSION['userId'];
         </td>
 
         <td style="padding: 10px;border: 2px solid #ddd;">
-            <span style="font-size: large;"><?= $totalPrice ?></span> تومان
+            <span style="font-size: large;"><?= $totalPrice2 ?></span> تومان
         </td>
     </tr>
 
@@ -159,7 +168,7 @@ $userId = $_SESSION['userId'];
         </td>
 
         <td style="padding: 10px;background-color: #f2f2f2;border: 2px solid #ddd;">
-            <span style="font-size: large;"> <?= $totalPrice + 20000 ?> </span> تومان
+            <span style="font-size: large;"> <?= $totalPrice2 + 20000 ?> </span> تومان
         </td>
     </tr>
 </table>

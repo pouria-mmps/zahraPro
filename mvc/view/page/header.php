@@ -48,14 +48,10 @@
     <?php } ?>
 
     <!-- Logo -->
-
-    <img src="/MainProject/image/Logo_HomePage.png" id="imgLogo" alt="لگو صفحه">
-
-
+    <img src="/MainProject/image/Logo3.jpg" id="imgLogo" alt="لگو صفحه">
 </div>
 
 <!-- Navigation Bar -->
-
 <div class="navbar">
     <a href="<?= baseUrl() ?>page/home" class="menu-item">
         <i class="fa fa-home menu-icon"></i>صفحه اصلی

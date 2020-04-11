@@ -48,7 +48,7 @@ class UserController
                 $_SESSION['userEmail'] = $record['userEmail'];
                 $_SESSION['userId'] = $record['userId'];
                 $_SESSION['userAccess'] = $record['userAccess'];
-                message('success', "شما با موفقیت وارد شده اید. جهت ورود به صفحه اصلی " . '<a href="/MainProject/page/home"> کلیک </a>' . 'کنید', true);
+                message('success', "شما با موفقیت وارد شده اید. جهت ورود به صفحه اصلی " . '<a href="/MainProject/page/home"> کلیک </a>' . 'کنید.', true);
             } else {
                 message('fail', "گذرواژه شما نادرست است", true);
             }
@@ -90,7 +90,7 @@ class UserController
         $record = UserModel::fetch_by_email($userEmail);
 
         if ($userName == null || $userFamilyName == null || $userGender == null || $userEmail == null || $userPassword == null) {
-            message('fail', "لطفا فیلدهای ستاره دار را پر کنید " . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', "لطفا فیلدهای ستاره دار را پر کنید. " . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         if ($record != null) {
@@ -107,7 +107,7 @@ class UserController
 
         $hashedPassword = md5($userPassword);
         UserModel::insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $hashedPassword);
-        message('success', "با موفقیت ثبت نام شدید" . '<br><br><br>' . $userName . " " . $userFamilyName . ' برای ادامه لطفا' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید', true);
+        message('success', "با موفقیت ثبت نام شدید" . '<br><br><br>' . $userName . " " . $userFamilyName . ' برای ادامه لطفا' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
     }
 
 

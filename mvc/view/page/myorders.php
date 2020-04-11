@@ -8,7 +8,7 @@ if (isset($_SESSION['userEmail'])) {
     <table>
         <tr>
             <td class="th-myorder"> محصول</td>
-            <td class="th-myorder"> مشخصات محصول</td>
+            <td class="th-myorder"> نام محصول</td>
             <td class="th-myorder"> قیمت واحد</td>
             <td class="th-myorder"> حذف کالا</td>
             <td class="th-myorder"> تعداد کالا</td>
@@ -58,7 +58,8 @@ if (isset($_SESSION['userEmail'])) {
     <?php if ($totalPrice == 0) { ?>
         <span> </span>
     <?php } else { ?>
-        <a class="btn-sale-myorders" href="/MainProject/productsman/getaddress">
+        <a class="btn-sale-myorders" href="/MainProject/productsman/getaddress"
+           style="font-size: medium;padding: 10px;">
             <i class="fa fa-arrow-circle-o-right arrow-myorder" style="text-decoration: none; margin-left:7px;"></i>ادامه
             فرآیند خرید
         </a>
@@ -88,45 +89,4 @@ if (isset($_SESSION['userEmail'])) {
             location.reload();
         });
     }
-
-    $(document).ready(function () {
-        $('.btn-sale-myorders').click(function () {
-            <?php if ($totalPrice == 0) { ?>
-            alert("a");
-            <?php } ?>
-        });
-    });
-
-    jQuery('<div class="quantity-nav"><div class="quantity-button quantity-up">+</div><div class="quantity-button quantity-down">-</div></div>').insertAfter('.quantity input');
-    jQuery('.quantity').each(function () {
-        var spinner = jQuery(this),
-            input = spinner.find('input[type="number"]'),
-            btnUp = spinner.find('.quantity-up'),
-            btnDown = spinner.find('.quantity-down'),
-            min = input.attr('min'),
-            max = input.attr('max');
-
-        btnUp.click(function () {
-            var oldValue = parseFloat(input.val());
-            if (oldValue >= max) {
-                var newVal = oldValue;
-            } else {
-                var newVal = oldValue + 1;
-            }
-            spinner.find("input").val(newVal);
-            spinner.find("input").trigger("change");
-        });
-
-        btnDown.click(function () {
-            var oldValue = parseFloat(input.val());
-            if (oldValue <= min) {
-                var newVal = oldValue;
-            } else {
-                var newVal = oldValue - 1;
-            }
-            spinner.find("input").val(newVal);
-            spinner.find("input").trigger("change");
-        });
-
-    });
 </script>
