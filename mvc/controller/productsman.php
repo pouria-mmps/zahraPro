@@ -192,9 +192,7 @@ class ProductsmanController
         $lname = $trand['tranLName'];
         $phone = $trand['tranPhone'];
 
-        //https://idpay.ir/pouria-mmps?amount=10000&name=%D9%85%D8%AD%D9%85%D8%AF&phone=09121234569&desc=%D8%AA%D8%AC%D9%87%DB%8C%D8%B2%D8%A7%D8%AA
         header('Location:https://idpay.ir/pouria-mmps?amount=' . $totalPrice . '&name=' . $name . " " . $lname . '&phone=' . $phone . '&desc=خرید عطر از فروشگاه اینترنتی عطرشاپ');
-
     }
 
 
