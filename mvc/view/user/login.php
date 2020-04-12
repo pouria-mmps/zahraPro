@@ -7,7 +7,7 @@ if (isset($_SESSION['userEmail'])) {
 ?>
 <br><br>
 
-<a id="button"></a>
+<a id="button" style="text-decoration: none;"></a>
 <h3 class="header-ftable" style="color: #555;">لطفا مشخصات خود را وارد کنید</h3>
 
 <!-- Login Content -->

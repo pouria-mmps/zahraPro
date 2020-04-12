@@ -2,7 +2,7 @@
 require_once("./mvc/view/page/header.php");
 ?>
 
-<a id="button"></a>
+<a id="button" style="text-decoration: none;"></a>
 <br><br>
 
 <h3 class="header-ftable" style="color: #555;">لطفا فیلدهای ستاره دار را پر کنید</h3>

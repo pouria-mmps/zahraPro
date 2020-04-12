@@ -1,7 +1,7 @@
 <?php
 include("./mvc/view/page/header.php");
 ?>
-<a id="button"></a>
+<a id="button" style="text-decoration: none;"></a>
 <br><br>
 
 <h3 class="txt-address">آدرس محل تحویل سفارش خود را اضافه کنید.</h3>

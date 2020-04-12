@@ -7,6 +7,19 @@ class PageController
         $db = Db::getInstance();
         $products = $db->query("SELECT * FROM perfume");
         $data['perfumes'] = $products;
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+
         View::render("./mvc/view/page/home.php", $data);
     }
 

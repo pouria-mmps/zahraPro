@@ -3,7 +3,7 @@ include("./mvc/view/page/header.php");
 ?>
 <br>
 
-<a id="button"></a>
+<a id="button" style="text-decoration: none;"></a>
 
 <?php foreach ($perfumes as $perfume) { ?>
     <div class="box-details">

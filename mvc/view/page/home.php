@@ -3,7 +3,8 @@
     include("./mvc/view/page/header.php");
 ?>
 <br><br>
-<a id="button"></a>
+
+<a id="button" style="text-decoration: none;"></a>
 
 
 <div id="box-slide">
@@ -106,29 +107,51 @@
             ?>
             <div class="product-panel-grid" style="margin-top: -10px;margin-right: 30px;margin-left: 30px">
                 <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg" alt="عطر">
+                <br><br>
 
-                <span class="product-persionName"><?= $perfume['persionName'] ?></span>
-                <span class="product-perfumeName"><?= $perfume['perfumeName'] ?></span>
+                <?php foreach ($densitys as $density) {
+                    foreach ($genders as $gender) {
+                        foreach ($brands as $brand) {
+                            if ($perfume['densityId'] == $density['densityId'] && $perfume['jenderId'] == $gender['jenderId'] && $perfume['brandId'] == $brand['brandId']) {
+                                ?>
+                                <span style="font-size: 18px;"><?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?> مدل </span>
+                                <br>
 
-                <?php if ($perfume['discount'] > 0) { ?>
+                                <span style="font-size: 18px;font-family: 'mitra';"><?= $perfume['perfumeName'] ?></span>
+                            <?php }
+                        }
+                    }
+                } ?>
+
+                <?php if ($perfume['discount'] > 0 && $perfume['perfumeCounter'] != 0) { ?>
                     <span class="discount-btn">فروش ویژه</span>
-                <?php } else { ?>
+                <?php } elseif ($perfume['perfumeCounter'] != 0) { ?>
                     <span class="sale-btn">موجود</span>
+                <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
+                    <span class="nosale-btn">ناموجود</span>
                 <?php } ?>
+
 
                 <div class="priceWraper">
                     <span class="newPrice"
-                          style="font-size: 18px;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?> تومان </span>
+                          style="font-size: 18px;"><i
+                                style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?></i> تومان </span>
 
                     <?php if ($perfume['discount'] > 0) { ?>
                         <span class="oldPrice" style="font-size: 15px;"><?= $perfume['price'] ?> تومان </span>
                     <?php } ?>
                 </div>
-
                 <br>
-                <span class="addToCart-btn" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
-                    <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
-                </span>
+
+                <?php if ($perfume['perfumeCounter'] == 0) { ?>
+                    <span class="addToCart-btn2">
+                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
+            </span>
+                <?php } else { ?>
+                    <span class="addToCart-btn" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
+                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
+            </span>
+                <?php } ?>
 
                 <form class="frm-log" action="<?= baseUrl() ?>page/details/<?= $perfume['perfumeId'] ?>" method="post">
                     <label hidden>
@@ -154,32 +177,53 @@
     <?php foreach ($perfumes as $perfume) {
         if ($perfume['jenderId'] == 2 && $perfume['deleteLogic'] == 1) {
             ?>
-
-            <div class="product-panel-grid" style="margin-top: -10px;margin-right: 30px;margin-left: 30px">
+            <div class="product-panel-grid" style="margin-top: -10px;margin-right: 25px;margin-left: 25px">
                 <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg" alt="عطر">
+                <br><br>
 
-                <span class="product-persionName"><?= $perfume['persionName'] ?></span>
-                <span class="product-perfumeName"><?= $perfume['perfumeName'] ?></span>
+                <?php foreach ($densitys as $density) {
+                    foreach ($genders as $gender) {
+                        foreach ($brands as $brand) {
+                            if ($perfume['densityId'] == $density['densityId'] && $perfume['jenderId'] == $gender['jenderId'] && $perfume['brandId'] == $brand['brandId']) {
+                                ?>
+                                <span style="font-size: 18px;"><?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?> مدل </span>
+                                <br>
 
-                <?php if ($perfume['discount'] > 0) { ?>
+                                <span style="font-size: 18px;font-family: 'mitra';"><?= $perfume['perfumeName'] ?></span>
+                            <?php }
+                        }
+                    }
+                } ?>
+
+                <?php if ($perfume['discount'] > 0 && $perfume['perfumeCounter'] != 0) { ?>
                     <span class="discount-btn">فروش ویژه</span>
-                <?php } else { ?>
+                <?php } elseif ($perfume['perfumeCounter'] != 0) { ?>
                     <span class="sale-btn">موجود</span>
+                <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
+                    <span class="nosale-btn">ناموجود</span>
                 <?php } ?>
+
 
                 <div class="priceWraper">
                     <span class="newPrice"
-                          style="font-size: 18px;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?> تومان </span>
+                          style="font-size: 18px;"><i
+                                style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?></i> تومان </span>
 
                     <?php if ($perfume['discount'] > 0) { ?>
                         <span class="oldPrice" style="font-size: 15px;"><?= $perfume['price'] ?> تومان </span>
                     <?php } ?>
                 </div>
-
                 <br>
-                <span class="addToCart-btn" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
-                    <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
-                </span>
+
+                <?php if ($perfume['perfumeCounter'] == 0) { ?>
+                    <span class="addToCart-btn2">
+                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
+            </span>
+                <?php } else { ?>
+                    <span class="addToCart-btn" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
+                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
+            </span>
+                <?php } ?>
 
                 <form class="frm-log" action="<?= baseUrl() ?>page/details/<?= $perfume['perfumeId'] ?>" method="post">
                     <label hidden>

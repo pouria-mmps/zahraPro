@@ -28,9 +28,8 @@
             <?php } ?>
 
             <div class="priceWraper">
-            <span class="newPrice"
-                  style="font-size: 18px;"><i
-                        style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?></i> تومان </span>
+                <span class="newPrice" style="font-size: 18px;"><i
+                            style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?></i> تومان </span>
 
                 <?php if ($perfume['discount'] > 0) { ?>
                     <span class="oldPrice" style="font-size: 16px;"><?= $perfume['price'] ?>  تومان </span>

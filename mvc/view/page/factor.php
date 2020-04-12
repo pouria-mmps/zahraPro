@@ -5,7 +5,7 @@ $userId = $_SESSION['userId'];
 $totalPrice2 = 0;
 ?>
 
-<a id="button"></a>
+<a id="button" style="text-decoration: none;"></a>
 <br>
 
 <h3 style="margin-right: 70px;text-align: right;"> صورت حساب کلی </h3>
