@@ -1,6 +1,15 @@
 <div class="header">
     <br>
 
+    <?php
+
+    $db = Db::getInstance();
+    if (isset($_SESSION['userEmail'])) {
+        $userEmail = $_SESSION['userEmail'];
+        $users = $db->first("SELECT * FROM user WHERE userEmail='$userEmail'");
+    }
+    ?>
+
     <!-- Register & Login -->
     <?php
     /** @var TYPE_NAME $isGuest */
@@ -32,9 +41,23 @@
 
     <!-- Buy -->
     <?php if (!$isGuest) { ?>
+        <?php if ($users['jenderId'] == 1) { ?>
+            <img src="/MainProject/image/EmptyProfile.png" class="profile-img" alt="پروفایل">
+            <span style="font-size: large;"> آقای </span>
+            <span
+                style="font-size: large;color: red;font-weight: bold;"><?= $users['userName'] ?> <?= $users['userFamilyName'] ?></span>
+            <span style="font-size: large;"> خوش آمدید </span>
+        <?php } else { ?>
+            <img src="/MainProject/image/EmptyProfile.png" class="profile-img" alt="پروفایل">
+            <span style="font-size: large;"> خانم </span>
+            <span
+                style="font-size: large;color: red;font-weight: bold;"><?= $users['userName'] ?> <?= $users['userFamilyName'] ?></span>
+            <span style="font-size: large;"> خوش آمدید </span>
+        <?php } ?>
+
         <span class="exit-btn">
-            <a href="/MainProject/user/logout" style="color: #555;font-size: 17px;">
-                <i class="fa fa-sign-out signout-btn"></i>خروج
+            <a href="/MainProject/user/logout" style="color: #555;font-size: 17px; text-decoration: none;">
+                <i class="fa fa-sign-out signout-btn" style="font-size: medium;"></i>خروج
             </a>
         </span>
 
@@ -73,29 +96,36 @@
         </span>
     </a>
 
-    <?php if ($isGuest) {
-        goto a;
-    } elseif (!$isGuest && $_SESSION['userAccess'] == 'user') { ?>
-        <a class="menu-item" href="/MainProject/productsman/myorders">
-            <img src="/MainProject/image/EmptyProfile.png" class="profile-img" alt="پروفایل">
-            <span style="font-size: 18px;"><?= $_SESSION['userEmail'] ?></span>
-            <span style="margin-right: 7px;font-size: 18px;">کاربر</span>
-        </a>
-    <?php } elseif (!$isGuest && $_SESSION['userAccess'] == 'user,admin') { ?>
-        <a href="<?= baseUrl() ?>page/manager" class="menu-item">
-            <i class="fa fa-user-circle menu-icon"></i>
+    <?php if (isset($_SESSION['userEmail']) && $users['userAccess'] == 'user') { ?>
+        <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
+            <i class="fa fa-file-text-o menu-icon"></i>
             <span style="font-size: 18px;">
-                فرم مدیریت سایت
+                سفارشات من
             </span>
         </a>
 
-        <a class="menu-item" href="/MainProject/productsman/myorders">
-            <img src="/MainProject/image/EmptyProfile.png" class="profile-img" alt="پروفایل">
-            <span style="font-size: 18px;"><?= $_SESSION['userEmail'] ?></span>
-            <span style="margin-right: 7px;font-size: 18px;">مدیرسایت</span>
+        <a href="<?= baseUrl() ?>user/editProfile" class="menu-item">
+            <i class="fa fa-edit menu-icon"></i>
+            <span style="font-size: 18px;">
+                ویرایش اطلاعات
+            </span>
         </a>
-    <?php }
-    a: ?>
+
+    <?php } elseif (isset($_SESSION['userEmail']) && ($users['userAccess'] == 'admin' || $users['userAccess'] == 'user,admin')) { ?>
+        <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
+            <i class="fa fa-file-text-o menu-icon"></i>
+            <span style="font-size: 18px;">
+                سفارشات من
+            </span>
+        </a>
+
+        <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
+            <i class="fa fa-adjust menu-icon"></i>
+            <span style="font-size: 18px;">
+                پنل مدیریت
+            </span>
+        </a>
+    <?php } ?>
 </div>
 
 
@@ -106,3 +136,5 @@
         });
     });
 </script>
+
+

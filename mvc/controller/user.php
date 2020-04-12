@@ -7,6 +7,12 @@ class UserController
     }
 
 
+    public function editProfile()
+    {
+        View::render("./mvc/view/page/editProfile.php");
+    }
+
+
     public function logout()
     {
         session_destroy();
@@ -37,11 +43,11 @@ class UserController
 
         $record = UserModel::fetch_by_email($userEmail);
         if ($userPassword == null || $userEmail == null) {
-            message('fail', "نام کاربری یا گذرواژه خود را وارد نکرده اید", true);
+            message('fail', "نام کاربری یا گذرواژه خود را وارد نکرده اید" . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
         }
 
         if ($record == null) {
-            message('fail', "نام کاربری یا گذرواژه نادرست است", true);
+            message('fail', "نام کاربری یا گذرواژه نادرست است" . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
         } else {
             $hashedPassword = md5($userPassword);
             if ($hashedPassword == $record['userPassword']) {
@@ -90,19 +96,19 @@ class UserController
         $record = UserModel::fetch_by_email($userEmail);
 
         if ($userName == null || $userFamilyName == null || $userGender == null || $userEmail == null || $userPassword == null) {
-            message('fail', "لطفا فیلدهای ستاره دار را پر کنید. " . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', "لطفا فیلدهای ستاره دار را پر کنید. " . '<br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         if ($record != null) {
-            message('fail', " شما پیشتر با این ایمیل ثبت نام کرده اید کافیست وارد سایت شوید ", true);
+            message('fail', " شما پیشتر با این ایمیل ثبت نام کرده اید کافیست وارد سایت شوید " . '<br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         if (strlen($userPassword) < 3 || strlen($userPasswordConfirm) < 3) {
-            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد", true);
+            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد" . '<br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         if ($userPassword != $userPasswordConfirm) {
-            message('fail', "گذرواژه ها با هم مطابقت ندارند", true);
+            message('fail', "گذرواژه ها با هم مطابقت ندارند" . '<br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         $hashedPassword = md5($userPassword);
