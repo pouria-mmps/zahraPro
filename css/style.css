@@ -466,7 +466,7 @@ h3 {
     border: none;
 }
 
-#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deleteProduct:hover, #btn-cancel-uaddress:hover, .cancelbtn:hover {
+#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deactive:hover, #btn-cancel-uaddress:hover, .cancelbtn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -481,6 +481,9 @@ h3 {
     margin-left: 7px;
 }
 
+.fa-check {
+    margin-left: 7px;
+}
 
 /* Register */
 
@@ -1629,7 +1632,7 @@ button {
     margin-left: 80px;
 }
 
-.btn-updateProduct, #select-address-btn, #delete-address-btn, #update-address-btn, #portal-btn {
+.btn-updateProduct, #select-address-btn, #delete-address-btn, #update-address-btn, #portal-btn, .btn-active {
     width: 80px;
     color: #777;
     cursor: pointer;
@@ -1642,20 +1645,36 @@ button {
     border-bottom: 3px solid #cbc8c8;
 }
 
+.btn-updateProduct {
+    margin-top: -30px;
+}
+
+.btn-active {
+    margin-top: 5px;
+    margin-right: -40px;
+}
+
 #portal-btn {
     width: 13%;
     margin-top: 12px;
     margin-right: 70px;
 }
 
-.btn-updateProduct:hover, #select-address-btn:hover, #update-address-btn:hover, #portal-btn:hover {
+#select-address-btn:hover, #update-address-btn:hover, #portal-btn:hover, .btn-active:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
     border-bottom: 3px solid #78af93;
 }
 
-.btn-deleteProduct {
+.btn-updateProduct:hover {
+    color: #fff;
+    transition: all 0.3s;
+    background-color: #feca38;
+    border-bottom: 3px solid #cfad19;
+}
+
+.btn-deactive {
     width: 80px;
     color: #777;
     cursor: pointer;

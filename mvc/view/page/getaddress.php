@@ -31,7 +31,7 @@ include("./mvc/view/page/header.php");
         if ($address['userId'] == $userId && $address['deleteLogic'] == 1) { ?>
             <tr>
                 <td>
-                    <span style="font-size: large;"><?php echo $i; ?></span>
+                    <span style="font-size: larger;"><?php echo $i; ?></span>
                     <?php $i++; ?>
                 </td>
 

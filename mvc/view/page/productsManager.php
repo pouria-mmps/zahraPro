@@ -34,79 +34,87 @@ include("./mvc/view/page/managerHeader.php");
     <br>
 
     <?php $i = 1 ?>
-    <?php foreach ($products as $perfume) {
-        if ($perfume['deleteLogic'] == 1) {
-            ?>
-            <tr>
-                <td>
-                    <?php
-                    echo $i;
-                    $i++;
-                    ?>
-                </td>
+    <?php foreach ($products as $perfume) { ?>
+        <tr>
+            <td>
+                <span style="font-size: larger;"><?php echo $i; ?></span>
+                <?php $i++; ?>
+            </td>
 
-                <td>
-                    <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg-p-crud"
-                         alt="عطر">
-                </td>
+            <td style="padding: 10px;">
+                <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg-p-crud"
+                     alt="عطر">
+            </td>
 
-                <td style="padding: 10px;line-height: 25px;">
-                    <?= $perfume['perfumeName'] ?>
-                </td>
+            <td style="padding: 10px;line-height: 25px;font-size: large;">
+                <?= $perfume['perfumeName'] ?>
+            </td>
 
-                <td style="padding: 5px;line-height: 25px;">
+            <td style="padding: 15px;line-height: 25px;font-size: large;">
                 <?= $perfume['brandName'] ?>
             </td>
 
-            <td style="padding: 10px;line-height: 25px;">
+            <td style="padding: 10px;line-height: 25px;font-size: large;">
                 <?= $perfume['typeSmell'] ?>
             </td>
 
-            <td style="padding: 5px;line-height: 25px;">
+            <td style="padding: 5px;line-height: 25px;font-size: large;">
                 <?= $perfume['structrueSmell'] ?>
             </td>
 
-            <td>
+            <td style="font-size: large;">
                 <?= $perfume['countryName'] ?>
             </td>
 
-            <td>
+            <td style="font-size: large;">
                 <?= $perfume['jenderType'] ?>
             </td>
 
-                <td>
-                    <?= $perfume['discount'] ?>
-                </td>
+            <td style="font-size: larger;">
+                <?= $perfume['discount'] ?>
+            </td>
 
-                <td style="padding: 10px;">
-                    <?= $perfume['price'] ?>
-                </td>
+            <td style="padding: 10px;font-size: larger;">
+                <?= $perfume['price'] ?>
+            </td>
 
-                <td style="padding: 20px;">
-                    <form class="frm-p-crud" action="<?= baseUrl() ?>page/updateProduct/<?= $perfume['perfumeId'] ?>"
-                          method="post">
-                        <button value="updateProduct" id="updateProduct-btn" class="btn-updateProduct">
-                            <label hidden>
-                                <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
-                            </label>
-                            <i class="fa fa-pencil" style="padding:0 6px;font-size: small;"></i>ویرایش
-                        </button>
-                    </form>
-
-                    <form class="frm-log-crud"
-                          action="<?= baseUrl() ?>page/deleteLogicProduct/<?= $perfume['perfumeId'] ?>"
+            <td style="padding: 20px;">
+                <form class="frm-p-crud" action="<?= baseUrl() ?>page/updateProduct/<?= $perfume['perfumeId'] ?>"
                       method="post">
-                    <button value="deleteCrud" id="deleteCrud-btn" class="btn-deleteProduct">
+                    <button value="updateProduct" id="updateProduct-btn" class="btn-updateProduct">
                         <label hidden>
                             <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
                         </label>
-                        <i class="fa fa-close" style="font-size: small;"></i>حذف
+                        <i class="fa fa-pencil" style="padding:0 6px;font-size: small;"></i>ویرایش
                     </button>
                 </form>
+
+                <?php if ($perfume['deleteLogic'] == 1) { ?>
+                    <form class="frm-log-crud"
+                          action="<?= baseUrl() ?>page/deleteLogicProduct/<?= $perfume['perfumeId'] ?>"
+                          method="post">
+                        <button value="deleteCrud" id="deactive-btn" class="btn-deactive">
+                            <label hidden>
+                                <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
+                            </label>
+                            <i class="fa fa-close" style="font-size: small;"></i>غیرفعال
+                        </button>
+                    </form>
+                <?php } else { ?>
+                    <form class="frm-log-crud"
+                          action="<?= baseUrl() ?>page/activeProduct/<?= $perfume['perfumeId'] ?>"
+                          method="post">
+                        <button value="deleteCrud" id="active-btn" class="btn-active">
+                            <label hidden>
+                                <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
+                            </label>
+                            <i class="fa fa-check" style="font-size: small;"></i>فعال
+                        </button>
+                    </form>
+                <?php } ?>
             </td>
-            </tr>
-        <?php }
-    } ?>
+        </tr>
+    <?php } ?>
 </table>
 
 

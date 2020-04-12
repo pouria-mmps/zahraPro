@@ -162,7 +162,19 @@ class PageController
         $db->modify("UPDATE perfume SET deleteLogic=2 WHERE perfumeId='$perfumeId'");
 
         require_once("./mvc/view/page/managerHeader.php");
-        message('success', "حذف عطر مورد نظر یا موفقیت انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
+        message('success', " عطر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
+    }
+
+
+    public function activeProduct()
+    {
+        $perfumeId = $_POST['perfumeId'];
+
+        $db = Db::getInstance();
+        $db->modify("UPDATE perfume SET deleteLogic=1 WHERE perfumeId='$perfumeId'");
+
+        require_once("./mvc/view/page/managerHeader.php");
+        message('success', " عطر مورد نظر فعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
     }
 
 
