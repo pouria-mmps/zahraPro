@@ -3,11 +3,9 @@ require_once("./mvc/view/page/header.php");
 ?>
 
 <a id="button"></a>
-
-
 <br><br>
-<h3>لطفا فیلدهای ستاره دار را پر کنید</h3>
 
+<h3 class="header-ftable" style="color: #555;">لطفا فیلدهای ستاره دار را پر کنید</h3>
 
 <div class="box-register">
     <form class="frm-reg" action="<?= baseUrl() ?>user/register" method="post">
@@ -66,11 +64,13 @@ require_once("./mvc/view/page/header.php");
         <br><br><br>
 
         <!--BTN-Register-->
-        <button value="register" id="btn-submit-reg"><i class="fa fa-user-plus"></i>ثبت اطلاعات کاربری</button>
+        <button value="register" id="btn-submit-reg"><i class="fa fa-user-plus" style="font-size: 18px;"></i>ثبت اطلاعات
+            کاربری
+        </button>
 
         <!--BTN-Cancel-->
         <button formaction="<?= baseUrl() ?>" id="btn-cancel-reg" type="submit" value="cancel"><i
-                    class="fa fa-close"></i>انصراف
+                    class="fa fa-close" style="font-size: 18px;"></i>انصراف
         </button>
 
     </form>
