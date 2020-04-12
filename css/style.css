@@ -15,7 +15,6 @@ body {
     font-style: normal;
 }
 
-
 @font-face {
     font-family: 'yekan';
     src: url('../fonts/yekan.eot');
@@ -29,6 +28,8 @@ body {
     font-style: normal;
 }
 
+
+/* Go Up Button */
 #button {
     display: inline-block;
     background-color: #FF9800;
@@ -70,8 +71,7 @@ body {
 }
 
 
-/*Header*/
-/*Logo*/
+/* Logo */
 #imgLogo {
     width: 440px;
     height: 280px;
@@ -87,7 +87,7 @@ hr {
 }
 
 
-/*Register & Login*/
+/* Register & Login */
 .txt-header-register, .txt-header-register2 {
     color: #777;
     height: 40px;
@@ -103,7 +103,7 @@ hr {
 }
 
 
-/*Cart Button*/
+/* Cart Button */
 .btn-cart {
     float: left;
     color: #777;
@@ -141,7 +141,7 @@ span.cart {
 }
 
 
-/*Navigation Bar*/
+/* Navigation Bar */
 .navbar {
     width: 100%;
     overflow: hidden;
@@ -153,7 +153,7 @@ span.cart {
 .navbar a {
     color: #777;
     float: right;
-    font-size: medium;
+    font-size: 18px;
     margin-right: 9px;
     padding: 14px 16px;
     text-align: center;
@@ -172,8 +172,7 @@ a.menu-item {
 }
 
 .navbar a:hover {
-    color: #555;
-    font-weight: bold;
+    color: #0e0e0e;
     text-decoration: none;
     background-color: #d2cfcf;
 }
@@ -184,10 +183,6 @@ a.menu-item {
     margin-left: 5px;
     border-radius: 100px;
     vertical-align: top;
-}
-
-.profile-img:hover {
-    background-color: #17a1f6;
 }
 
 .exit-btn {
@@ -211,7 +206,7 @@ a.menu-item {
 }
 
 
-/*Slide Show IMG*/
+/* Slide Show IMG */
 #box-slide {
     margin: auto;
     width: 100%;

@@ -58,7 +58,6 @@
     </div>
 </div>
 
-<!-- Navigation Bar -->
 <div class="navbar">
     <a href="<?= baseUrl() ?>page/home" class="menu-item">
         <i class="fa fa-home menu-icon"></i>
