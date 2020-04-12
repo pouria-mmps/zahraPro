@@ -1,10 +1,20 @@
 body, body * {
-    font-family: "yekan";
+    font-family: "B Nazanin";
 }
 
 body {
     background-color: #f5f5f5;
 }
+
+@font-face {
+    font-family: 'B Nazanin';
+    src: local('☺'),
+    local('B Nazanin'),
+    url('../fonts/nazanin.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 @font-face {
     font-family: 'yekan';
@@ -67,7 +77,8 @@ body {
     height: 280px;
     margin-top: -60px;
     position: relative;
-    margin-right: 450px;
+    margin-bottom: -30px;
+    margin-right: 350px;
 }
 
 hr {
@@ -80,7 +91,7 @@ hr {
 .txt-header-register, .txt-header-register2 {
     color: #777;
     height: 40px;
-    font-size: medium;
+    font-size: 17px;
     margin-left: 15px;
     text-decoration: none;
 }
@@ -103,31 +114,29 @@ span.cart {
     color: #777;
     float: left;
     display: block;
-    cursor: pointer;
+    font-size: 17px;
     margin-left: 40px;
-    font-size: medium;
+    cursor: context-menu;
 }
 
 #cart-items {
     top: 5px;
     right: 0;
     color: #000000;
-    font-size: 14px;
+    font-size: 17px;
     position: relative;
 }
 
 .vertical-menu {
-    width: 250px;
+    width: 270px;
     height: 150px;
     margin-top: 10px;
     overflow-y: auto;
-    margin-left: 5px;
 }
 
 .vertical-menu span#cartPreviewHolder {
     color: black;
     display: block;
-    padding: 12px;
     text-decoration: none;
 }
 
@@ -153,7 +162,7 @@ span.cart {
 }
 
 i.menu-icon {
-    padding-left: 8px;
+    padding-left: 7px;
     vertical-align: middle;
 }
 
