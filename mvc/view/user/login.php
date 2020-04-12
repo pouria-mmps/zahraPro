@@ -8,7 +8,7 @@ if (isset($_SESSION['userEmail'])) {
 <br><br>
 
 <a id="button"></a>
-<h3 style="color: #555;">لطفا مشخصات خود را وارد کنید</h3>
+<h3 class="header-ftable" style="color: #555;">لطفا مشخصات خود را وارد کنید</h3>
 
 <!-- Login Content -->
 <div class="box-login">
@@ -23,10 +23,11 @@ if (isset($_SESSION['userEmail'])) {
                required>
         <br><br><br>
 
-        <button value="register" id="btn-submit"><i class="fa fa-sign-in fa-lg"></i>ورود</button>
+        <button value="register" id="btn-submit"><i class="fa fa-sign-in fa-lg" style="font-size: 18px;"></i>ورود
+        </button>
 
         <button formaction="<?= baseUrl() ?>" id="btn-cancel" type="submit" value="cancel">
-            <i class="fa fa-close"></i>انصراف
+            <i class="fa fa-close" style="font-size: 18px;"></i>انصراف
         </button>
     </form>
 </div>

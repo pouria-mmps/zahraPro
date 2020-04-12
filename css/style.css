@@ -377,7 +377,7 @@ a.menu-item {
 /* Login Content */
 .box-login {
     width: 50%;
-    border-radius: 7px;
+    border-radius: 5px;
     border: 1px solid #888;
     margin: 5% auto 15% auto;
     background-color: #fefefe;
@@ -392,27 +392,9 @@ h3 {
 /* Login Form */
 .frm-log {
     margin-top: 60px;
-    margin-right: 120px;
+    margin-right: 100px;
 }
 
-.frm-input-username, .frm-input-password {
-    width: 65%;
-    border: none;
-    padding: 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    background: #fefefe;
-    margin: 0 0 12px 0;
-    display: inline-block;
-}
-
-.frm-input-username {
-    margin-right: 20px;
-}
-
-.frm-input-password {
-    margin-right: 40px;
-}
 
 /* Login Button */
 #btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
@@ -423,7 +405,7 @@ h3 {
     opacity: 0.9;
     padding: 8px;
     cursor: pointer;
-    font-size: large;
+    font-size: 20px;
     border-radius: 5px;
     margin-right: 10px;
     transition: all 0.3s;
@@ -444,7 +426,7 @@ h3 {
 }
 
 #btn-submit {
-    margin-right: 50px;
+    margin-right: 70px;
     margin-bottom: 40px;
 }
 
@@ -477,18 +459,18 @@ h3 {
 }
 
 .fa-sign-in {
-    margin-left: 10px;
+    margin-left: 7px;
 }
 
 .fa-close {
-    margin-left: 10px;
+    margin-left: 7px;
 }
 
 
 /* Register */
 .box-register {
     width: 50%;
-    border-radius: 7px;
+    border-radius: 5px;
     border: 1px solid #888;
     margin: 5% auto 15% auto;
     background-color: #fefefe;
@@ -507,10 +489,10 @@ h3 {
 
 .frm-txt, .frm-p-txt, .frm-uaddress-txt {
     color: #777;
-    font-size: large;
+    font-size: 19px;
 }
 
-.frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass, .frm-input-textarea {
+.frm-input-username, .frm-input-password, .frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass, .frm-input-textarea {
     width: 65%;
     border: none;
     padding: 15px;
@@ -523,6 +505,14 @@ h3 {
 
 input[type=radio] {
     margin-right: 110px;
+}
+
+.frm-input-username {
+    margin-right: 40px;
+}
+
+.frm-input-password {
+    margin-right: 58px;
 }
 
 .frm-input-fname {
@@ -1854,8 +1844,8 @@ button {
 /* Factor */
 .header-ftable {
     color: #555;
+    font-family: yekan;
     text-align: center;
-    margin-bottom: 30px;
 }
 
 .td-header {
