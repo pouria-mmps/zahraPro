@@ -364,6 +364,17 @@ class ProductsmanController
         $previewData['orders'] = $orders;
 
         ob_start();
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $previewData['densitys'] = $densitys;
+
+
+        $genders = $db->query("SELECT * FROM jender");
+        $previewData['genders'] = $genders;
+
+
+        $brands = $db->query("SELECT * FROM brand");
+        $previewData['brands'] = $brands;
+        
         View::render("./mvc/view/payment/cart-preview.php", $previewData);
         $cartPreview = ob_get_clean();
 

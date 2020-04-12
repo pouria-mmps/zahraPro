@@ -38,7 +38,7 @@
     <span style="font-size: 15px;margin-left: 5px;"> مبلغ کل: </span><span style="font-size: 15px;"><?= $totalPrice ?> تومان </span>
     <a class="cart-preview-addToCart-btn" href="/MainProject/productsman/myorders">
         <i class="fa fa-credit-card" style="margin-left: 5px;">
-            <span style="font-size: 13px;"> پرداخت سبد خرید</span>
+            <span style="font-size: 13px;margin-bottom: 10px;"> پرداخت سبد خرید</span>
         </i>
     </a>
 </div>
