@@ -15,12 +15,12 @@ if (isset($_SESSION['userEmail'])) {
     <form class="frm-log" action="<?= baseUrl() ?>user/login" method="post">
         <label class="frm-txt">نام کاربری</label>
         <input type="text" class="frm-input-username" placeholder="  نام کاربری خود را وارد کنید" name="userEmail"
-               required>
+               style="text-align: center;">
         <br><br><br>
 
         <label class="frm-txt">گذرواژه</label>
         <input type="password" class="frm-input-password" placeholder="  گذرواژه خود را وارد کنید" name="userPassword"
-               required>
+               style="text-align: center;">
         <br><br><br>
 
         <button value="register" id="btn-submit"><i class="fa fa-sign-in fa-lg" style="font-size: 18px;"></i>ورود

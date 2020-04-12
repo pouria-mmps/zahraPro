@@ -97,7 +97,7 @@ include("./mvc/view/page/header.php");
         <?php }
     } ?>
 </table>
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
 
 <?php
 include("./mvc/view/page/footer.php");

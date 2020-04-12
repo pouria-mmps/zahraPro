@@ -72,6 +72,20 @@ body {
 }
 
 
+.frm-perfume-name, .frm-type-smell, .frm-structrue-smell, .frm-discount, .frm-price, .frm-breif, .frm-discription, .frm-tran-name,
+.frm-tran-lname, .frm-tran-tell, .frm-tran-phone, .frm-tran-address, .frm-tran-pcode, .frm-input-username, .frm-input-password,
+.frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass,
+.frm-input-textarea, .frm-txt-address {
+    width: 55%;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 5px;
+    background: #f1f1f1;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+}
+
 
 /* Logo */
 #imgLogo {
@@ -399,7 +413,7 @@ h3 {
 
 /* Login Button */
 #btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
-.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress {
+.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn {
     width: 25%;
     color: #777;
     border: none;
@@ -440,7 +454,7 @@ h3 {
 }
 
 #btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, #btn-submit-uproduct:hover, .insert-product:hover,
-#btn-submit-uaddress:hover {
+#btn-submit-uaddress:hover, .signupbtn:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
@@ -452,7 +466,7 @@ h3 {
     border: none;
 }
 
-#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deleteProduct:hover, #btn-cancel-uaddress:hover {
+#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deleteProduct:hover, #btn-cancel-uaddress:hover, .cancelbtn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -469,14 +483,6 @@ h3 {
 
 
 /* Register */
-.box-register {
-    width: 50%;
-    border-radius: 5px;
-    border: 1px solid #888;
-    margin: 5% auto 15% auto;
-    background-color: #fefefe;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
-}
 
 h3 {
     text-align: center;
@@ -491,17 +497,6 @@ h3 {
 .frm-txt, .frm-p-txt, .frm-uaddress-txt {
     color: #777;
     font-size: 19px;
-}
-
-.frm-input-username, .frm-input-password, .frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass, .frm-input-textarea, .frm-txt-address {
-    width: 65%;
-    border: none;
-    padding: 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    background: #f1f1f1;
-    margin: 5px 0 22px 0;
-    display: inline-block;
 }
 
 input[type=radio] {
@@ -1559,23 +1554,16 @@ button {
 }
 
 .signupbtn {
-    font-size: large;
+    width: 15%;
     margin-left: 60px;
-    margin-right: 370px;
+    margin-right: 330px;
 }
 
 .cancelbtn {
-    font-size: large;
+    width: 15%;
 }
 
-.signupbtn:hover {
-    color: #fff;
-    transition: all 0.3s;
-    background-color: #a1cfb8;
-    border-bottom: 3px solid #78af93;
-}
-
-.cancelbtn:hover, #delete-address-btn:hover {
+#delete-address-btn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -1614,13 +1602,6 @@ button {
     content: "";
     clear: both;
     display: table;
-}
-
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-    .cancelbtn, .signupbtn {
-        width: 100%;
-    }
 }
 
 
@@ -1689,9 +1670,9 @@ button {
 
 
 /* Update CRUD Page */
-.box-updateProduct, .box-update-address {
+.box-updateProduct, .box-update-address, .box-login, .box-register {
     width: 50%;
-    border-radius: 7px;
+    border-radius: 5px;
     border: 1px solid #888;
     margin: 5% auto 15% auto;
     background-color: #fefefe;
@@ -1705,18 +1686,6 @@ button {
 
 .frm-p-txt {
     font-size: medium;
-}
-
-.frm-perfume-name, .frm-type-smell, .frm-structrue-smell, .frm-discount, .frm-price, .frm-breif, .frm-discription, .frm-tran-name,
-.frm-tran-lname, .frm-tran-tell, .frm-tran-phone, .frm-tran-address, .frm-tran-pcode {
-    width: 55%;
-    border: none;
-    padding: 15px;
-    font-size: 16px;
-    border-radius: 5px;
-    background: #f1f1f1;
-    margin: 5px 0 22px 0;
-    display: inline-block;
 }
 
 .frm-uaddress-txt {
@@ -1754,7 +1723,7 @@ button {
 
 .frm-perfume-name:focus, .frm-type-smell:focus, .frm-structrue-smell:focus, .frm-discount:focus, .frm-price:focus, .frm-country:focus,
 .frm-breif:focus, .frm-discription:focus, .frm-tran-name:focus, .frm-tran-lname:focus, .frm-tran-tell:focus, .frm-tran-phone:focus,
-.frm-tran-address:focus, .frm-tran-pcode:focus {
+.frm-tran-address:focus, .frm-tran-pcode:focus, .frm-input-username:focus, .frm-input-password:focus {
     outline: none;
     background-color: #ddd;
 }

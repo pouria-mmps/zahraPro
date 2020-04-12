@@ -55,8 +55,16 @@ class ProductsmanController
         $tranAddress = $_POST['tranAddress'];
         $tranPCode = $_POST['tranPCode'];
         $deleteLogic = 1;
-        UserModel::insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode, $deleteLogic);
-        message('success', " افزودن آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
+
+        if ($userId != null && $tranName != null && $tranLName != null && $tranTell != null && $tranPhone != null && $tranAddress != null && $tranPCode != null) {
+            UserModel::insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode, $deleteLogic);
+
+            require_once("./mvc/view/page/header.php");
+            message('success', " افزودن آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
+        } else {
+            require_once("./mvc/view/page/header.php");
+            message('fail', " لطفا تمامی اطلاعات را کامل پر نمایید. " . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/insertAddress"> کلیک </a>' . 'کنید.', true);
+        }
     }
 
 
@@ -67,6 +75,7 @@ class ProductsmanController
 
         $db->modify("UPDATE address SET deleteLogic=2 WHERE addressId='$addressId'");
 
+        require_once("./mvc/view/page/header.php");
         message('success', "حذف آدرس انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
     }
 
@@ -106,6 +115,7 @@ class ProductsmanController
             'tranPCode' => $tranPCode,
         ));
 
+        require_once("./mvc/view/page/header.php");
         message('success', " ویرایش آدرس با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
     }
 
@@ -386,7 +396,7 @@ class ProductsmanController
 
         $brands = $db->query("SELECT * FROM brand");
         $previewData['brands'] = $brands;
-        
+
         View::render("./mvc/view/payment/cart-preview.php", $previewData);
         $cartPreview = ob_get_clean();
 

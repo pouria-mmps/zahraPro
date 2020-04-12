@@ -12,13 +12,15 @@ require_once("./mvc/view/page/header.php");
 
         <!--Name-->
         <label class="frm-txt"><i style="color: red;"> * </i>نام</label>
-        <input type="text" class="frm-input-fname" placeholder="  نام خود را وارد کنید" name="userName">
+        <input type="text" class="frm-input-fname" placeholder="  نام خود را وارد کنید" name="userName"
+               style="text-align: center;">
 
         <br><br><br>
 
         <!--Family Name-->
         <label class="frm-txt"><i style="color: red;"> * </i>نام خانوادگی</label>
-        <input type="text" class="frm-input-lname" placeholder="  نام خانوادگی خود را وارد کنید" name="userFamilyName">
+        <input type="text" class="frm-input-lname" placeholder="  نام خانوادگی خود را وارد کنید" name="userFamilyName"
+               style="text-align: center;">
 
         <br><br><br>
 
@@ -34,13 +36,15 @@ require_once("./mvc/view/page/header.php");
 
         <!--Tell-->
         <label class="frm-txt">تلفن</label>
-        <input type="tel" class="frm-input-tell" placeholder="  02112345678" name="userTell">
+        <input type="tel" class="frm-input-tell" placeholder="  02112345678" name="userTell"
+               style="text-align: center;">
 
         <br><br><br>
 
         <!--Mobile-->
         <label class="frm-txt">موبایل</label>
-        <input type="tel" class="frm-input-mobile" placeholder="  09012345678" name="userMobile">
+        <input type="tel" class="frm-input-mobile" placeholder="  09012345678" name="userMobile"
+               style="text-align: center;">
 
         <br><br><br>
 

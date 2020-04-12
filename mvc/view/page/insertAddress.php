@@ -9,8 +9,8 @@ include("./mvc/view/page/header.php");
 <form class="modal-content" action="<?= baseUrl() ?>productsman/addAddressToTable" method="post"
       style="margin-top: 50px;">
     <div class="container">
-        <input type="text" placeholder=" نام تحویل گیرنده " name="tranName" required class="frm-txt-address">
-        <input type="text" placeholder=" نام خانوادگی تحویل گیرنده " name="tranLName" required class="frm-txt-address">
+        <input type="text" placeholder=" نام تحویل گیرنده " name="tranName" class="frm-txt-address">
+        <input type="text" placeholder=" نام خانوادگی تحویل گیرنده " name="tranLName" class="frm-txt-address">
         <input type="text" placeholder=" شماره تلفن " name="tranTell" class="frm-txt-address">
         <input type="text" placeholder=" شماره تلفن همراه " name="tranPhone" class="frm-txt-address">
 
@@ -24,13 +24,14 @@ include("./mvc/view/page/header.php");
         <div class="clearfix">
             <button type="submit" class="signupbtn"><i class="fa fa-plus-square" style="margin-left: 7px;"></i>افزودن
             </button>
-            <button type="button" class="cancelbtn" formaction="<?= baseUrl() ?>" value="cancel"><i class="fa fa-close"
-                                                                                                    style="margin-left: 3px;"></i>
-                انصراف
+
+            <button formaction="/MainProject/productsman/getaddress" class="cancelbtn" type="submit" value="cancel">
+                <i class="fa fa-close" style="font-size: 18px;"></i>انصراف
             </button>
         </div>
     </div>
 </form>
+
 
 <?php
 include("./mvc/view/page/footer.php");

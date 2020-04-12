@@ -1,9 +1,9 @@
 <?php
-include("./mvc/view/page/managerHeader.php");
+include("./mvc/view/page/header.php");
 ?>
 
-    <a id="button" style="text-decoration: none;"></a>
-
+<a id="button" style="text-decoration: none;"></a>
+<br>
 
 <?php foreach ($addresses as $address) { ?>
     <div class="box-update-address">
@@ -60,3 +60,8 @@ include("./mvc/view/page/managerHeader.php");
         </form>
     </div>
 <?php } ?>
+
+
+<?php
+include("./mvc/view/page/footer.php");
+?>
