@@ -27,10 +27,28 @@ class PageController
     public function details()
     {
         $perfumeId = $_POST['perfumeId'];
-
         $db = Db::getInstance();
+
         $perfumes = $db->query("SELECT * FROM perfume WHERE perfumeId='$perfumeId'");
         $data['perfumes'] = $perfumes;
+
+        $showCounter = $db->first("SELECT showCounter FROM perfume WHERE perfumeId='$perfumeId'");
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+        if ($showCounter['showCounter'] != 100) {
+            $db->modify("UPDATE perfume SET showCounter=showCounter+1 WHERE perfumeId='$perfumeId'");
+        }
+
         View::render("./mvc/view/page/details.php", $data);
     }
 

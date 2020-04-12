@@ -16,8 +16,9 @@
                         foreach ($brands as $brand) {
                             if ($perfume['densityId'] == $density['densityId'] && $perfume['jenderId'] == $gender['jenderId'] && $perfume['brandId'] == $brand['brandId']) {
                                 ?>
-                                <span style="font-size: 19px;margin-top: 20px;"><?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?> مدل <span
-                                            style="font-size: 19px;font-family: 'mitra';"><?= $perfume['perfumeName'] ?></span></span>
+                                <span
+                                    style="font-size: 19px;margin-top: 20px;"><?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?> مدل <span
+                                        style="font-size: 19px;font-family: 'mitra';"><?= $perfume['perfumeName'] ?></span></span>
                             <?php }
                         }
                     }
@@ -35,7 +36,7 @@
 
                 <div class="priceWraper-linear">
                     <span class="newPrice-linear"><i
-                                style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?> </i>تومان </span>
+                            style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?> </i>تومان </span>
 
                     <?php if ($perfume['discount'] > 0) { ?>
                         <span class="oldPrice-linear" style="font-size: 16px"><?= $perfume['price'] ?> تومان </span>

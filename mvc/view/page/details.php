@@ -10,8 +10,20 @@ include("./mvc/view/page/header.php");
         <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg-detail" alt="عطر">
 
         <div class="product-panel-rightside">
-
-            <span class="product-Name-detail"><?= $perfume['persionName'] ?> <?= $perfume['perfumeName'] ?> حجم 100 میلی لیتر </span>
+            <span class="product-Name-detail">
+                <?php foreach ($densitys as $density) {
+                    foreach ($genders as $gender) {
+                        foreach ($brands as $brand) {
+                            if ($perfume['densityId'] == $density['densityId'] && $perfume['jenderId'] == $gender['jenderId'] && $perfume['brandId'] == $brand['brandId']) {
+                                ?>
+                                <span
+                                    style="font-size: 22px;"><?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?> مدل <span
+                                        style="font-size: 23px;font-family: 'mitra';"><?= $perfume['perfumeName'] ?></span></span>
+                            <?php }
+                        }
+                    }
+                } ?>
+            </span>
 
             <div class="vertical-line"></div>
 
@@ -67,18 +79,18 @@ include("./mvc/view/page/header.php");
             <?php } else { ?>
                 <div class="star-detail">
                     <?php for ($i = 1; $i <= 5; $i++) { ?>
-                        <i class="fa fa-star-o"></i>
+                        <i class="fa fa-star"></i>
                     <?php } ?>
                 </div>
             <?php } ?>
 
 
             <div class="status-detail">
-                وضعیت:
-                <?php if ($perfume['status'] == 1) { ?>
-                    <span style="color: green">موجود</span>
-                <?php } else { ?>
-                    <span style="color: #888">ناموجود</span>
+                <span style="font-size: larger;">وضعیت:</span>
+                <?php if ($perfume['perfumeCounter'] != 0) { ?>
+                    <span style="color:green;font-weight: bold;font-size: large;">موجود</span>
+                <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
+                    <span style="color:#888;font-weight: bold;font-size: large;">نا موجود</span>
                 <?php } ?>
             </div>
 
@@ -86,13 +98,13 @@ include("./mvc/view/page/header.php");
             <br>
 
             <div class="feture-detail">
-                <div style="color: #555">ویژگی های محصول:</div>
+                <div style="color: #555;font-size: larger;">ویژگی های محصول:</div>
                 <ul>
-                    <li style="margin-top:10px;font-weight: bold"> نوع رایحه: <span
-                                style="font-weight: normal;"><?= $perfume['typeSmell'] ?></span></li>
+                    <li style="margin-top:10px;font-weight: bold;font-size: large;"> نوع رایحه: <span
+                            style="font-weight: normal;"><?= $perfume['typeSmell'] ?></span></li>
 
-                    <li style="margin-top: 5px;font-weight: bold"> ساختار رایحه: <span
-                                style="font-weight: normal;"><?= $perfume['structrueSmell'] ?></span></li>
+                    <li style="margin-top: 5px;font-weight: bold;font-size: large;"> ساختار رایحه: <span
+                            style="font-weight: normal;"><?= $perfume['structrueSmell'] ?></span></li>
                 </ul>
             </div>
 
@@ -101,19 +113,25 @@ include("./mvc/view/page/header.php");
             <span class="newPrice-detail"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?> تومان </span>
 
             <div class="wish-add-btn-detail">
-                <div class="addToCart-btn-detail" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
-                    <i class="fa fa-shopping-cart" style="margin-left: 5px;margin-right: 5px"></i>
-                    <span> اضافه به سبد خرید</span>
-                </div>
+                <?php if ($perfume['perfumeCounter'] == 0) { ?>
+                    <div class="addToCart-btn-detail2">
+                        <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
+                        <span style="font-size: large;"> اضافه به سبد خرید</span>
+                    </div>
+                <?php } else { ?>
+                    <div class="addToCart-btn-detail" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
+                        <i class="fa fa-shopping-cart" style="padding-left: 5px;padding-right: 5px;"></i>
+                        <span style="font-size: large;"> اضافه به سبد خرید</span>
+                    </div>
+                <?php } ?>
             </div>
-
 
             <?php if ($perfume['discount'] > 0) { ?>
                 <div class="discount-detail">
                     <?php if ($perfume['discount'] > 0) { ?>
                         <i class="fa fa-gift discount-detail-btn"></i>
-                        <span> قیمت با <?= $perfume['discount'] ?>% تخفیف خرید اینترنتی: </span>
-                        <span style="color: #a2a2a2"><?= $perfume['price'] ?> تومان </span>
+                        <span style="font-size: larger;margin-right: 10px;"> قیمت با <?= $perfume['discount'] ?>% تخفیف خرید اینترنتی: </span>
+                        <span style="color: #a2a2a2;font-size: 16px;"><?= $perfume['price'] ?> تومان </span>
                     <?php } ?>
                 </div>
             <?php } ?>
@@ -128,67 +146,76 @@ include("./mvc/view/page/header.php");
 
 
 <div class="tab">
-    <span class="tablinks" onclick="middleNavbar(event, 'Review')">نقد وبررسی</span>
-    <span class="tablinks" onclick="middleNavbar(event, 'Feture')">مشخصات</span>
+    <span class="tablinks" style="font-size: 22px;" onclick="middleNavbar(event, 'Review')">نقد وبررسی</span>
+    <span class="tablinks" style="font-size: 22px;margin-right: 20px;"
+          onclick="middleNavbar(event, 'Feture')">مشخصات</span>
 </div>
 
 <div id="Review" class="tabcontent">
-    <p style="margin-right: 70px;"><?= $perfume['discription'] ?></p>
+    <p style="margin-right: 70px;line-height: 40px;font-size: large;"><?= $perfume['discription'] ?></p>
 </div>
 
-<div id="Feture" class="tabcontent">
-    <div class="row">
-        <div class="col-sm-8">
-            <div class="property2">
-                <?php
-                if ($perfume['countryId'] == 1) {
-                    ?>
-                    <span> فرانسه </span>
-                <?php } elseif ($perfume['countryId'] == 2) {
-                    ?>
-                    <span> ایتالیا </span>
-                <?php } elseif ($perfume['countryId'] == 3) {
-                    ?>
-                    <span> آمریکا </span>
-                <?php } elseif ($perfume['countryId'] == 4) {
-                    ?>
-                    <span> آلمان </span>
-                <?php } elseif ($perfume['countryId'] == 5) {
-                    ?>
-                    <span> سوییس </span>
-                <?php } elseif ($perfume['countryId'] == 6) {
-                    ?>
-                    <span> اسپانیا </span>
-                <?php } ?>
+<div class="container">
+    <div id="Feture" class="tabcontent">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="property1"> کشور مبدا برند</div>
+                <div class="property1"> مناسب برای</div>
+                <div class="property1"> برند</div>
             </div>
+            <div class="col-sm-7">
+                <div class="property2">
+                    <?php
+                    if ($perfume['countryId'] == 1) {
+                        ?>
+                        <span> فرانسه </span>
+                    <?php } elseif ($perfume['countryId'] == 2) {
+                        ?>
+                        <span> ایتالیا </span>
+                    <?php } elseif ($perfume['countryId'] == 3) {
+                        ?>
+                        <span> آمریکا </span>
+                    <?php } elseif ($perfume['countryId'] == 4) {
+                        ?>
+                        <span> آلمان </span>
+                    <?php } elseif ($perfume['countryId'] == 5) {
+                        ?>
+                        <span> سوییس </span>
+                    <?php } elseif ($perfume['countryId'] == 6) {
+                        ?>
+                        <span> اسپانیا </span>
+                    <?php } ?>
+                </div>
 
-            <div class="property2">
-                <?php
-                if ($perfume['jenderId'] == 1) {
-                    ?>
-                    <span> آقایان </span>
-                <?php } elseif ($perfume['jenderId'] == 2) {
-                    ?>
-                    <span> بانوان </span>
-                <?php } else { ?>
-                    <span> مشترک </span>
-                <?php } ?>
+                <div class="property2">
+                    <?php
+                    if ($perfume['jenderId'] == 1) {
+                        ?>
+                        <span> آقایان </span>
+                    <?php } elseif ($perfume['jenderId'] == 2) {
+                        ?>
+                        <span> بانوان </span>
+                    <?php } else { ?>
+                        <span> مشترک </span>
+                    <?php } ?>
+                </div>
+
+                <div class="property2">
+                    <?php foreach ($brands
+
+                    as $brand){
+                    if ($perfume['brandId'] == $brand['brandId']) { ?>
+                    <span style="font-size: 22px;"><?= $brand['brandName'] ?>
+                        <?php }
+                        } ?>
+                </div>
             </div>
-
-            <div class="property2"> 100 میلی لیتر</div>
-        </div>
-        <div class="col-sm-4">
-            <div class="property1"> کشور مبدا برند</div>
-            <div class="property1"> مناسب برای</div>
-            <div class="property1"> حجم</div>
-
         </div>
     </div>
-
 </div>
 
 
-<br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
 <?php
 include("./mvc/view/page/footer.php");
 ?>
