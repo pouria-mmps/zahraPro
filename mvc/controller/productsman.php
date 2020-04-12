@@ -316,8 +316,20 @@ class ProductsmanController
         $orders = $db->query("SELECT * FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
             'cartId' => $cart['cartId'],
         ));
-
         $data['orders'] = $orders;
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+
         View::render("./mvc/view/payment/cart-preview.php", $data);
     }
 

@@ -8,12 +8,26 @@
              alt="عطر">
 
         <div class="cart-preview-rightside">
-            <span class="cart-preview-persionName"><?= $perfume['persionName'] ?> <?= $perfume['perfumeName'] ?></span>
+            <span class="cart-preview-persionName">
+                <?php foreach ($densitys as $density) {
+                    foreach ($genders as $gender) {
+                        foreach ($brands as $brand) {
+                            if ($perfume['densityId'] == $density['densityId'] && $perfume['jenderId'] == $gender['jenderId'] && $perfume['brandId'] == $brand['brandId']) {
+                                ?>
+                                <span style="font-size: 14px;"><?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?> مدل </span>
+                                <span style="font-size: 11px;"><?= $perfume['perfumeName'] ?></span>
+                            <?php }
+                        }
+                    }
+                } ?>
+            </span>
+
             <span class="cart-preview-newPrice"><?= $perfumePriceWithDiscount ?>
                 تومان * <span class="cart-preview-quantity"><?= $perfume['quantity'] ?></span>
             </span>
             <div>
-                <span class="fa fa-close cart-preview-close" onclick="removeProduct(<?= $perfume['orderId'] ?>)"></span>
+                <span class="fa fa-close cart-preview-close" style="font-size: 11px;"
+                      onclick="removeProduct(<?= $perfume['orderId'] ?>)"></span>
             </div>
 
         </div>
@@ -21,10 +35,10 @@
 <?php } ?>
 
 <div class="cart-preview-total">
-    مبلغ کل:<span style="font-size: 13px;"><?= $totalPrice ?> تومان </span>
+    <span style="font-size: 15px;margin-left: 5px;"> مبلغ کل: </span><span style="font-size: 15px;"><?= $totalPrice ?> تومان </span>
     <a class="cart-preview-addToCart-btn" href="/MainProject/productsman/myorders">
-        <i class="fa fa-credit-card">
-            <span> پرداخت سبد خرید</span>
+        <i class="fa fa-credit-card" style="margin-left: 5px;">
+            <span style="font-size: 13px;"> پرداخت سبد خرید</span>
         </i>
     </a>
 </div>
