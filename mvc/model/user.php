@@ -23,6 +23,7 @@ class UserModel
 
         $record = $db->first("SELECT perfumeId FROM perfume WHERE perfumeName='$perfumeName' AND densityId='$densityId' AND jenderId='$jenderId' AND brandId='$brandId' AND typeSmell='$typeSmell' AND structrueSmell='$structrueSmell' AND discount='$discount' AND price='$price' AND countryId='$countryId' AND breif='$breif' AND discription='$discription'");
         if ($record != null && (null == $perfumeId || $record != $perfumeId)) {
+            require_once("./mvc/view/page/header.php");
             message('fail', " عطر موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/page/updateProduct"> کلیک </a>' . 'کنید.', true);
         }
     }
@@ -41,6 +42,7 @@ class UserModel
 
         $record = $db->first("SELECT addressId FROM address WHERE tranName='$tranName' AND tranLName='$tranLName' AND tranTell='$tranTell' AND tranPhone='$tranPhone' AND tranAddress='$tranAddress' AND tranPCode='$tranPCode'");
         if ($record != null && (null == $addressId || $record != $addressId)) {
+            require_once("./mvc/view/page/header.php");
             message('fail', " آدرس موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/updateAddress"> کلیک </a>' . 'کنید.', true);
         }
     }

@@ -29,13 +29,16 @@ $totalPrice2 = 0;
     <tr>
         <td style="font-size: x-large;padding: 30px;background-color: #f2f2f2;" class="td-header">فروشنده</td>
         <td colspan="7" style="text-align: right;padding-right: 50px;" class="td-header">
-            <span style="line-height: 30px;font-size: large;color: #777;"> فروشنده: </span> فروشگاه اینترنتی عطرشاپ
-            <span style="margin-right: 605px;font-size: large;color: #777;"> تلفن: </span>66580280-021
+            <span style="line-height: 30px;font-size: large;color: #777;"> فروشنده: </span> <span
+                    style="font-size: large;"> فروشگاه اینترنتی عطرشاپ </span>
+            <span style="margin-right: 605px;font-size: large;color: #777;"> تلفن: </span><span
+                    style="font-size: large;"> 66580280-021 </span>
             <br>
 
-            <span style="line-height: 40px;font-size: large;color: #777;">آدرس: </span>تهران، خیابان ستارخان، خیابان
+            <span style="line-height: 40px;font-size: large;color: #777;">آدرس: </span><span style="font-size: large;"> تهران، خیابان ستارخان، خیابان </span>
             شهرآرا، پلاک 12
-            <span style="margin-right: 495px;font-size: large;color: #777;"> کد پستی: </span> 7896565686
+            <span style="margin-right: 495px;font-size: large;color: #777;"> کد پستی: </span><span
+                    style="font-size: large;"> 7896565686 </span>
         </td>
     </tr>
 
@@ -44,20 +47,20 @@ $totalPrice2 = 0;
             <td style="font-size: x-large;padding: 30px;background-color: #f2f2f2;" class="td-header">خریدار</td>
             <td colspan="6" style="text-align: right;" class="td-header">
                 <span style="line-height: 30px;font-size: large;color: #777;margin-right: 50px;"> خریدار: </span>
-                <?= $address['tranName'] ?>&nbsp;<?= $address['tranLName'] ?>
+                <span style="font-size: large;"><?= $address['tranName'] ?>&nbsp;<?= $address['tranLName'] ?></span>
 
                 <span style="margin-right: 120px;font-size: large;color: #777;"> تلفن: </span>
-                <?= $address['tranTell'] ?>
+                <span style="font-size: large;"><?= $address['tranTell'] ?></span>
 
                 <span style="margin-right: 120px;font-size: large;color: #777;"> موبایل: </span>
-                <?= $address['tranPhone'] ?>
+                <span style="font-size: large;"><?= $address['tranPhone'] ?></span>
 
                 <span style="margin-right: 120px;font-size: large;color: #777;"> کد پستی: </span>
-                <?= $address['tranPCode'] ?>
+                <span style="font-size: large;"><?= $address['tranPCode'] ?></span>
                 <br>
 
                 <span style="line-height: 40px;font-size: large;color: #777;margin-right: 50px;">آدرس: </span>
-                <?= $address['tranAddress'] ?>
+                <span style="font-size: large;"><?= $address['tranAddress'] ?></span>
             </td>
         <?php } ?>
     </tr>
@@ -79,10 +82,8 @@ $totalPrice2 = 0;
         $totalPrice += $product['quantity'] * $perfumePriceWithDiscount; ?>
         <tr class="tr-cart">
             <td>
-                <?php
-                echo $i;
-                $i++;
-                ?>
+                <span style="font-size: larger;"><?php echo $i; ?></span>
+                <?php $i++; ?>
             </td>
 
             <td>
@@ -96,8 +97,8 @@ $totalPrice2 = 0;
                         foreach ($brands as $brand) {
                             if ($product['densityId'] == $density['densityId'] && $product['jenderId'] == $gender['jenderId'] && $product['brandId'] == $brand['brandId']) {
                                 ?>
-                                <?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?>
-                                <span> مدل </span> <span style="font-size: large;"><?= $product['perfumeName'] ?></span>
+                                <span style="font-size: large;"> <?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?> مدل </span>
+                                <span style="font-size: large;"><?= $product['perfumeName'] ?></span>
                             <?php }
                         }
                     }
@@ -105,19 +106,19 @@ $totalPrice2 = 0;
             </td>
 
             <td>
-                <?= $product['quantity'] ?>
+                <span style="font-size: larger;"><?= $product['quantity'] ?></span>
             </td>
 
             <td>
-                <span style="font-size: large;"><?= $product['price'] ?></span> تومان
+                <span style="font-size: larger;"><?= $product['price'] ?></span> تومان
             </td>
 
             <td>
-                <span style="font-size: large;"><?= $product['discount'] ?></span> %
+                <span style="font-size: larger;"><?= $product['discount'] ?></span> %
             </td>
 
             <td>
-                <span style="font-size: large;"><?= $totalPrice ?></span> تومان
+                <span style="font-size: larger;"><?= $totalPrice ?></span> تومان
             </td>
             <?php
             $totalPrice2 += $totalPrice;
@@ -148,7 +149,7 @@ $totalPrice2 = 0;
         </td>
 
         <td style="padding: 10px;border: 2px solid #ddd;">
-            <span style="font-size: large;"><?= $totalPrice2 ?></span> تومان
+            <span style="font-size: larger;"><?= $totalPrice2 ?></span> تومان
         </td>
     </tr>
 
@@ -158,7 +159,7 @@ $totalPrice2 = 0;
         </td>
 
         <td style="padding: 10px;border: 2px solid #ddd;">
-            <span style="font-size: large;"> 20000 </span> تومان
+            <span style="font-size: larger;"> 20000 </span> تومان
         </td>
     </tr>
 
@@ -168,11 +169,11 @@ $totalPrice2 = 0;
         </td>
 
         <td style="padding: 10px;background-color: #f2f2f2;border: 2px solid #ddd;">
-            <span style="font-size: large;"> <?= $totalPrice2 + 20000 ?> </span> تومان
+            <span style="font-size: larger;"> <?= $totalPrice2 + 20000 ?> </span> تومان
         </td>
     </tr>
 </table>
-<br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 <?php

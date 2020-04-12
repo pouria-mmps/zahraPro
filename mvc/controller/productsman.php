@@ -32,6 +32,8 @@ class ProductsmanController
             $data['addresses'] = $addresses;
             View::render("./mvc/view/page/getaddress.php", $data);
         } else {
+
+            require_once("./mvc/view/page/header.php");
             message('fail', $quantity . ' عدد از عطر ' . $names . ' باقی مانده است. ' . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/myorders"> کلیک </a>' . 'کنید.', true);
         }
     }
@@ -202,6 +204,7 @@ class ProductsmanController
         $lname = $trand['tranLName'];
         $phone = $trand['tranPhone'];
         $totalPrice += 20000;
+        $totalPrice *= 10;
         header('Location:https://idpay.ir/pouria-mmps?amount=' . $totalPrice . '&name=' . $name . " " . $lname . '&phone=' . $phone . '&desc=خرید عطر از فروشگاه اینترنتی عطرشاپ');
     }
 
