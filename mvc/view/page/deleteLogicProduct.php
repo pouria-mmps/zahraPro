@@ -120,7 +120,7 @@ include("./mvc/view/page/managerHeader.php");
             <br><br><br>
 
             <!-- BTN POST Data -->
-            <button value="register" id="btn-submit-uproduct"><i class="fa fa-ban"
+            <button value="register" id="btn-submit-dproduct"><i class="fa fa-ban"
                                                                  style="margin-left: 10px;"></i>حذف
             </button>
 

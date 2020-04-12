@@ -58,7 +58,7 @@
 
     <a class="menu-item" href="<?= baseUrl() ?>productsman/myorders">
         <img src="<?= baseUrl() ?>image/EmptyProfile.png" class="profile-img" alt="پروفایل">
-        <span style="font-size: medium;"><?= $_SESSION['userEmail'] ?></span>
-        <span style="margin-right: 7px;">مدیرسایت</span>
+        <span style="font-size: 18px;"><?= $_SESSION['userEmail'] ?></span>
+        <span style="margin-right: 7px;font-size: 18px;">مدیرسایت</span>
     </a>
 </div>

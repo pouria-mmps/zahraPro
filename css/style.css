@@ -413,7 +413,7 @@ h3 {
 
 /* Login Button */
 #btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
-.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn {
+.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn, #btn-submit-dproduct {
     width: 25%;
     color: #777;
     border: none;
@@ -453,8 +453,7 @@ h3 {
     margin-right: 210px;
 }
 
-#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, #btn-submit-uproduct:hover, .insert-product:hover,
-#btn-submit-uaddress:hover, .signupbtn:hover {
+#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, .insert-product:hover, .signupbtn:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
@@ -466,7 +465,7 @@ h3 {
     border: none;
 }
 
-#btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deactive:hover, #btn-cancel-uaddress:hover, .cancelbtn:hover {
+#btn-submit-dproduct:hover, #btn-cancel:hover, #btn-submit-uproduct:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deactive:hover, #btn-cancel-uaddress:hover, .cancelbtn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -555,7 +554,7 @@ input[type=radio] {
     display: inline-block;
 }
 
-#btn-submit-uproduct, #btn-cancel-uproduct, #btn-submit-uaddress {
+#btn-submit-uproduct, #btn-cancel-uproduct, #btn-submit-uaddress, #btn-submit-dproduct {
     margin-right: 70px;
     margin-bottom: 10px;
 }
@@ -1660,14 +1659,14 @@ button {
     margin-right: 70px;
 }
 
-#select-address-btn:hover, #update-address-btn:hover, #portal-btn:hover, .btn-active:hover {
+#select-address-btn:hover, #portal-btn:hover, .btn-active:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
     border-bottom: 3px solid #78af93;
 }
 
-.btn-updateProduct:hover {
+.btn-updateProduct:hover, #update-address-btn:hover, #btn-submit-uaddress:hover, #btn-submit-uproduct:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #feca38;
