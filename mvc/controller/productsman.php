@@ -286,6 +286,18 @@ class ProductsmanController
         $perfumes = $db->query("SELECT * FROM perfume WHERE perfumeName LIKE '%$keyword%' ORDER BY $sortType");
         $data['perfumes'] = $perfumes;
 
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+
         if ($viewType == 'grid') {
             $_SESSION['viewType'] = 'grid';
             View::render("./mvc/view/payment/productsman-grid.php", $data);

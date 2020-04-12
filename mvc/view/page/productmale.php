@@ -2,44 +2,50 @@
 include("./mvc/view/page/header.php");
 ?>
 
-<a id="button"></a>
+<a id="button" style="text-decoration: none;"></a>
+<br><br>
 
-<!-- Show Products Type -->
-<span class="icons-show-products">
-    <span style="color:#555;margin-right: 100px;font-size: 15px;font-weight: bold;">نحوه نمایش</span>
-    <span style="font-size: large;">
-        <i id="display-az-list" class="fa fa-navicon icon-list"></i>
-    </span>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4" style="margin-top: 10px;">
+            <span class="icons-show-products">
+                <span style="color:#555;font-size: 18px;font-weight: bold;">نحوه نمایش</span>
+                <span style="font-size: 18px;">
+                    <i id="display-az-list" class="fa fa-navicon icon-list"></i>
+                </span>
 
-    <span style="font-size: large;">
-        <i id="display-az-grid" class="fa fa-th icon-table"></i>
-    </span>
-    <input id="viewType" type="hidden" value="grid">
-</span>
+                <span style="font-size: 18px;">
+                    <i id="display-az-grid" class="fa fa-th icon-table"></i>
+                </span>
+                <input id="viewType" type="hidden" value="grid">
+            </span>
+        </div>
 
-<!-- Select Tag -->
-<span class="sort-products">
-    <span style="margin-right: 100px;font-size: 15px;font-weight: bold;color:#555;">مرتب سازی بر اساس</span>
-    <label for="sortType"></label>
-    <select class="sort-products theme-construction" id="sortType">
-        <option value="price ">انتخاب کنید...</option>
-        <option value="price ASC">ارزان ترین</option>
-        <option value="price DESC">گران ترین</option>
-        <option value="rate DESC">محبوب ترین</option>
-        <option value="creditionTime DESC">جدیدترین</option>
-        <option value="creditionTime ASC">قدیمی ترین</option>
-        <option value="discount DESC">فروش ویژه</option>
-    </select>
-</span>
+        <div class="col-sm-4">
+            <span class="sort-products">
+                <span style="font-size: 18px;font-weight: bold;color:#555;">مرتب سازی بر اساس</span>
+                <label for="sortType"></label>
+                <select class="sort-products theme-construction" id="sortType">
+                    <option value="price " style="font-size: 16px;">انتخاب کنید...</option>
+                    <option value="price ASC" style="font-size: 16px;">ارزان ترین</option>
+                    <option value="price DESC" style="font-size: 16px;">گران ترین</option>
+                    <option value="creditionTime DESC" style="font-size: 16px;">جدیدترین</option>
+                    <option value="creditionTime ASC" style="font-size: 16px;">قدیمی ترین</option>
+                    <option value="discount DESC" style="font-size: 16px;">فروش ویژه</option>
+                </select>
+            </span>
+        </div>
 
-<!-- Search Box -->
-<span class="search-product">
-    <span style="margin-right: 100px;font-size: 15px;font-weight: bold;color:#555;">جستجو</span>
-    <label for="search"></label>
-        <input type="search" value="" id="keyword" class="search-products"
-               placeholder="نام محصول یا برند مورد نظرتان را جستجو کنید">
-</span>
-
+        <div class="col-sm-4" style="margin-top: -60px;">
+            <span class="search-product">
+                <span style="font-size: 18px;font-weight: bold;color:#555;">جستجو</span>
+                <label for="search"></label>
+                    <input type="search" value="" id="keyword" class="search-products"
+                           placeholder="نام محصول یا برند مورد نظرتان را جستجو کنید">
+            </span>
+        </div>
+    </div>
+</div>
 
 <script>
     //List
