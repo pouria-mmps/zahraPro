@@ -191,7 +191,7 @@ class ProductsmanController
         $name = $trand['tranName'];
         $lname = $trand['tranLName'];
         $phone = $trand['tranPhone'];
-
+        $totalPrice += 20000;
         header('Location:https://idpay.ir/pouria-mmps?amount=' . $totalPrice . '&name=' . $name . " " . $lname . '&phone=' . $phone . '&desc=خرید عطر از فروشگاه اینترنتی عطرشاپ');
     }
 
