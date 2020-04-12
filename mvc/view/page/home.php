@@ -4,7 +4,6 @@
 ?>
 
 <a id="button"></a>
-<br><br>
 
 
 <div id="box-slide">
@@ -144,7 +143,6 @@
         <?php }
     } ?>
 </div>
-
 <br><br><br><br><br><br>
 
 <!-- Female Products -->
@@ -197,7 +195,7 @@
         <?php }
     } ?>
 </div>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
 
 
 <?php

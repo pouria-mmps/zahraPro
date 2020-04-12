@@ -49,6 +49,7 @@ body {
 
 #button::after {
     content: "\f077";
+    font-family: FontAwesome;
     font-weight: normal;
     font-style: normal;
     font-size: 2em;
@@ -69,6 +70,7 @@ body {
     opacity: 1;
     visibility: visible;
 }
+
 
 
 /* Logo */
@@ -211,7 +213,6 @@ a.menu-item {
     margin: auto;
     width: 100%;
     height: 450px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
 .mySlides {
@@ -220,7 +221,9 @@ a.menu-item {
 
 .slideshow-img {
     width: 1000px;
+    border-radius: 5px;
     vertical-align: middle;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
 
@@ -734,7 +737,9 @@ div.scrollmenu-products {
 
 .h3-header-products {
     color: #555;
+    font-size: 25px;
     margin-top: 20px;
+    font-family: yekan;
     position: relative;
     margin-right: 55px;
     margin-bottom: 50px;
@@ -742,7 +747,7 @@ div.scrollmenu-products {
 }
 
 .h3-header-products:hover {
-    color: #444;
+    color: #0e0e0e;
     font-weight: bold;
     text-decoration: none;
 }
