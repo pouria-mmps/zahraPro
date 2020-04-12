@@ -31,37 +31,35 @@ include("./mvc/view/page/header.php");
         if ($address['userId'] == $userId && $address['deleteLogic'] == 1) { ?>
             <tr>
                 <td>
-                    <?php
-                    echo $i;
-                    $i++;
-                    ?>
+                    <span style="font-size: large;"><?php echo $i; ?></span>
+                    <?php $i++; ?>
                 </td>
 
                 <td>
-                    <?= $address['tranName'] ?>
+                    <span style="font-size: large;"><?= $address['tranName'] ?></span>
                 </td>
 
                 <td>
-                    <?= $address['tranLName'] ?>
+                    <span style="font-size: large;"><?= $address['tranLName'] ?></span>
                 </td>
 
                 <td style="padding: 10px;">
-                    <?= $address['tranTell'] ?>
+                    <span style="font-size: large;"><?= $address['tranTell'] ?></span>
                 </td>
 
                 <td style="padding: 10px;">
-                    <?= $address['tranPhone'] ?>
+                    <span style="font-size: large;"><?= $address['tranPhone'] ?></span>
                 </td>
 
                 <td style="padding: 10px;">
-                    <?= $address['tranAddress'] ?>
+                    <span style="font-size: large;"><?= $address['tranAddress'] ?></span>
                 </td>
 
                 <td style="padding: 10px;">
-                    <?= $address['tranPCode'] ?>
+                    <span style="font-size: large;"><?= $address['tranPCode'] ?></span>
                 </td>
 
-                <td style="padding: 50px 100px 50px 100px;">
+                <td style="padding: 55px 100px 55px 100px;">
                     <form class="frm-select-address"
                           action="<?= baseUrl() ?>productsman/factor"
                           method="post">
