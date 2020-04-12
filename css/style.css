@@ -493,7 +493,7 @@ h3 {
     font-size: 19px;
 }
 
-.frm-input-username, .frm-input-password, .frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass, .frm-input-textarea {
+.frm-input-username, .frm-input-password, .frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass, .frm-input-textarea, .frm-txt-address {
     width: 65%;
     border: none;
     padding: 15px;
@@ -1539,7 +1539,7 @@ td {
 }
 
 /* Add a background color when the inputs get focus */
-.frm-txt-address, .frm-input-username, .frm-input-password, .tranAdd-textarea, .frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass, .frm-input-textarea:focus {
+.frm-txt-address:focus, .frm-input-username:focus, .frm-input-password:focus, .tranAdd-textarea:focus, .frm-input-fname:focus, .frm-input-lname:focus, .frm-input-tell:focus, .frm-input-mobile:focus, .frm-input-email:focus, .frm-input-pass:focus, .frm-input-confirm-pass:focus, .frm-input-textarea:focus {
     background-color: #ddd;
     outline: none;
 }
@@ -1560,7 +1560,8 @@ button {
 
 .signupbtn {
     font-size: large;
-    margin-left: 20px;
+    margin-left: 60px;
+    margin-right: 370px;
 }
 
 .cancelbtn {

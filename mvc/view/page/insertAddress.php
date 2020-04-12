@@ -4,7 +4,7 @@ include("./mvc/view/page/header.php");
 <a id="button" style="text-decoration: none;"></a>
 <br><br>
 
-<h3 class="txt-address">آدرس محل تحویل سفارش خود را اضافه کنید.</h3>
+<h3 class="header-ftable">آدرس محل تحویل سفارش خود را اضافه کنید</h3>
 
 <form class="modal-content" action="<?= baseUrl() ?>productsman/addAddressToTable" method="post"
       style="margin-top: 50px;">
@@ -22,12 +22,15 @@ include("./mvc/view/page/header.php");
         <input type="hidden" name="userId" value="<?= $_SESSION['userId'] ?>">
 
         <div class="clearfix">
-            <button type="submit" class="signupbtn">افزودن</button>
-            <button type="button" class="cancelbtn" formaction="<?= baseUrl() ?>" value="cancel">انصراف</button>
+            <button type="submit" class="signupbtn"><i class="fa fa-plus-square" style="margin-left: 7px;"></i>افزودن
+            </button>
+            <button type="button" class="cancelbtn" formaction="<?= baseUrl() ?>" value="cancel"><i class="fa fa-close"
+                                                                                                    style="margin-left: 3px;"></i>
+                انصراف
+            </button>
         </div>
     </div>
 </form>
-<br><br><br><br><br><br><br><br>
 
 <?php
 include("./mvc/view/page/footer.php");
