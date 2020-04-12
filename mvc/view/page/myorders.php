@@ -2,8 +2,10 @@
 include("./mvc/view/page/header.php");
 if (isset($_SESSION['userEmail'])) {
     $totalPrice = 0; ?>
+    <br><br>
 
-    <h4 class="h4-myorder">خلاصه سبد خرید</h4>
+    <h3 class="header-ftable"> خلاصه سبد خرید </h3>
+    <br>
 
     <table>
         <tr>
@@ -26,7 +28,19 @@ if (isset($_SESSION['userEmail'])) {
                 </td>
 
                 <td style="text-align: right">
-                    <span class="cart-preview-persionName myorder-persionName"><?= $perfume['persionName'] ?> <?= $perfume['perfumeName'] ?></span>
+                    <span class="cart-preview-persionName myorder-persionName">
+                        <?php foreach ($densitys as $density) {
+                            foreach ($genders as $gender) {
+                                foreach ($brands as $brand) {
+                                    if ($perfume['densityId'] == $density['densityId'] && $perfume['jenderId'] == $gender['jenderId'] && $perfume['brandId'] == $brand['brandId']) {
+                                        ?>
+                                        <span style="font-size: 18px;"><?= $density['densityTitle'] ?> <?= $gender['jenderType'] ?> <?= $brand['brandName'] ?> مدل </span>
+                                        <span style="font-size: 19px;"><?= $perfume['perfumeName'] ?></span>
+                                    <?php }
+                                }
+                            }
+                        } ?>
+                    </span>
                 </td>
 
                 <td>
@@ -34,7 +48,7 @@ if (isset($_SESSION['userEmail'])) {
                 </td>
 
                 <td>
-                    <span class="fa fa-trash-o myorder-trash"
+                    <span class="fa fa-trash-o myorder-trash" style="font-size: larger;"
                           onclick="removeProduct(<?= $perfume['orderId'] ?>)"></span>
                 </td>
 
@@ -44,13 +58,13 @@ if (isset($_SESSION['userEmail'])) {
 
                 <td>
                     <span
-                        class="cart-preview-newPrice myorder-discountPrice"><?= $perfume['quantity'] * $perfumePriceWithDiscount; ?>  تومان
+                            class="cart-preview-newPrice myorder-discountPrice"><?= $perfume['quantity'] * $perfumePriceWithDiscount; ?>  تومان
                 </td>
             </tr>
         <?php } ?>
 
         <td class="th-myorder" colspan="6">
-            مبلغ قابل پرداخت:<span class="myorder-total"><?= $totalPrice ?> تومان</span>
+            <span style="font-size: larger;">  مبلغ قابل پرداخت : </span><span class="myorder-total"><?= $totalPrice ?> تومان</span>
         </td>
     </table>
     <br><br>
@@ -59,8 +73,8 @@ if (isset($_SESSION['userEmail'])) {
         <span> </span>
     <?php } else { ?>
         <a class="btn-sale-myorders" href="/MainProject/productsman/getaddress"
-           style="font-size: medium;padding: 10px;">
-            <i class="fa fa-arrow-circle-o-right arrow-myorder" style="text-decoration: none; margin-left:7px;"></i>ادامه
+           style="font-size: large;padding: 7px 10px 7px 10px;">
+            <i class="fa fa-arrow-circle-o-right" style="text-decoration: none; margin-left:7px; margin-top: 3px;"></i>ادامه
             فرآیند خرید
         </a>
     <?php } ?>
@@ -68,9 +82,11 @@ if (isset($_SESSION['userEmail'])) {
 <?php } else {
     message('fail', "ابتدا وارد حساب کاربری خود شوید.", true);
 } ?>
+<br><br><br><br><br><br><br>
 
-<br><br><br><br><br><br><br><br><br>
-
+<?php
+include("./mvc/view/page/footer.php");
+?>
 
 <script>
     <?php if($totalPrice == 0){ ?>

@@ -436,7 +436,7 @@ h3 {
 }
 
 .btn-sale-myorders {
-    margin-right: 200px;
+    margin-right: 210px;
 }
 
 #btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, #btn-submit-uproduct:hover, .insert-product:hover,
@@ -1220,7 +1220,7 @@ table {
 
 .th-myorder {
     padding: 20px;
-    font-size: large;
+    font-size: larger;
     background-color: #f2f2f2;
 }
 
@@ -1252,14 +1252,18 @@ td {
     padding: 15px;
 }
 
+.myorder-quantity {
+    font-size: larger;
+}
+
 .myorder-discountPrice {
     padding: 15px;
-    font-size: medium;
+    font-size: larger;
 }
 
 .myorder-total {
     margin: 10px 5px 10px;
-    font-size: medium;
+    font-size: 19px;
 }
 
 
