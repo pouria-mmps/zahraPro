@@ -30,18 +30,30 @@
     <?php } ?>
 
     <!-- Logo -->
-    <img src="/MainProject/image/Logo_HomePage.png" id="imgLogo" alt="لگو صفحه">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-1">
+                <img src="/MainProject/image/Logo3.jpg" id="imgLogo" alt="لگو صفحه">
+            </div>
+        </div>
+    </div>
 </div>
-
+<br>
 
 <!-- Navigation Bar -->
 <div class="navbar">
     <a href="<?= baseUrl() ?>page/productsManager" class="menu-item">
-        <i class="fa fa-pinterest-p menu-icon"></i>مدیریت محصولات
+        <i class="fa fa-pinterest-p menu-icon"></i>
+        <span style="font-size: 18px;">
+           مدیریت محصولات
+        </span>
     </a>
 
-    <a href="<?= baseUrl() ?>page/................." class="menu-item">
-        <i class="fa fa-user-circle menu-icon"></i>مدیریت کاربران
+    <a href="<?= baseUrl() ?>productsman/productsman" class="menu-item">
+        <i class="fa fa-user-circle menu-icon"></i>
+        <span style="font-size: 18px;">
+            مدیریت کاربران
+        </span>
     </a>
 
     <a class="menu-item" href="<?= baseUrl() ?>productsman/myorders">
