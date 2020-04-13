@@ -6,7 +6,7 @@ include("./mvc/view/page/managerHeader.php");
 
 
 <?php foreach ($perfumes as $perfume) { ?>
-    <div class="box-updateProduct" style="width: 70%;">
+    <div class="box-updateProduct" style="width: 55%;">
         <form class="frm-product-crud" action="<?= baseUrl() ?>page/updateProductChecking" method="post">
 
             <label hidden>
@@ -38,7 +38,7 @@ include("./mvc/view/page/managerHeader.php");
             <label class="frm-txt">جنسیت</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="jenderId" name="jenderId"
-                        style="width: 55%;margin-right: 80px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
+                        style="width: 55%;margin-right: 80px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                     <?php foreach ($genders as $gender) {
                         if ($perfume['jenderId'] == $gender['jenderId']) { ?>
                             <option value="<?= $gender['jenderId'] ?>" selected
@@ -55,7 +55,7 @@ include("./mvc/view/page/managerHeader.php");
             <label class="frm-txt">برند</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="brandId" name="brandId"
-                        style="width: 55%;margin-right: 100px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
+                        style="width: 55%;margin-right: 100px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                     <?php foreach ($brands as $brand) {
                         if ($perfume['brandId'] == $brand['brandId']) { ?>
                             <option value="<?= $brand['brandId'] ?>" selected
@@ -72,7 +72,7 @@ include("./mvc/view/page/managerHeader.php");
             <label class="frm-txt">کشور سازنده</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="countryId" name="countryId"
-                        style="width: 55%;margin-right: 46px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
+                        style="width: 55%;margin-right: 46px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                     <?php foreach ($countrys as $country) {
                         if ($perfume['countryId'] == $country['countryId']) { ?>
                             <option value="<?= $country['countryId'] ?>" selected

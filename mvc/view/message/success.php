@@ -1,2 +1,2 @@
 <br><br><br><br>
-<span class="msg"><?= $message ?></span>
+<span class="msg2"><?= $message ?></span>

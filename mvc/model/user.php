@@ -2,11 +2,11 @@
 
 class UserModel
 {
-    public static function insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $userPassword, $userAddress)
+    public static function insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $userPassword)
     {
         $db = Db::getInstance();
-        $db->insert("INSERT INTO user (userName,userFamilyName,userGender,userAccess,userTell,userMobile,userEmail,userPassword,userAddress)
-            VALUES ('$userName','$userFamilyName','$userGender','user','$userTell','$userMobile','$userEmail','$userPassword','$userAddress')"
+        $db->insert("INSERT INTO user (userName,userFamilyName,userGender,userAccess,userTell,userMobile,userEmail,userPassword)
+            VALUES ('$userName','$userFamilyName','$userGender','user','$userTell','$userMobile','$userEmail','$userPassword')"
         );
     }
 
@@ -45,5 +45,27 @@ class UserModel
             require_once("./mvc/view/page/header.php");
             message('fail', " آدرس موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/updateAddress"> کلیک </a>' . 'کنید.', true);
         }
+    }
+
+    public static function update($userEmail, $userName, $userFamilyName, $jenderId, $userTell, $userMobile)
+    {
+        $db = Db::getInstance();
+        $db->modify("UPDATE user 
+                           SET userName=:userName, userFamilyName=:userFamilyName, jenderId=:jenderId, userTell=:userTell, userMobile=:userMobile WHERE userEmail='$userEmail'", array(
+            'userName' => $userName,
+            'userFamilyName' => $userFamilyName,
+            'jenderId' => $jenderId,
+            'userTell' => $userTell,
+            'userMobile' => $userMobile,
+        ));
+    }
+
+    public static function updatePass($userEmail, $userPassword)
+    {
+        $db = Db::getInstance();
+        $db->modify("UPDATE user 
+                           SET userPassword=:userPassword WHERE userEmail='$userEmail'", array(
+            'userPassword' => $userPassword,
+        ));
     }
 }

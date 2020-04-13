@@ -100,14 +100,21 @@
         <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
             <i class="fa fa-file-text-o menu-icon"></i>
             <span style="font-size: 18px;">
-                سفارشات من
+                لیست سفارشات من
             </span>
         </a>
 
-        <a href="<?= baseUrl() ?>user/editProfile" class="menu-item">
+        <a href="<?= baseUrl() ?>productsman/editProfile" class="menu-item">
             <i class="fa fa-edit menu-icon"></i>
             <span style="font-size: 18px;">
                 ویرایش اطلاعات
+            </span>
+        </a>
+
+        <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
+            <i class="fa fa-file-text-o menu-icon"></i>
+            <span style="font-size: 18px;">
+                وضیعیت سفارشات
             </span>
         </a>
 
@@ -119,7 +126,7 @@
             </span>
         </a>
 
-        <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
+        <a href="<?= baseUrl() ?>page/productsManager" class="menu-item">
             <i class="fa fa-adjust menu-icon"></i>
             <span style="font-size: 18px;">
                 پنل مدیریت

@@ -7,12 +7,6 @@ class UserController
     }
 
 
-    public function editProfile()
-    {
-        View::render("./mvc/view/page/editProfile.php");
-    }
-
-
     public function logout()
     {
         session_destroy();
@@ -96,24 +90,24 @@ class UserController
         $record = UserModel::fetch_by_email($userEmail);
 
         if ($userName == null || $userFamilyName == null || $userGender == null || $userEmail == null || $userPassword == null) {
-            message('fail', "لطفا فیلدهای ستاره دار را پر کنید. " . '<br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', "لطفا فیلدهای ستاره دار را پر کنید. " . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         if ($record != null) {
-            message('fail', " شما پیشتر با این ایمیل ثبت نام کرده اید کافیست وارد سایت شوید " . '<br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', " شما پیشتر با این ایمیل ثبت نام کرده اید کافیست وارد سایت شوید " . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         if (strlen($userPassword) < 3 || strlen($userPasswordConfirm) < 3) {
-            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد" . '<br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد" . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         if ($userPassword != $userPasswordConfirm) {
-            message('fail', "گذرواژه ها با هم مطابقت ندارند" . '<br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', "گذرواژه ها با هم مطابقت ندارند" . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
         $hashedPassword = md5($userPassword);
         UserModel::insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $hashedPassword);
-        message('success', "با موفقیت ثبت نام شدید" . '<br><br><br>' . $userName . " " . $userFamilyName . ' برای ادامه لطفا' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
+        message('success', "با موفقیت ثبت نام شدید" . '<br><br><br>' . '<span style="color: red;font-size: larger;">' . $userName . " " . $userFamilyName . '</span>' . '   ' . ' برای ادامه لطفا' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
     }
 
 

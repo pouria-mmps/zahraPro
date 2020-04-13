@@ -192,7 +192,7 @@ class ProductsmanController
             'cartId' => $cart['cartId'],
         ));
 
-        $db->modify("UPDATE cart SET payed=1 WHERE cartId=:cartId", array(
+        $db->modify("UPDATE cart SET cStatusId=2 WHERE cartId=:cartId", array(
             'cartId' => $cart['cartId'],
         ));
 
@@ -235,6 +235,78 @@ class ProductsmanController
     }
 
 
+    public function editProfile()
+    {
+        $db = Db::getInstance();
+        if (isset($_SESSION['userEmail'])) {
+            $userEmail = $_SESSION['userEmail'];
+            $users = $db->first("SELECT * FROM user LEFT OUTER JOIN jender ON user.jenderId=jender.jenderId WHERE userEmail='$userEmail'");
+            $data['users'] = $users;
+
+            $genders = $db->query("SELECT * FROM jender");
+            $data['genders'] = $genders;
+        }
+
+        View::render("./mvc/view/page/editProfile.php", $data);
+    }
+
+
+    public function updateProfileChecking()
+    {
+        $userEmail = $_SESSION['userEmail'];
+        $userName = $_POST['userName'];
+        $userFamilyName = $_POST['userFamilyName'];
+        $jenderId = $_POST['jenderId'];
+        $userTell = $_POST['userTell'];
+        $userMobile = $_POST['userMobile'];
+
+        require_once("./mvc/view/page/header.php");
+
+        $record = UserModel::fetch_by_email($userEmail);
+
+        if ($userName == null || $userFamilyName == null || $userTell == null || $userMobile == null) {
+            message('fail', "قبل از فشردن دکمه ویرایش می بایست تمامی فیلدها پر شده باشد. " . '<br><br><br>' . ' برای ویرایش مجدد ' . '<a href="/MainProject/productsman/editProfile"> کلیک </a>' . ' کنید. ', true);
+        }
+
+        UserModel::update($userEmail, $userName, $userFamilyName, $jenderId, $userTell, $userMobile);
+        message('success', "ویرایش با موفقیت ثبت نام شد." . '<br><br><br>' . '<span style="color: red;font-size: larger;">' . $userName . " " . $userFamilyName . '</span>' . '   ' . '  برای ادامه لطفا' . '<a href="/MainProject/page/home"> کلیک </a>' . 'کنید.', true);
+    }
+
+
+    public function resetPassword()
+    {
+        View::render("./mvc/view/page/resetPassword.php");
+    }
+
+
+    public function passChange()
+    {
+        $userEmail = $_SESSION['userEmail'];
+        $userPassword = $_POST['userPassword'];
+        $userPasswordConfirm = $_POST['userPasswordConfirm'];
+
+        require_once("./mvc/view/page/header.php");
+        $record = UserModel::fetch_by_email($userEmail);
+
+        if ($userPassword == null || $userPasswordConfirm == null) {
+            message('fail', "قبل از فشردن دکمه ویرایش می بایست تمامی فیلدها پر شده باشد. " . '<br><br><br>' . ' برای ویرایش مجدد ' . '<a href="/MainProject/productsman/resetPassword"> کلیک </a>' . ' کنید. ', true);
+        }
+
+        if (strlen($userPassword) < 3 || strlen($userPasswordConfirm) < 3) {
+            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد" . '<br><br><br>' . '<a href="/MainProject/productsman/resetPassword"> تلاش مجدد </a>', true);
+        }
+
+        if ($userPassword != $userPasswordConfirm) {
+            message('fail', "گذرواژه ها با هم مطابقت ندارند" . '<br><br>' . '<a href="/MainProject/productsman/resetPassword"> تلاش مجدد </a>', true);
+        }
+
+
+        $hashedPassword = md5($userPassword);
+        UserModel::updatePass($userEmail, $hashedPassword);
+        message('success', "ویرایش رمزعبور با موفقیت انجام شد." . '<br><br><br>' . ' برای ادامه لطفا' . '<a href="/MainProject/productsman/editProfile"> کلیک </a>' . 'کنید.', true);
+    }
+
+
     public function getLatestCardOrCreate()
     {
         $db = Db::getInstance();
@@ -247,7 +319,7 @@ class ProductsmanController
             return $lastestCart;
         }
 
-        $db->insert("INSERT INTO cart (userId, sessionId, payed) VALUES (:userId, :sessionId, 0)", array(
+        $db->insert("INSERT INTO cart (userId, sessionId, cStatusId) VALUES (:userId, :sessionId, 1)", array(
             'userId' => $userId,
             'sessionId' => $sessionId,
         ));
@@ -267,7 +339,7 @@ class ProductsmanController
         $lastestCart = null;
 
         if ($userId != 0) {
-            $lastestCart = $db->first("SELECT * FROM cart WHERE payed!=1 AND userId=:userId", array(
+            $lastestCart = $db->first("SELECT * FROM cart WHERE cStatusId=1 AND userId=:userId", array(
                 'userId' => $userId,
             ));
         }
@@ -282,7 +354,7 @@ class ProductsmanController
         }
 
         if ($lastestCart == null) {
-            $lastestCart = $db->first("SELECT * FROM cart WHERE payed!=1 AND sessionId=:sessionId", array(
+            $lastestCart = $db->first("SELECT * FROM cart WHERE cStatusId=1 AND sessionId=:sessionId", array(
                 'sessionId' => $sessionId,
             ));
             if ($userId != 0) {

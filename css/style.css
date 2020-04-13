@@ -75,11 +75,12 @@ body {
 .frm-perfume-name, .frm-type-smell, .frm-structrue-smell, .frm-discount, .frm-price, .frm-breif, .frm-discription, .frm-tran-name,
 .frm-tran-lname, .frm-tran-tell, .frm-tran-phone, .frm-tran-address, .frm-tran-pcode, .frm-input-username, .frm-input-password,
 .frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass,
-.frm-input-textarea, .frm-txt-address {
+.frm-input-textarea, .frm-txt-address, .frm-profile-name, .frm-profile-lname, .frm-profile-tell, .frm-profile-phone,
+.frm-profile-pass, .frm-profile-email, .frm-chenge-pass, .frm-change-confirm-pass {
     width: 55%;
     border: none;
     padding: 15px;
-    font-size: 18px;
+    font-size: 20px;
     border-radius: 5px;
     background: #f1f1f1;
     margin: 5px 0 22px 0;
@@ -184,7 +185,7 @@ i.menu-icon {
 }
 
 a.menu-item {
-    margin-right: 170px;
+    margin-right: 100px;
     vertical-align: middle;
 }
 
@@ -383,22 +384,21 @@ a.menu-item {
     left: 0;
     color: red;
     width: 100%;
-    font-size: medium;
+    font-size: large;
     position: absolute;
     text-align: center;
 }
 
-
-/* Login Content */
-.box-login {
-    width: 50%;
-    border-radius: 5px;
-    border: 1px solid #888;
-    margin: 5% auto 15% auto;
-    background-color: #fefefe;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
+.msg2 {
+    left: 0;
+    width: 100%;
+    color: green;
+    font-size: large;
+    position: absolute;
+    text-align: center;
 }
 
+/* Login Content */
 h3 {
     text-align: center;
 }
@@ -413,7 +413,7 @@ h3 {
 
 /* Login Button */
 #btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
-.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn, #btn-submit-dproduct {
+.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn, #btn-submit-dproduct, .btn-change-pass, #btn-submit-uprofile {
     width: 25%;
     color: #777;
     border: none;
@@ -428,6 +428,11 @@ h3 {
     vertical-align: center;
     background-color: #f0eeee;
     border-bottom: 3px solid #cbc8c8;
+}
+
+.btn-change-pass {
+    margin-top: -78px;
+    margin-right: 195px;
 }
 
 #btn-submit-uaddress, #btn-cancel-uaddress {
@@ -453,7 +458,7 @@ h3 {
     margin-right: 210px;
 }
 
-#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, .insert-product:hover, .signupbtn:hover {
+#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, .insert-product:hover, .signupbtn:hover, .btn-change-pass:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
@@ -465,7 +470,7 @@ h3 {
     border: none;
 }
 
-#btn-submit-dproduct:hover, #btn-cancel:hover, #btn-submit-uproduct:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deactive:hover, #btn-cancel-uaddress:hover, .cancelbtn:hover {
+#btn-submit-dproduct:hover, #btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deactive:hover, #btn-cancel-uaddress:hover, .cancelbtn:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -496,9 +501,21 @@ h3 {
     margin-right: 90px;
 }
 
+.frm-chenge-pass {
+    margin-right: 60px;
+}
+
+.frm-change-confirm-pass {
+    margin-right: 25px;
+}
+
 .frm-txt, .frm-p-txt, .frm-uaddress-txt {
     color: #777;
     font-size: 19px;
+}
+
+.frm-txt {
+    margin-right: 20px;
 }
 
 input[type=radio] {
@@ -559,6 +576,13 @@ input[type=radio] {
     margin-bottom: 10px;
 }
 
+#btn-cancel-uproduct {
+    margin-right: 210px;
+}
+
+#btn-submit-uprofile {
+    margin-right: 10px;
+}
 
 /* Register Button*/
 .fa-user-plus {
@@ -1666,7 +1690,7 @@ button {
     border-bottom: 3px solid #78af93;
 }
 
-.btn-updateProduct:hover, #update-address-btn:hover, #btn-submit-uaddress:hover, #btn-submit-uproduct:hover {
+.btn-updateProduct:hover, #update-address-btn:hover, #btn-submit-uaddress:hover, #btn-submit-uproduct:hover, #btn-submit-uprofile:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #feca38;
@@ -1688,7 +1712,7 @@ button {
 
 
 /* Update CRUD Page */
-.box-updateProduct, .box-update-address, .box-login, .box-register {
+.box-updateProduct, .box-update-address, .box-login, .box-register, .box-updateProfile, .box-reset {
     width: 50%;
     border-radius: 5px;
     border: 1px solid #888;
@@ -1697,7 +1721,7 @@ button {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
 }
 
-.frm-product-crud {
+.frm-product-crud, .frm-update-profile {
     margin-top: 60px;
     margin-right: 90px;
 }
@@ -1741,13 +1765,39 @@ button {
 
 .frm-perfume-name:focus, .frm-type-smell:focus, .frm-structrue-smell:focus, .frm-discount:focus, .frm-price:focus, .frm-country:focus,
 .frm-breif:focus, .frm-discription:focus, .frm-tran-name:focus, .frm-tran-lname:focus, .frm-tran-tell:focus, .frm-tran-phone:focus,
-.frm-tran-address:focus, .frm-tran-pcode:focus, .frm-input-username:focus, .frm-input-password:focus {
+.frm-tran-address:focus, .frm-tran-pcode:focus, .frm-input-username:focus, .frm-input-password:focus, .frm-profile-name:focus,
+.frm-profile-lname:focus, .frm-profile-tell:focus, .frm-profile-phone:focus, .frm-profile-pass:focus, .frm-profile-email:focus,
+.frm-chenge-pass:focus, .frm-change-confirm-pass:focus {
     outline: none;
     background-color: #ddd;
 }
 
 .frm-perfume-name {
     margin-right: 77px;
+}
+
+.frm-profile-name {
+    margin-right: 90px;
+}
+
+.frm-profile-lname {
+    margin-right: 30px;
+}
+
+.frm-profile-tell {
+    margin-right: 75px;
+}
+
+.frm-profile-phone {
+    margin-right: 35px;
+}
+
+.frm-profile-email {
+    margin-right: 110px;
+}
+
+.frm-profile-pass {
+    margin-right: 95px;
 }
 
 .frm-type-smell {
