@@ -2,7 +2,6 @@
     <br>
 
     <?php
-
     $db = Db::getInstance();
     if (isset($_SESSION['userEmail'])) {
         $userEmail = $_SESSION['userEmail'];
