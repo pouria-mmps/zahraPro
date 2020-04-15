@@ -76,7 +76,7 @@ body {
 .frm-tran-lname, .frm-tran-tell, .frm-tran-phone, .frm-tran-address, .frm-tran-pcode, .frm-input-username, .frm-input-password,
 .frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass,
 .frm-input-textarea, .frm-txt-address, .frm-profile-name, .frm-profile-lname, .frm-profile-tell, .frm-profile-phone,
-.frm-profile-pass, .frm-profile-email, .frm-chenge-pass, .frm-change-confirm-pass {
+.frm-profile-pass, .frm-profile-email, .frm-chenge-pass, .frm-change-confirm-pass, .frm-number {
     width: 55%;
     border: none;
     padding: 15px;
@@ -414,7 +414,7 @@ h3 {
 /* Login Button */
 #btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
 .insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn, #btn-submit-dproduct, .btn-change-pass,
-#btn-submit-uprofile, #btn-submit-activeproduct {
+#btn-submit-uprofile, #btn-submit-activeproduct, #btn-submit-addproduct, #show-orders-btn, #cancel-order-btn, .btn-cancel-order {
     width: 25%;
     color: #777;
     border: none;
@@ -429,6 +429,18 @@ h3 {
     vertical-align: center;
     background-color: #f0eeee;
     border-bottom: 3px solid #cbc8c8;
+}
+
+.btn-cancel-order {
+    width: 10%;
+    margin-top: 60px;
+    margin-right: 200px;
+}
+
+#show-orders-btn, #cancel-order-btn {
+    width: 50%;
+    padding: 5px;
+    font-size: medium;
 }
 
 .btn-change-pass {
@@ -460,7 +472,7 @@ h3 {
 }
 
 #btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, .insert-product:hover, .signupbtn:hover,
-.btn-change-pass:hover, #btn-submit-activeproduct:hover {
+.btn-change-pass:hover, #btn-submit-activeproduct:hover, #btn-submit-addproduct:hover, #show-orders-btn:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
@@ -472,7 +484,8 @@ h3 {
     border: none;
 }
 
-#btn-submit-dproduct:hover, #btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deactive:hover, #btn-cancel-uaddress:hover, .cancelbtn:hover {
+#btn-submit-dproduct:hover, #btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deactive:hover,
+#btn-cancel-uaddress:hover, .cancelbtn:hover, #cancel-order-btn:hover, .btn-cancel-order:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -573,7 +586,8 @@ input[type=radio] {
     display: inline-block;
 }
 
-#btn-submit-uproduct, #btn-cancel-uproduct, #btn-submit-uaddress, #btn-submit-dproduct, #btn-submit-activeproduct {
+#btn-submit-uproduct, #btn-cancel-uproduct, #btn-submit-uaddress, #btn-submit-dproduct, #btn-submit-activeproduct,
+#btn-submit-addproduct {
     margin-right: 70px;
     margin-bottom: 10px;
 }
@@ -590,11 +604,6 @@ input[type=radio] {
 .fa-user-plus {
     margin-left: 10px;
 }
-
-.fa-close {
-    margin-left: 10px;
-}
-
 
 /* Products Page & Home*/
 /* Select Bottun */
@@ -1635,7 +1644,7 @@ button {
 
 /* Products CRUD */
 .th-p-crud {
-    padding: 15px;
+    padding: 15px 0;
     font-size: larger;
     background-color: #f2f2f2;
 }
@@ -1769,7 +1778,7 @@ button {
 .frm-breif:focus, .frm-discription:focus, .frm-tran-name:focus, .frm-tran-lname:focus, .frm-tran-tell:focus, .frm-tran-phone:focus,
 .frm-tran-address:focus, .frm-tran-pcode:focus, .frm-input-username:focus, .frm-input-password:focus, .frm-profile-name:focus,
 .frm-profile-lname:focus, .frm-profile-tell:focus, .frm-profile-phone:focus, .frm-profile-pass:focus, .frm-profile-email:focus,
-.frm-chenge-pass:focus, .frm-change-confirm-pass:focus {
+.frm-chenge-pass:focus, .frm-change-confirm-pass:focus, .frm-number:focus {
     outline: none;
     background-color: #ddd;
 }
@@ -1816,6 +1825,10 @@ button {
 
 .frm-price {
     margin-right: 94px;
+}
+
+.frm-number {
+    margin-right: 98px;
 }
 
 .frm-breif, .frm-discription {

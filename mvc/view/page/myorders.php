@@ -4,6 +4,7 @@ if (isset($_SESSION['userEmail'])) {
     $totalPrice = 0; ?>
     <br><br>
 
+    <a id="button" style="text-decoration: none;"></a>
     <h3 class="header-ftable"> خلاصه سبد خرید </h3>
     <br>
 
@@ -90,6 +91,20 @@ include("./mvc/view/page/footer.php");
 ?>
 
 <script>
+    var btn = $('#button');
+    $(window).scroll(function () {
+        if ($(window).scrollTop() > 300) {
+            btn.addClass('show');
+        } else {
+            btn.removeClass('show');
+        }
+    });
+
+    btn.on('click', function (e) {
+        e.preventDefault();
+        $('html, body').animate({scrollTop: 0}, '300');
+    });
+
     <?php if($totalPrice == 0){ ?>
     $(document).ready(function () {
         jQuery(this).css("line-height", "50px");

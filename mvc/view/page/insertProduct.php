@@ -86,14 +86,15 @@ include("./mvc/view/page/managerHeader.php");
         <br><br><br>
 
         <!-- BTN POST Data -->
-        <button value="register" id="btn-submit-uproduct"><i class="fa fa-plus"
-                                                             style="margin-left: 10px;"></i>ثبت
+        <button value="register" id="btn-submit-addproduct"><i class="fa fa-plus"
+                                                               style="margin-left: 10px;font-size: medium;"></i>ثبت
         </button>
 
         <!-- BTN Cancel -->
         <button formaction="<?= baseUrl() ?>page/productsManager" id="btn-cancel-uproduct" type="submit"
-                value="cancel">
-            <i class="fa fa-close" style="margin-left: 5px;"></i>
+                value="cancel"
+                style="margin-right: 40px;">
+            <i class="fa fa-close" style="margin-left: 5px;font-size: medium;"></i>
             انصراف
         </button>
         <br><br><br>

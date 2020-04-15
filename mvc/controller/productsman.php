@@ -8,37 +8,6 @@ class ProductsmanController
     }
 
 
-    public function getaddress()
-    {
-        $db = Db::getInstance();
-        $cart = $this->getLatestCardOrCreate();
-
-        $orders = $db->query("SELECT perfumeName,perfumeCounter,quantity FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
-            'cartId' => $cart['cartId'],
-        ));
-
-        foreach ($orders as $order) {
-            if ($order['perfumeCounter'] >= $order['quantity']) {
-                $flag = 1;
-            } else {
-                $flag = 0;
-                $names = $order['perfumeName'];
-                $quantity = $order['perfumeCounter'];
-            }
-        }
-
-        if ($flag == 1) {
-            $addresses = $db->query("SELECT * FROM address");
-            $data['addresses'] = $addresses;
-            View::render("./mvc/view/page/getaddress.php", $data);
-        } else {
-
-            require_once("./mvc/view/page/header.php");
-            message('fail', $quantity . ' عدد از عطر ' . $names . ' باقی مانده است. ' . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/myorders"> کلیک </a>' . 'کنید.', true);
-        }
-    }
-
-
     public function insertAddress()
     {
         View::render("./mvc/view/page/insertAddress.php");
@@ -122,6 +91,37 @@ class ProductsmanController
     }
 
 
+    public function getaddress()
+    {
+        $db = Db::getInstance();
+        $cart = $this->getLatestCardOrCreate();
+
+        $orders = $db->query("SELECT perfumeName,perfumeCounter,quantity FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+
+        foreach ($orders as $order) {
+            if ($order['perfumeCounter'] >= $order['quantity']) {
+                $flag = 1;
+            } else {
+                $flag = 0;
+                $names = $order['perfumeName'];
+                $quantity = $order['perfumeCounter'];
+            }
+        }
+
+        if ($flag == 1) {
+            $addresses = $db->query("SELECT * FROM address");
+            $data['addresses'] = $addresses;
+            View::render("./mvc/view/page/getaddress.php", $data);
+        } else {
+
+            require_once("./mvc/view/page/header.php");
+            message('fail', $quantity . ' عدد از عطر ' . $names . ' باقی مانده است. ' . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/myorders"> کلیک </a>' . 'کنید.', true);
+        }
+    }
+
+
     public function factor()
     {
         $cart = $this->getLatestCardOrCreate();
@@ -188,12 +188,24 @@ class ProductsmanController
             }
         }
 
+        $totalPrice += 20000;
         $db->modify("UPDATE cart SET paymentPrice='$totalPrice' WHERE cartId=:cartId", array(
             'cartId' => $cart['cartId'],
         ));
 
         $db->modify("UPDATE cart SET cStatusId=2 WHERE cartId=:cartId", array(
             'cartId' => $cart['cartId'],
+        ));
+
+        $db->modify("UPDATE cart SET paymentDate=NOW() WHERE cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+
+        $trackingCode = 0;
+        $trackingCode = mt_rand();
+        $db->modify("UPDATE cart SET trackingCode=:trackingCode WHERE cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+            'trackingCode' => $trackingCode,
         ));
 
         $trand = $db->first("SELECT tranName,tranLName,tranPhone FROM cart LEFT OUTER JOIN address ON cart.addressId=address.addressId WHERE cart.cartId=:cartId", array(
@@ -203,35 +215,8 @@ class ProductsmanController
         $name = $trand['tranName'];
         $lname = $trand['tranLName'];
         $phone = $trand['tranPhone'];
-        $totalPrice += 20000;
         $totalPrice *= 10;
         header('Location:https://idpay.ir/pouria-mmps?amount=' . $totalPrice . '&name=' . $name . " " . $lname . '&phone=' . $phone . '&desc=خرید عطر از فروشگاه اینترنتی عطرشاپ');
-    }
-
-
-    public function myorders()
-    {
-        $db = Db::getInstance();
-        $cart = $this->getLatestCardOrCreate();
-
-        $orders = $db->query("SELECT * FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
-            'cartId' => $cart['cartId'],
-        ));
-        $data['orders'] = $orders;
-
-
-        $densitys = $db->query("SELECT * FROM perfume_density");
-        $data['densitys'] = $densitys;
-
-
-        $genders = $db->query("SELECT * FROM jender");
-        $data['genders'] = $genders;
-
-
-        $brands = $db->query("SELECT * FROM brand");
-        $data['brands'] = $brands;
-
-        View::render("./mvc/view/page/myorders.php", $data);
     }
 
 
@@ -304,6 +289,84 @@ class ProductsmanController
         $hashedPassword = md5($userPassword);
         UserModel::updatePass($userEmail, $hashedPassword);
         message('success', "ویرایش رمزعبور با موفقیت انجام شد." . '<br><br><br>' . ' برای ادامه لطفا' . '<a href="/MainProject/productsman/editProfile"> کلیک </a>' . 'کنید.', true);
+    }
+
+
+    public function ordersStatus()
+    {
+        $db = Db::getInstance();
+        $userId = getUserId();
+
+        $orders = $db->query("SELECT * FROM cart WHERE userId='$userId'");
+        $data['orders'] = $orders;
+
+        $cartStatuses = $db->query("SELECT * FROM cart_status");
+        $data['cartStatuses'] = $cartStatuses;
+
+        View::render("./mvc/view/page/ordersStatus.php", $data);
+    }
+
+
+    public function showOrders()
+    {
+        $db = Db::getInstance();
+        $cartId = $_POST['cartId'];
+        $data['hasButton'] = $_POST['hasButton'];
+
+        $orders = $db->query("SELECT * FROM pym_order 
+                                    LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId='$cartId'");
+        $data['orders'] = $orders;
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+        View::render("./mvc/view/page/showOrders.php", $data);
+    }
+
+
+    public function cancelOrders()
+    {
+        $db = Db::getInstance();
+        $cartId = $_POST['cartId'];
+
+        $orders = $db->query("UPDATE cart SET cStatusId=3 WHERE cart.cartId='$cartId'");
+        $data['orders'] = $orders;
+
+        require_once("./mvc/view/page/header.php");
+        message('success', " درخواست شما پذیرفته شد. " . '<br><br>' . 'همکاران ما جهت بازپس گیری کالا مراجعه و وجه مسترد خواهد شد. ' . '<br><br>' . 'برای مشاهده وضعیت سفارشات' . '<a href="/MainProject/productsman/showOrders"> کلیک </a>' . 'کنید.', true);
+    }
+
+
+    public function myorders()
+    {
+        $db = Db::getInstance();
+        $cart = $this->getLatestCardOrCreate();
+
+        $orders = $db->query("SELECT * FROM pym_order LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId=:cartId", array(
+            'cartId' => $cart['cartId'],
+        ));
+        $data['orders'] = $orders;
+
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+        View::render("./mvc/view/page/myorders.php", $data);
     }
 
 

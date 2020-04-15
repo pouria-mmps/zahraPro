@@ -106,6 +106,12 @@ include("./mvc/view/page/managerHeader.php");
                    style="text-align: center;">
             <br><br><br>
 
+            <label class="frm-txt">تعداد</label>
+            <input type="number" class="frm-number" min="0" name="perfumeCounter"
+                   value="<?= $perfume['perfumeCounter'] ?>"
+                   style="text-align: center;">
+            <br><br><br>
+
             <label class="frm-txt" style="margin-bottom: -115px;">توضیات مختصر</label>
             <textarea class="frm-breif" name="breif" style="margin-top:10px;"><?= $perfume['breif'] ?></textarea>
             <br><br><br>
@@ -122,7 +128,7 @@ include("./mvc/view/page/managerHeader.php");
 
             <!-- BTN Cancel -->
             <button formaction="<?= baseUrl() ?>page/productsManager" id="btn-cancel-uproduct" type="submit"
-                    value="cancel">
+                    value="cancel" style="margin-right:60px;">
                 <i class="fa fa-close" style="margin-left: 5px;"></i>
                 انصراف
             </button>

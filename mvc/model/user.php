@@ -17,11 +17,11 @@ class UserModel
         return $record;
     }
 
-    public static function fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $countryId, $breif, $discription)
+    public static function fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $perfumeCounter, $countryId, $breif, $discription)
     {
         $db = Db::getInstance();
 
-        $record = $db->first("SELECT perfumeId FROM perfume WHERE perfumeName='$perfumeName' AND densityId='$densityId' AND jenderId='$jenderId' AND brandId='$brandId' AND typeSmell='$typeSmell' AND structrueSmell='$structrueSmell' AND discount='$discount' AND price='$price' AND countryId='$countryId' AND breif='$breif' AND discription='$discription'");
+        $record = $db->first("SELECT perfumeId FROM perfume WHERE perfumeName='$perfumeName' AND densityId='$densityId' AND jenderId='$jenderId' AND brandId='$brandId' AND typeSmell='$typeSmell' AND structrueSmell='$structrueSmell' AND discount='$discount' AND price='$price' AND perfumeCounter='$perfumeCounter' AND countryId='$countryId' AND breif='$breif' AND discription='$discription'");
         if ($record != null && (null == $perfumeId || $record != $perfumeId)) {
             require_once("./mvc/view/page/header.php");
             message('fail', " عطر موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/page/updateProduct"> کلیک </a>' . 'کنید.', true);

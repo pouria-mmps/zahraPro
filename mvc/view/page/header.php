@@ -110,7 +110,7 @@
             </span>
         </a>
 
-        <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
+        <a href="<?= baseUrl() ?>productsman/ordersStatus" class="menu-item">
             <i class="fa fa-file-text-o menu-icon"></i>
             <span style="font-size: 18px;">
                 وضیعیت سفارشات

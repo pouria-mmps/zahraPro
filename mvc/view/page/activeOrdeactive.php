@@ -2,11 +2,11 @@
 include("./mvc/view/page/managerHeader.php");
 ?>
 
-<a id="button"></a>
+<a id="button" style="text-decoration: none;"></a>
 
 <?php foreach ($perfumes as $perfume) { ?>
     <div class="box-updateProduct">
-        <form class="frm-product-crud" id="frm-product-crud" action="<?= baseUrl() ?>page/deleteLP" method="post">
+        <form class="frm-product-crud" id="frm-product-crud" action="<?= baseUrl() ?>page/activeProduct" method="post">
 
             <label hidden>
                 <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
@@ -120,14 +120,24 @@ include("./mvc/view/page/managerHeader.php");
             <br><br><br>
 
             <!-- BTN POST Data -->
-            <button value="register" id="btn-submit-dproduct"><i class="fa fa-ban"
-                                                                 style="margin-left: 10px;"></i>غیرفعال
-            </button>
+            <?php if ($hasButton == 'true') { ?>
+                <button value="register" id="btn-submit-activeproduct"><i class="fa fa-check"
+                                                                          style="margin-left: 10px;font-size: medium;"></i>فعال
+                </button>
+            <?php } else { ?>
+                <button value="cancelOrder" id="btn-submit-dproduct"
+                        formaction="<?= baseUrl() ?>page/deleteLP/<?= $perfume['perfumeId'] ?>">
+                    <label hidden>
+                        <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
+                    </label>
+                    <i class="fa fa-close" style="font-size: small;margin-left: 5px;"></i>غیرفعال
+                </button>
+            <?php } ?>
 
             <!-- BTN Cancel -->
             <button formaction="<?= baseUrl() ?>page/productsManager" id="btn-cancel-uproduct" type="submit"
                     value="cancel" style="margin-right: 50px;">
-                <i class="fa fa-close" style="margin-left: 5px;"></i>
+                <i class="fa fa-close" style="margin-left: 5px;font-size: medium;"></i>
                 انصراف
             </button>
             <br><br><br>

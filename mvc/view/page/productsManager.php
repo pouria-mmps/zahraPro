@@ -29,6 +29,7 @@ include("./mvc/view/page/managerHeader.php");
         <td class="th-p-crud">جنسیت</td>
         <td class="th-p-crud">تخفیف</td>
         <td class="th-p-crud">قیمت</td>
+        <td class="th-p-crud">تعداد</td>
         <td class="th-p-crud">عملیات</td>
     </tr>
     <br>
@@ -36,7 +37,7 @@ include("./mvc/view/page/managerHeader.php");
     <?php $i = 1 ?>
     <?php foreach ($products as $perfume) { ?>
         <tr>
-            <td>
+            <td style="padding: 15px;">
                 <span style="font-size: larger;"><?php echo $i; ?></span>
                 <?php $i++; ?>
             </td>
@@ -66,16 +67,20 @@ include("./mvc/view/page/managerHeader.php");
                 <?= $perfume['countryName'] ?>
             </td>
 
-            <td style="font-size: large;">
+            <td style="font-size: large;padding: 15px;">
                 <?= $perfume['jenderType'] ?>
             </td>
 
-            <td style="font-size: larger;">
+            <td style="font-size: larger;padding: 20px;">
                 <?= $perfume['discount'] ?>
             </td>
 
             <td style="padding: 10px;font-size: larger;">
                 <?= $perfume['price'] ?>
+            </td>
+
+            <td style="padding: 20px;font-size: larger;">
+                <?= $perfume['perfumeCounter'] ?>
             </td>
 
             <td style="padding: 20px;">
@@ -91,22 +96,24 @@ include("./mvc/view/page/managerHeader.php");
 
                 <?php if ($perfume['deleteLogic'] == 1) { ?>
                     <form class="frm-log-crud"
-                          action="<?= baseUrl() ?>page/deleteLogicProduct/<?= $perfume['perfumeId'] ?>"
+                          action="<?= baseUrl() ?>page/activeOrdeactive/<?= $perfume['perfumeId'] ?>"
                           method="post">
                         <button value="deleteCrud" id="deactive-btn" class="btn-deactive">
                             <label hidden>
                                 <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
+                                <input type="hidden" name="hasButton" value="false">
                             </label>
                             <i class="fa fa-close" style="font-size: small;"></i>غیرفعال
                         </button>
                     </form>
                 <?php } else { ?>
                     <form class="frm-log-crud"
-                          action="<?= baseUrl() ?>page/activeProducChecking/<?= $perfume['perfumeId'] ?>"
+                          action="<?= baseUrl() ?>page/activeOrdeactive/<?= $perfume['perfumeId'] ?>"
                           method="post">
                         <button value="deleteCrud" id="active-btn" class="btn-active">
                             <label hidden>
                                 <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
+                                <input type="hidden" name="hasButton" value="true">
                             </label>
                             <i class="fa fa-check" style="font-size: small;"></i>فعال
                         </button>

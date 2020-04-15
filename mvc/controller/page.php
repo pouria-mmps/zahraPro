@@ -62,6 +62,7 @@ class PageController
     public function productsManager()
     {
         $db = Db::getInstance();
+
         $products = $db->query("SELECT * FROM perfume LEFT OUTER JOIN brand ON perfume.brandId=brand.brandId LEFT OUTER JOIN jender ON perfume.jenderId=jender.jenderId LEFT OUTER JOIN country ON perfume.countryId=country.countryId");
         $data['products'] = $products;
 
@@ -104,15 +105,16 @@ class PageController
         $structrueSmell = $_POST['structrueSmell'];
         $discount = $_POST['discount'];
         $price = $_POST['price'];
+        $perfumeCounter = $_POST['perfumeCounter'];
         $countryId = $_POST['countryId'];
         $breif = $_POST['breif'];
         $discription = $_POST['discription'];
 
-        $record = UserModel::fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $countryId, $breif, $discription);
+        $record = UserModel::fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $perfumeCounter, $countryId, $breif, $discription);
 
         $db = Db::getInstance();
         $db->modify("UPDATE perfume 
-                           SET perfumeName=:perfumeName, densityId=:densityId, jenderId=:jenderId, brandId=:brandId, typeSmell=:typeSmell, structrueSmell=:structrueSmell, discount=:discount, price=:price, breif=:breif, discription=:discription WHERE perfumeId='$perfumeId'", array(
+                           SET perfumeName=:perfumeName, densityId=:densityId, jenderId=:jenderId, brandId=:brandId, typeSmell=:typeSmell, structrueSmell=:structrueSmell, discount=:discount, price=:price, perfumeCounter=:perfumeCounter, breif=:breif, discription=:discription WHERE perfumeId='$perfumeId'", array(
             'perfumeName' => $perfumeName,
             'densityId' => $densityId,
             'jenderId' => $jenderId,
@@ -121,6 +123,7 @@ class PageController
             'structrueSmell' => $structrueSmell,
             'discount' => $discount,
             'price' => $price,
+            'perfumeCounter' => $perfumeCounter,
             'countryId' => $countryId,
             'breif' => $breif,
             'discription' => $discription,
@@ -128,76 +131,6 @@ class PageController
 
         require_once("./mvc/view/page/managerHeader.php");
         message('success', " ویرایش عطر با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
-    }
-
-
-    public function deleteLogicProduct()
-    {
-        $perfumeId = $_POST['perfumeId'];
-
-        $db = Db::getInstance();
-        $perfumes = $db->query("SELECT * FROM perfume LEFT OUTER JOIN perfume_density ON perfume.densityId=perfume_density.densityId LEFT OUTER JOIN brand ON perfume.brandId=brand.brandId LEFT OUTER JOIN jender ON perfume.jenderId=jender.jenderId LEFT OUTER JOIN country ON perfume.countryId=country.countryId WHERE perfumeId='$perfumeId'");
-        $data['perfumes'] = $perfumes;
-
-        $genders = $db->query("SELECT * FROM jender");
-        $data['genders'] = $genders;
-
-        $brands = $db->query("SELECT * FROM brand");
-        $data['brands'] = $brands;
-
-        $densitys = $db->query("SELECT * FROM perfume_density");
-        $data['densitys'] = $densitys;
-
-        $countrys = $db->query("SELECT * FROM country");
-        $data['countrys'] = $countrys;
-        View::render("./mvc/view/page/deleteLogicProduct.php", $data);
-    }
-
-
-    public function deleteLP()
-    {
-        $perfumeId = $_POST['perfumeId'];
-
-        $db = Db::getInstance();
-        $db->modify("UPDATE perfume SET deleteLogic=2 WHERE perfumeId='$perfumeId'");
-
-        require_once("./mvc/view/page/managerHeader.php");
-        message('success', " عطر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
-    }
-
-
-    public function activeProducChecking()
-    {
-        $perfumeId = $_POST['perfumeId'];
-
-        $db = Db::getInstance();
-        $perfumes = $db->query("SELECT * FROM perfume LEFT OUTER JOIN perfume_density ON perfume.densityId=perfume_density.densityId LEFT OUTER JOIN brand ON perfume.brandId=brand.brandId LEFT OUTER JOIN jender ON perfume.jenderId=jender.jenderId LEFT OUTER JOIN country ON perfume.countryId=country.countryId WHERE perfumeId='$perfumeId'");
-        $data['perfumes'] = $perfumes;
-
-        $genders = $db->query("SELECT * FROM jender");
-        $data['genders'] = $genders;
-
-        $brands = $db->query("SELECT * FROM brand");
-        $data['brands'] = $brands;
-
-        $densitys = $db->query("SELECT * FROM perfume_density");
-        $data['densitys'] = $densitys;
-
-        $countrys = $db->query("SELECT * FROM country");
-        $data['countrys'] = $countrys;
-        View::render("./mvc/view/page/activeProduct.php", $data);
-    }
-
-
-    public function activeProduct()
-    {
-        $perfumeId = $_POST['perfumeId'];
-
-        $db = Db::getInstance();
-        $db->modify("UPDATE perfume SET deleteLogic=1 WHERE perfumeId='$perfumeId'");
-
-        require_once("./mvc/view/page/managerHeader.php");
-        message('success', " عطر مورد نظر فعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -243,5 +176,53 @@ class PageController
         $db->insert("INSERT INTO perfume (perfumeName,densityId,jenderId,brandId,typeSmell,structrueSmell,discount,price,countryId,deleteLogic,breif,discription)
             VALUES ('$perfumeName','$densityId','$jenderId','$brandId','$typeSmell','$structrueSmell','$discount','$price','$countryId','$deleteLogic','$breif','$discription')"
         );
+    }
+
+
+    public function activeOrdeactive()
+    {
+        $perfumeId = $_POST['perfumeId'];
+        $data['hasButton'] = $_POST['hasButton'];
+
+        $db = Db::getInstance();
+        $perfumes = $db->query("SELECT * FROM perfume LEFT OUTER JOIN perfume_density ON perfume.densityId=perfume_density.densityId LEFT OUTER JOIN brand ON perfume.brandId=brand.brandId LEFT OUTER JOIN jender ON perfume.jenderId=jender.jenderId LEFT OUTER JOIN country ON perfume.countryId=country.countryId WHERE perfumeId='$perfumeId'");
+        $data['perfumes'] = $perfumes;
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+        $countrys = $db->query("SELECT * FROM country");
+        $data['countrys'] = $countrys;
+        View::render("./mvc/view/page/activeOrdeactive.php", $data);
+    }
+
+
+    public function activeProduct()
+    {
+        $perfumeId = $_POST['perfumeId'];
+
+        $db = Db::getInstance();
+        $db->modify("UPDATE perfume SET deleteLogic=1 WHERE perfumeId='$perfumeId'");
+
+        require_once("./mvc/view/page/managerHeader.php");
+        message('success', " عطر مورد نظر فعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
+    }
+
+
+    public function deleteLP()
+    {
+        $perfumeId = $_POST['perfumeId'];
+
+        $db = Db::getInstance();
+        $db->modify("UPDATE perfume SET deleteLogic=2 WHERE perfumeId='$perfumeId'");
+        echo 'a';
+        require_once("./mvc/view/page/managerHeader.php");
+        message('success', " عطر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
     }
 }
