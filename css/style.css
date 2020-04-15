@@ -413,7 +413,8 @@ h3 {
 
 /* Login Button */
 #btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
-.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn, #btn-submit-dproduct, .btn-change-pass, #btn-submit-uprofile {
+.insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn, #btn-submit-dproduct, .btn-change-pass,
+#btn-submit-uprofile, #btn-submit-activeproduct {
     width: 25%;
     color: #777;
     border: none;
@@ -458,7 +459,8 @@ h3 {
     margin-right: 210px;
 }
 
-#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, .insert-product:hover, .signupbtn:hover, .btn-change-pass:hover {
+#btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, .insert-product:hover, .signupbtn:hover,
+.btn-change-pass:hover, #btn-submit-activeproduct:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
@@ -571,7 +573,7 @@ input[type=radio] {
     display: inline-block;
 }
 
-#btn-submit-uproduct, #btn-cancel-uproduct, #btn-submit-uaddress, #btn-submit-dproduct {
+#btn-submit-uproduct, #btn-cancel-uproduct, #btn-submit-uaddress, #btn-submit-dproduct, #btn-submit-activeproduct {
     margin-right: 70px;
     margin-bottom: 10px;
 }

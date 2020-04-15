@@ -50,7 +50,9 @@ class UserController
                 $_SESSION['userAccess'] = $record['userAccess'];
                 message('success', "شما با موفقیت وارد شده اید. جهت ورود به صفحه اصلی " . '<a href="/MainProject/page/home"> کلیک </a>' . 'کنید.', true);
             } else {
-                message('fail', "گذرواژه شما نادرست است", true);
+                message('fail', "گذرواژه شما نادرست است" . '<br><br>' . 'لطفا برای تلاش مجدد  ' .
+                    '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.'
+                    , true);
             }
         }
         return;

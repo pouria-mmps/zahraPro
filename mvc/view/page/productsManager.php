@@ -102,7 +102,7 @@ include("./mvc/view/page/managerHeader.php");
                     </form>
                 <?php } else { ?>
                     <form class="frm-log-crud"
-                          action="<?= baseUrl() ?>page/activeProduct/<?= $perfume['perfumeId'] ?>"
+                          action="<?= baseUrl() ?>page/activeProducChecking/<?= $perfume['perfumeId'] ?>"
                           method="post">
                         <button value="deleteCrud" id="active-btn" class="btn-active">
                             <label hidden>

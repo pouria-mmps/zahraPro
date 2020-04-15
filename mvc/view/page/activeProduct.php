@@ -6,7 +6,7 @@ include("./mvc/view/page/managerHeader.php");
 
 <?php foreach ($perfumes as $perfume) { ?>
     <div class="box-updateProduct">
-        <form class="frm-product-crud" id="frm-product-crud" action="<?= baseUrl() ?>page/deleteLP" method="post">
+        <form class="frm-product-crud" id="frm-product-crud" action="<?= baseUrl() ?>page/activeProduct" method="post">
 
             <label hidden>
                 <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
@@ -120,8 +120,8 @@ include("./mvc/view/page/managerHeader.php");
             <br><br><br>
 
             <!-- BTN POST Data -->
-            <button value="register" id="btn-submit-dproduct"><i class="fa fa-ban"
-                                                                 style="margin-left: 10px;"></i>غیرفعال
+            <button value="register" id="btn-submit-activeproduct"><i class="fa fa-check"
+                                                                      style="margin-left: 10px;"></i>فعال
             </button>
 
             <!-- BTN Cancel -->

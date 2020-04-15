@@ -166,6 +166,29 @@ class PageController
     }
 
 
+    public function activeProducChecking()
+    {
+        $perfumeId = $_POST['perfumeId'];
+
+        $db = Db::getInstance();
+        $perfumes = $db->query("SELECT * FROM perfume LEFT OUTER JOIN perfume_density ON perfume.densityId=perfume_density.densityId LEFT OUTER JOIN brand ON perfume.brandId=brand.brandId LEFT OUTER JOIN jender ON perfume.jenderId=jender.jenderId LEFT OUTER JOIN country ON perfume.countryId=country.countryId WHERE perfumeId='$perfumeId'");
+        $data['perfumes'] = $perfumes;
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+        $countrys = $db->query("SELECT * FROM country");
+        $data['countrys'] = $countrys;
+        View::render("./mvc/view/page/activeProduct.php", $data);
+    }
+
+
     public function activeProduct()
     {
         $perfumeId = $_POST['perfumeId'];
