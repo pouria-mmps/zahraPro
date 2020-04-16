@@ -95,7 +95,7 @@
         </span>
     </a>
 
-    <?php if (isset($_SESSION['userEmail']) && $users['userAccess'] == 'user') { ?>
+    <?php if (isset($_SESSION['userEmail']) && $users['accessId'] == 2) { ?>
         <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
             <i class="fa fa-file-text-o menu-icon"></i>
             <span style="font-size: 18px;">
@@ -117,7 +117,7 @@
             </span>
         </a>
 
-    <?php } elseif (isset($_SESSION['userEmail']) && ($users['userAccess'] == 'admin' || $users['userAccess'] == 'user,admin')) { ?>
+    <?php } elseif (isset($_SESSION['userEmail']) && $users['accessId'] == 1) { ?>
         <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
             <i class="fa fa-file-text-o menu-icon"></i>
             <span style="font-size: 18px;">

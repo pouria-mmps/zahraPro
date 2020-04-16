@@ -27,9 +27,9 @@ require_once("./mvc/view/page/header.php");
         <!--Gender-->
         <label class="frm-txt"><i style="color: red;"> * </i>جنسیت</label>
         <span>
-            <label><input type="radio" name="userGender" value="male" style="margin-right: 140px;"></label>
+            <label><input type="radio" name="jenderId" value="1" style="margin-right: 140px;"></label>
             <label style="font-size: large;color: #777;">   مرد</label>
-            <label><input type="radio" name="userGender" value="female" style="margin-right: 90px;"></label>
+            <label><input type="radio" name="jenderId" value="2" style="margin-right: 90px;"></label>
             <label style="font-size: large;color: #777;">   زن</label>
         </span>
         <br><br><br>

@@ -2,11 +2,11 @@
 
 class UserModel
 {
-    public static function insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $userPassword)
+    public static function insert($userName, $userFamilyName, $jenderId, $userTell, $userMobile, $userEmail, $userPassword)
     {
         $db = Db::getInstance();
-        $db->insert("INSERT INTO user (userName,userFamilyName,userGender,userAccess,userTell,userMobile,userEmail,userPassword)
-            VALUES ('$userName','$userFamilyName','$userGender','user','$userTell','$userMobile','$userEmail','$userPassword')"
+        $db->insert("INSERT INTO user (userName,userFamilyName,jenderId,accessId,userTell,userMobile,userEmail,userPassword)
+            VALUES ('$userName','$userFamilyName','$jenderId','2','$userTell','$userMobile','$userEmail','$userPassword')"
         );
     }
 

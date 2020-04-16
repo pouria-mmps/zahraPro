@@ -49,7 +49,7 @@
         </span>
     </a>
 
-    <a href="<?= baseUrl() ?>productsman/productsman" class="menu-item">
+    <a href="<?= baseUrl() ?>page/usersManager" class="menu-item">
         <i class="fa fa-user-circle menu-icon"></i>
         <span style="font-size: 18px;">
             مدیریت کاربران

@@ -472,7 +472,7 @@ h3 {
 }
 
 #btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, .insert-product:hover, .signupbtn:hover,
-.btn-change-pass:hover, #btn-submit-activeproduct:hover, #btn-submit-addproduct:hover, #show-orders-btn:hover {
+.btn-change-pass:hover, #btn-submit-activeproduct:hover, #btn-submit-addproduct:hover, #show-orders-btn:hover, .btn-active-user:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;
@@ -485,7 +485,7 @@ h3 {
 }
 
 #btn-submit-dproduct:hover, #btn-cancel:hover, #btn-cancel-reg:hover, #btn-cancel-uproduct:hover, .btn-deactive:hover,
-#btn-cancel-uaddress:hover, .cancelbtn:hover, #cancel-order-btn:hover, .btn-cancel-order:hover {
+#btn-cancel-uaddress:hover, .cancelbtn:hover, #cancel-order-btn:hover, .btn-cancel-order:hover, .btn-deactive-user:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #ff0643;
@@ -1666,7 +1666,8 @@ button {
     margin-left: 80px;
 }
 
-.btn-updateProduct, #select-address-btn, #delete-address-btn, #update-address-btn, #portal-btn, .btn-active {
+.btn-updateProduct, #select-address-btn, #delete-address-btn, #update-address-btn, #portal-btn, .btn-active, .btn-update-pass-user,
+.btn-deactive-user, .btn-active-user, .btn-update-user {
     width: 80px;
     color: #777;
     cursor: pointer;
@@ -1677,6 +1678,28 @@ button {
     transition: all 0.3s;
     background-color: #f0eeee;
     border-bottom: 3px solid #cbc8c8;
+}
+
+.btn-update-pass-user {
+    width: 110px;
+    margin-top: 5px;
+    margin-right: -55px;
+}
+
+.btn-deactive-user, .btn-active-user {
+    width: 60px;
+    margin-top: -45px;
+    margin-right: -95px;
+}
+
+.btn-deactive-user {
+    width: 70px;
+}
+
+.btn-update-user {
+    width: 115px;
+    margin-top: -46px;
+    margin-right: 20px;
 }
 
 .btn-updateProduct {
@@ -1694,14 +1717,15 @@ button {
     margin-right: 70px;
 }
 
-#select-address-btn:hover, #portal-btn:hover, .btn-active:hover {
+#select-address-btn:hover, #portal-btn:hover, .btn-active:hover, .btn-update-pass-user:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #a1cfb8;
     border-bottom: 3px solid #78af93;
 }
 
-.btn-updateProduct:hover, #update-address-btn:hover, #btn-submit-uaddress:hover, #btn-submit-uproduct:hover, #btn-submit-uprofile:hover {
+.btn-updateProduct:hover, #update-address-btn:hover, #btn-submit-uaddress:hover, #btn-submit-uproduct:hover,
+#btn-submit-uprofile:hover, .btn-update-user:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #feca38;

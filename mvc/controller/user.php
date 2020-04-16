@@ -36,21 +36,25 @@ class UserController
         require_once("./mvc/view/page/header.php");
 
         $record = UserModel::fetch_by_email($userEmail);
+        if ($record['blockId'] == 2) {
+            message('fail', "شما دسترسی ورود به سایت را ندارید.", true);
+        }
+
         if ($userPassword == null || $userEmail == null) {
-            message('fail', "نام کاربری یا گذرواژه خود را وارد نکرده اید" . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
+            message('fail', "نام کاربری یا گذرواژه خود را وارد نکرده اید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
         }
 
         if ($record == null) {
-            message('fail', "نام کاربری یا گذرواژه نادرست است" . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
+            message('fail', "نام کاربری یا گذرواژه نادرست است." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
         } else {
             $hashedPassword = md5($userPassword);
             if ($hashedPassword == $record['userPassword']) {
                 $_SESSION['userEmail'] = $record['userEmail'];
                 $_SESSION['userId'] = $record['userId'];
-                $_SESSION['userAccess'] = $record['userAccess'];
+                $_SESSION['accessId'] = $record['accessId'];
                 message('success', "شما با موفقیت وارد شده اید. جهت ورود به صفحه اصلی " . '<a href="/MainProject/page/home"> کلیک </a>' . 'کنید.', true);
             } else {
-                message('fail', "گذرواژه شما نادرست است" . '<br><br>' . 'لطفا برای تلاش مجدد  ' .
+                message('fail', "گذرواژه شما نادرست است." . '<br><br>' . 'لطفا برای تلاش مجدد  ' .
                     '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.'
                     , true);
             }
@@ -80,7 +84,7 @@ class UserController
     {
         $userName = $_POST['userName'];
         $userFamilyName = $_POST['userFamilyName'];
-        $userGender = $_POST['userGender'];
+        $jenderId = $_POST['jenderId'];
         $userTell = $_POST['userTell'];
         $userMobile = $_POST['userMobile'];
         $userEmail = $_POST['userEmail'];
@@ -91,7 +95,7 @@ class UserController
 
         $record = UserModel::fetch_by_email($userEmail);
 
-        if ($userName == null || $userFamilyName == null || $userGender == null || $userEmail == null || $userPassword == null) {
+        if ($userName == null || $userFamilyName == null || $jenderId == null || $userEmail == null || $userPassword == null) {
             message('fail', "لطفا فیلدهای ستاره دار را پر کنید. " . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
         }
 
@@ -108,7 +112,7 @@ class UserController
         }
 
         $hashedPassword = md5($userPassword);
-        UserModel::insert($userName, $userFamilyName, $userGender, $userTell, $userMobile, $userEmail, $hashedPassword);
+        UserModel::insert($userName, $userFamilyName, $jenderId, $userTell, $userMobile, $userEmail, $hashedPassword);
         message('success', "با موفقیت ثبت نام شدید" . '<br><br><br>' . '<span style="color: red;font-size: larger;">' . $userName . " " . $userFamilyName . '</span>' . '   ' . ' برای ادامه لطفا' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
     }
 

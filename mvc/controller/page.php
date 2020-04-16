@@ -221,8 +221,82 @@ class PageController
 
         $db = Db::getInstance();
         $db->modify("UPDATE perfume SET deleteLogic=2 WHERE perfumeId='$perfumeId'");
-        echo 'a';
+
         require_once("./mvc/view/page/managerHeader.php");
+
         message('success', " عطر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
+    }
+
+
+    public function usersManager()
+    {
+        $db = Db::getInstance();
+        $users = $db->query("SELECT * FROM user LEFT OUTER JOIN jender ON user.jenderId=jender.jenderId LEFT OUTER JOIN user_access ON user.accessId=user_access.accessId ");
+        $data['users'] = $users;
+
+        View::render("./mvc/view/page/usersManager.php", $data);
+    }
+
+
+    public function activeUser()
+    {
+        $userId = $_POST['userId'];
+
+        $db = Db::getInstance();
+        $db->modify("UPDATE user SET blockId=1 WHERE userId='$userId'");
+
+        require_once("./mvc/view/page/managerHeader.php");
+
+        message('success', " کاربر مورد نظر فعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+
+    }
+
+
+    public function deactiveUser()
+    {
+        $userId = $_POST['userId'];
+
+        $db = Db::getInstance();
+        $db->modify("UPDATE user SET blockId=2 WHERE userId='$userId'");
+
+        require_once("./mvc/view/page/managerHeader.php");
+
+        message('success', " کاربر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+    }
+
+
+    public function resetUserPass()
+    {
+        $userId = $_POST['userId'];
+
+        $db = Db::getInstance();
+        $userPassword = 1234;
+
+        $hashedPassword = md5($userPassword);
+        $db->modify("UPDATE user SET userPassword='$hashedPassword' WHERE userId='$userId'");
+
+        require_once("./mvc/view/page/managerHeader.php");
+        message('success', "گذرواژه کاربر به حالت پیش فرض تغییر کرد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+    }
+
+
+    public function updateUser()
+    {
+        $db = Db::getInstance();
+        $userId = $_POST['userId'];
+
+        $accessId = $db->first("SELECT * FROM user WHERE userId='$userId'");
+
+        if ($accessId['accessId'] == 1) {
+            $db->modify("UPDATE user SET accessId='2' WHERE userId='$userId'");
+
+            require_once("./mvc/view/page/managerHeader.php");
+            message('success', "سطح دسترسی به کاربر تغییر یافت." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+        } elseif ($accessId['accessId'] == 2) {
+            $db->modify("UPDATE user SET accessId='1' WHERE userId='$userId'");
+
+            require_once("./mvc/view/page/managerHeader.php");
+            message('success', "سطح دسترسی به مدیر سایت تغییر یافت." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+        }
     }
 }
