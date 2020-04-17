@@ -36,7 +36,7 @@
 
                 <div class="priceWraper-linear">
                     <span class="newPrice-linear"><i
-                            style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?> </i>تومان </span>
+                                style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?> </i>تومان </span>
 
                     <?php if ($perfume['discount'] > 0) { ?>
                         <span class="oldPrice-linear" style="font-size: 16px"><?= $perfume['price'] ?> تومان </span>
@@ -44,7 +44,13 @@
                 </div>
 
                 <div class="product-wish-add-btns">
-                    <?php if ($perfume['perfumeCounter'] == 0) { ?>
+                    <?php if ($managers['accessId'] == 1) { ?>
+                        <div class="addToCart-btn-detail4">
+                            <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
+                            <span style="font-size: medium;"> اضافه به سبد خرید</span>
+                        </div>
+
+                    <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
                         <div class="addToCart-btn-linear2">
                             <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
                             <span style="font-size: large;"> اضافه به سبد خرید</span>

@@ -97,13 +97,11 @@
 
 
 <!-- Men Products -->
-<a href="#" style="text-decoration: none;">
-    <h3 class="h3-header-products">عطرهای مردانه</h3>
-</a>
+<h3 class="h3-header-products">فروش ویژه ی عطرهای مردانه</h3>
 
 <div class="products scrollmenu-products">
     <?php foreach ($perfumes as $perfume) {
-        if ($perfume['jenderId'] == 1 && $perfume['deleteLogic'] == 1) {
+        if ($perfume['jenderId'] == 1 && $perfume['deleteLogic'] == 1 && $perfume['discount'] != 0 && $perfume['perfumeCounter'] != 0) {
             ?>
             <div class="product-panel-grid" style="margin-top: -10px;margin-right: 30px;margin-left: 30px">
                 <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg" alt="عطر">
@@ -169,13 +167,11 @@
 <br><br><br><br><br><br>
 
 <!-- Female Products -->
-<a href="#" style="text-decoration: none">
-    <h3 class="h3-header-products">عطرهای زنانه</h3>
-</a>
+<h3 class="h3-header-products">فروش ویژه ی عطرهای زنانه</h3>
 
 <div class="products scrollmenu-products">
     <?php foreach ($perfumes as $perfume) {
-        if ($perfume['jenderId'] == 2 && $perfume['deleteLogic'] == 1) {
+        if ($perfume['jenderId'] == 2 && $perfume['deleteLogic'] == 1 && $perfume['discount'] != 0 && $perfume['perfumeCounter'] != 0) {
             ?>
             <div class="product-panel-grid" style="margin-top: -10px;margin-right: 25px;margin-left: 25px">
                 <img src="/MainProject/image/Perfumes/<?= $perfume['perfumeId'] ?>.jpg" class="productImg" alt="عطر">

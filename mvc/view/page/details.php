@@ -104,7 +104,7 @@ include("./mvc/view/page/header.php");
                             style="font-weight: normal;"><?= $perfume['typeSmell'] ?></span></li>
 
                     <li style="margin-top: 5px;font-weight: bold;font-size: large;"> ساختار رایحه: <span
-                            style="font-weight: normal;"><?= $perfume['structrueSmell'] ?></span></li>
+                                style="font-weight: normal;"><?= $perfume['structrueSmell'] ?></span></li>
                 </ul>
             </div>
 
@@ -113,7 +113,12 @@ include("./mvc/view/page/header.php");
             <span class="newPrice-detail"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?> تومان </span>
 
             <div class="wish-add-btn-detail">
-                <?php if ($perfume['perfumeCounter'] == 0) { ?>
+                <?php if ($managers['accessId'] == 1) { ?>
+                    <div class="addToCart-btn-detail2">
+                        <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
+                        <span style="font-size: large;"> اضافه به سبد خرید</span>
+                    </div>
+                <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
                     <div class="addToCart-btn-detail2">
                         <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
                         <span style="font-size: large;"> اضافه به سبد خرید</span>
@@ -126,7 +131,8 @@ include("./mvc/view/page/header.php");
                 <?php } ?>
             </div>
 
-            <?php if ($perfume['discount'] > 0) { ?>
+            <?php a:
+            if ($perfume['discount'] > 0) { ?>
                 <div class="discount-detail">
                     <?php if ($perfume['discount'] > 0) { ?>
                         <i class="fa fa-gift discount-detail-btn"></i>

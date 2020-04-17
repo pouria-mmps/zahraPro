@@ -1,5 +1,5 @@
 <?php
-include("./mvc/view/page/managerHeader.php");
+include("./mvc/view/page/header.php");
 ?>
 
 <a id="button" style="text-decoration: none;"></a>

@@ -59,16 +59,17 @@
                 <i class="fa fa-sign-out signout-btn" style="font-size: medium;"></i>خروج
             </a>
         </span>
-
-        <span class="cart">
-            <span id="cart-items"></span>
-            <i class="fa fa-shopping-cart" style="margin-left: 5px;"></i> سبد خرید
-        </span>
-        <span class="btn-cart vertical-menu">
-            <div id="cartPreviewHolder"
-                 style="width:250px;display: none;background-color: #f7f7f7;position: relative;box-shadow: 0 0 5px #a2a2a2;border-radius: 5px;"></div>
-        </span>
-    <?php } ?>
+        <?php if ($users['accessId'] == 2) { ?>
+            <span class="cart">
+                <span id="cart-items"></span>
+                <i class="fa fa-shopping-cart" style="margin-left: 5px;"></i> سبد خرید
+            </span>
+            <span class="btn-cart vertical-menu">
+                <div id="cartPreviewHolder"
+                     style="width:250px;display: none;background-color: #f7f7f7;position: relative;box-shadow: 0 0 5px #a2a2a2;border-radius: 5px;"></div>
+            </span>
+        <?php }
+    } ?>
 
     <!-- Logo -->
     <div class="container">
@@ -118,14 +119,7 @@
         </a>
 
     <?php } elseif (isset($_SESSION['userEmail']) && $users['accessId'] == 1) { ?>
-        <a href="<?= baseUrl() ?>productsman/myorders" class="menu-item">
-            <i class="fa fa-file-text-o menu-icon"></i>
-            <span style="font-size: 18px;">
-                سفارشات من
-            </span>
-        </a>
-
-        <a href="<?= baseUrl() ?>page/productsManager" class="menu-item">
+        <a href="<?= baseUrl() ?>page/manager" class="menu-item">
             <i class="fa fa-adjust menu-icon"></i>
             <span style="font-size: 18px;">
                 پنل مدیریت

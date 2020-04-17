@@ -37,7 +37,13 @@
             </div>
             <br>
 
-            <?php if ($perfume['perfumeCounter'] == 0) { ?>
+            <?php if ($managers['accessId'] == 1) { ?>
+                <div class="addToCart-btn-detail3">
+                    <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
+                    <span style="font-size: medium;"> اضافه به سبد خرید</span>
+                </div>
+
+            <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
                 <span class="addToCart-btn2">
                 <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
             </span>

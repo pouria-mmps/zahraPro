@@ -441,6 +441,7 @@ class ProductsmanController
         $sortType = $_POST['sortType'];
         $keyword = $_POST['keyword'];
         $viewType = $_POST['viewType'];
+        $userId = getUserId();
 
         $db = Db::getInstance();
         $perfumes = $db->query("SELECT * FROM perfume WHERE perfumeName LIKE '%$keyword%' ORDER BY $sortType");
@@ -457,6 +458,8 @@ class ProductsmanController
         $brands = $db->query("SELECT * FROM brand");
         $data['brands'] = $brands;
 
+        $managers = $db->first("SELECT * FROM user WHERE userId='$userId'");
+        $data['managers'] = $managers;
 
         if ($viewType == 'grid') {
             $_SESSION['viewType'] = 'grid';

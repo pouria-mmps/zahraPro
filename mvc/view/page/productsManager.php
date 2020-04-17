@@ -1,17 +1,9 @@
 <?php
-include("./mvc/view/page/managerHeader.php");
+include("./mvc/view/page/header.php");
 ?>
 
 <a id="button" style="text-decoration: none;"></a>
-
-<!-- Search Box -->
-<span class="search-product">
-    <span style="margin-right: 100px;font-size: 15px;font-weight: bold;color:#555;">جستجو</span>
-    <label for="search"></label>
-        <input type="search" value="" id="keyword" class="search-products"
-               placeholder="نام محصول یا برند مورد نظرتان را جستجو کنید">
-</span>
-<br>
+<br><br><br>
 
 <a href="/MainProject/page/insertProduct" style="text-decoration: none;">
     <span class="fa fa-plus insert-product"></span>
