@@ -506,7 +506,8 @@ h3 {
 /* Login Button */
 #btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
 .insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn, #btn-submit-dproduct, .btn-change-pass,
-#btn-submit-uprofile, #btn-submit-activeproduct, #btn-submit-addproduct, #show-orders-btn, #cancel-order-btn, .btn-cancel-order {
+#btn-submit-uprofile, #btn-submit-activeproduct, #btn-submit-addproduct, #show-orders-btn, #cancel-order-btn, .btn-cancel-order,
+.btn-ordersorders-manager {
     width: 25%;
     color: #777;
     border: none;
@@ -529,10 +530,14 @@ h3 {
     margin-right: 200px;
 }
 
-#show-orders-btn, #cancel-order-btn {
+#show-orders-btn, #cancel-order-btn, .btn-ordersorders-manager {
     width: 50%;
     padding: 5px;
     font-size: medium;
+}
+
+.btn-ordersorders-manager {
+    width: 60%;
 }
 
 .btn-change-pass {
@@ -564,7 +569,8 @@ h3 {
 }
 
 #btn-submit:hover, #btn-submit-reg:hover, .btn-sale-myorders:hover, .insert-product:hover, .signupbtn:hover,
-.btn-change-pass:hover, #btn-submit-activeproduct:hover, #btn-submit-addproduct:hover, #show-orders-btn:hover, .btn-active-user:hover {
+.btn-change-pass:hover, #btn-submit-activeproduct:hover, #btn-submit-addproduct:hover, #show-orders-btn:hover, .btn-active-user:hover,
+.btn-ordersorders-manager:hover {
     color: #fff;
     transition: all 0.3s;
     text-decoration: none;

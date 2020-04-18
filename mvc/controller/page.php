@@ -28,6 +28,10 @@ class PageController
     {
         $perfumeId = $_POST['perfumeId'];
         $db = Db::getInstance();
+        $userId = getUserId();
+
+        $managers = $db->first("SELECT * FROM user WHERE userId='$userId'");
+        $data['managers'] = $managers;
 
         $perfumes = $db->query("SELECT * FROM perfume WHERE perfumeId='$perfumeId'");
         $data['perfumes'] = $perfumes;
@@ -298,5 +302,42 @@ class PageController
             require_once("./mvc/view/page/managerHeader.php");
             message('success', "سطح دسترسی به مدیر سایت تغییر یافت." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
         }
+    }
+
+
+    public function ordersManager()
+    {
+        $db = Db::getInstance();
+
+        $orders = $db->query("SELECT * FROM cart LEFT OUTER JOIN user ON cart.userId=user.userId");
+        $data['orders'] = $orders;
+
+        $cartStatuses = $db->query("SELECT * FROM cart_status");
+        $data['cartStatuses'] = $cartStatuses;
+
+        View::render("./mvc/view/page/ordersManager.php", $data);
+    }
+
+
+    public function showOrdersManager()
+    {
+        $db = Db::getInstance();
+        $cartId = $_POST['cartId'];
+
+        $orders = $db->query("SELECT * FROM pym_order 
+                                    LEFT OUTER JOIN perfume ON pym_order.perfumeId=perfume.perfumeId WHERE pym_order.cartId='$cartId'");
+        $data['orders'] = $orders;
+
+        $densitys = $db->query("SELECT * FROM perfume_density");
+        $data['densitys'] = $densitys;
+
+
+        $genders = $db->query("SELECT * FROM jender");
+        $data['genders'] = $genders;
+
+        $brands = $db->query("SELECT * FROM brand");
+        $data['brands'] = $brands;
+
+        View::render("./mvc/view/page/showOrdersManager.php", $data);
     }
 }
