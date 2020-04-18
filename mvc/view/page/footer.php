@@ -30,10 +30,10 @@
             <div class="row">
                 <div class="col-sm-5" style="margin-right: 190px;">
                     <i class="fa fa-info"><span style="font-size: large;margin-right: 7px;">با عطرشاپ</i></span>
-                    <a href="#" class="footer-link-columns" style="margin-top: 20px;"><i
-                                class="fa fa-angle-left footer-icon"></i>تماس با ما</a>
-                    <a href="#" class="footer-link-columns" style="margin-bottom: 20px"><i
-                                class="fa fa-angle-left footer-icon"></i>درباره ما</a>
+                    <a href="/MainProject/page/callUs" class="footer-link-columns" style="margin-top: 20px;"><i
+                            class="fa fa-angle-left footer-icon"></i>تماس با ما</a>
+                    <a href="/MainProject/page/aboutUs" class="footer-link-columns" style="margin-bottom: 20px"><i
+                            class="fa fa-angle-left footer-icon"></i>درباره ما</a>
                 </div>
 
                 <div class="col-sm-5">

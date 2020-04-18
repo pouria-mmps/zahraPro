@@ -33,7 +33,7 @@
             </span>
             <span class="btn-cart vertical-menu">
                 <div id="cartPreviewHolder"
-                     style="width:250px;display: none;background-color: white;position: relative;box-shadow: 0 0 5px #a2a2a2;border-radius: 5px;"></div>
+                     style="width:280px;display: none;background-color: white;position: relative;box-shadow: 0 0 5px #a2a2a2;border-radius: 5px;"></div>
             </span>
         </div>
     <?php } ?>
@@ -66,7 +66,7 @@
             </span>
             <span class="btn-cart vertical-menu">
                 <div id="cartPreviewHolder"
-                     style="width:250px;display: none;background-color: #f7f7f7;position: relative;box-shadow: 0 0 5px #a2a2a2;border-radius: 5px;"></div>
+                     style="width:280px;display: none;background-color: #f7f7f7;position: relative;box-shadow: 0 0 5px #a2a2a2;border-radius: 5px;"></div>
             </span>
         <?php }
     } ?>

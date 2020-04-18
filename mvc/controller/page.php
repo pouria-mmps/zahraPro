@@ -57,6 +57,18 @@ class PageController
     }
 
 
+    public function callUs()
+    {
+        View::render("./mvc/view/page/callUs.php");
+    }
+
+
+    public function aboutUs()
+    {
+        View::render("./mvc/view/page/aboutUs.php");
+    }
+
+
     public function manager()
     {
         View::render("./mvc/view/page/manager.php");

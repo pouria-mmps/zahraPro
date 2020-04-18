@@ -2,8 +2,6 @@
 <?php
     include("./mvc/view/page/header.php");
 ?>
-<br><br>
-
 <a id="button" style="text-decoration: none;"></a>
 
 
@@ -12,7 +10,7 @@
         <!-- Img1 Slide Show -->
         <div class="mySlides fade">
             <div class="numbertext">3 / 1</div>
-            <img src="/MainProject/image/SlideShow1.jpg" class="slideshow-img" alt="Atkinsins">
+            <img src="/MainProject/image/SlideShow1.jpg" class="slideshow-img" alt="Atkinsins" style="height: 450px;">
             <div class="text-img-slide">بهترین عطرهای مردانه</div>
         </div>
 
@@ -63,37 +61,7 @@
         }
     </script>
 </div>
-<br><br><br><br><br><br><br><br>
-
-<!-- IMG Man & Woman -->
-<div class="content-img-jender">
-    <div class="col-sm-6">
-        <a href="#">
-            <img src="/MainProject/image/WomanShopping.jpg" class="content-img-woman" alt="Woman Perfumes"
-                 style="float: left">
-            <div class="overlay">
-                <div class="content-text-img">عطرهای زنانه</div>
-            </div>
-        </a>
-    </div>
-</div>
-
-<div class="content-img-jender2">
-    <div class="row">
-        <div class="col-sm-6">
-            <a href="#">
-                <img src="/MainProject/image/ManShopping.jpg" class="content-img-man" alt="Man Perfumes"
-                     style="float: right">
-                <div>
-                    <div class="overlay-img2">
-                        <div class="content-text-img">عطرهای مردانه</div>
-                    </div>
-                </div>
-            </a>
-        </div>
-    </div>
-</div>
-<br><br><br><br><br><br><br><br>
+<br><br><br><br>
 
 
 <!-- Men Products -->
@@ -164,7 +132,43 @@
         <?php }
     } ?>
 </div>
-<br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br>
+
+
+<div class="img-panel-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="img-panel">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-4" style="border-left: 2px solid rgba(0,0,0,0.35);">
+                                <img src="../image/Perfume.jpg"
+                                     style="width: 130px;margin-right: 110px;margin-top: -5px;">
+                                <p style="font-size: 18px;margin-right: 120px;margin-top: -10px;">ماندگارتدین رایحه
+                                    ها</p>
+                            </div>
+
+                            <div class="col-sm-4" style="border-left: 2px solid rgba(0,0,0,0.35);">
+                                <img src="../image/Pay.png" style="width: 130px;margin-right: 130px;margin-top: 10px;">
+                                <p style="font-size: 18px;margin-right: 125px;margin-top: 15px;">راحتی پرداخت آنلاین</p>
+                            </div>
+
+                            <div class="col-sm-4">
+                                <img src="../image/Perfume-colection.png"
+                                     style="width: 160px;height:100px;margin-right: 130px;margin-top: 5px;">
+                                <p style="font-size: 18px;margin-right: 135px;margin-top: 5px;">کلکسیونی از بهترین
+                                    عطرها</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br><br><br><br><br>
+
 
 <!-- Female Products -->
 <h3 class="h3-header-products">فروش ویژه ی عطرهای زنانه</h3>
@@ -236,7 +240,6 @@
     } ?>
 </div>
 <br><br><br><br><br><br><br>
-
 
 <?php
 include("./mvc/view/page/footer.php");
