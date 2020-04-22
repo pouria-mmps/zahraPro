@@ -6,8 +6,8 @@ include("./mvc/view/page/header.php");
 
 
 <div class="box-updateProduct">
-    <form class="frm-product-crud" action="<?= baseUrl() ?>page/insertProductChecking" method="post">
-
+    <form class="frm-product-crud" action="<?= baseUrl() ?>page/insertProductChecking" method="post"
+          enctype="multipart/form-data">
         <label class="frm-txt">نام عطر</label>
         <input type="text" class="frm-perfume-name" name="perfumeName" style="text-align: center;margin-bottom: 60px;">
         <br>
@@ -15,7 +15,7 @@ include("./mvc/view/page/header.php");
         <label class="frm-txt">غلظت عطر</label>
         <span class="sort-products">
             <select class="sort-products theme-construction" id="densityId" name="densityId"
-                    style="width: 55%;margin-right: 54px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
+                    style="width: 55%;margin-right: 58px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                 <?php foreach ($densitys as $density) { ?>
                     <option value="<?= $density['densityId'] ?>"
                             style="text-align: left;"><?= $density['densityTitle'] ?></option>
@@ -27,7 +27,7 @@ include("./mvc/view/page/header.php");
         <label class="frm-txt">جنسیت</label>
         <span class="sort-products">
             <select class="sort-products theme-construction" id="jenderId" name="jenderId"
-                    style="width: 55%;margin-right: 80px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
+                    style="width: 55%;margin-right: 76px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                 <?php foreach ($genders as $gender) { ?>
                     <option value="<?= $gender['jenderId'] ?>"
                             style="text-align: left;"><?= $gender['jenderType'] ?></option>
@@ -39,7 +39,7 @@ include("./mvc/view/page/header.php");
         <label class="frm-txt">برند</label>
         <span class="sort-products">
             <select class="sort-products theme-construction" id="brandId" name="brandId"
-                    style="width: 55%;margin-right: 100px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
+                    style="width: 55%;margin-right: 100px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                 <?php foreach ($brands as $brand) { ?>
                     <option value="<?= $brand['brandId'] ?>"
                             style="text-align: left;"><?= $brand['brandName'] ?></option>
@@ -51,7 +51,7 @@ include("./mvc/view/page/header.php");
         <label class="frm-txt">کشور سازنده</label>
         <span class="sort-products">
             <select class="sort-products theme-construction" id="countryId" name="countryId"
-                    style="width: 55%;margin-right: 46px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
+                    style="width: 55%;margin-right: 46px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                 <?php foreach ($countrys as $country) { ?>
                     <option value="<?= $country['countryId'] ?>"
                             style="text-align: left;"><?= $country['countryName'] ?></option>
@@ -76,6 +76,10 @@ include("./mvc/view/page/header.php");
         <input type="text" class="frm-price" name="price" style="text-align: center;">
         <br><br><br>
 
+        <label class="frm-txt">تعداد</label>
+        <input type="number" class="frm-number" min="0" name="perfumeCounter" style="text-align: center;">
+        <br><br><br>
+
         <label class="frm-txt" style="margin-bottom: -115px;">توضیات مختصر</label>
         <textarea class="frm-breif" name="breif" style="margin-top:10px;"></textarea>
         <br><br><br>
@@ -85,9 +89,13 @@ include("./mvc/view/page/header.php");
                   style="margin-top:10px;"></textarea>
         <br><br><br>
 
+        <label class="frm-txt" style="margin-bottom: -135px;">آپلود تصویر عطر</label>
+        <input type="file" class="frm-upload" name="image" style="margin-right: 150px;">
+        <br><br><br>
+
         <!-- BTN POST Data -->
-        <button value="register" id="btn-submit-addproduct"><i class="fa fa-plus"
-                                                               style="margin-left: 10px;font-size: medium;"></i>ثبت
+        <button value="Upload Image" id="btn-submit-addproduct" type="submit" name="upload"><i class="fa fa-plus"
+                                                                                               style="margin-left: 10px;font-size: medium;"></i>ثبت
         </button>
 
         <!-- BTN Cancel -->

@@ -7,7 +7,8 @@ include("./mvc/view/page/header.php");
 
 <?php foreach ($perfumes as $perfume) { ?>
     <div class="box-updateProduct" style="width: 55%;">
-        <form class="frm-product-crud" action="<?= baseUrl() ?>page/updateProductChecking" method="post">
+        <form class="frm-product-crud" action="<?= baseUrl() ?>page/updateProductChecking" method="post"
+              enctype="multipart/form-data">
 
             <label hidden>
                 <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
@@ -21,7 +22,7 @@ include("./mvc/view/page/header.php");
             <label class="frm-txt">غلظت عطر</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="densityId" name="densityId"
-                        style="width: 55%;margin-right: 54px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;">
+                        style="width: 55%;margin-right: 57px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                     <?php foreach ($densitys as $density) {
                         if ($perfume['densityId'] == $density['densityId']) { ?>
                             <option value="<?= $density['densityId'] ?>" selected
@@ -38,7 +39,7 @@ include("./mvc/view/page/header.php");
             <label class="frm-txt">جنسیت</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="jenderId" name="jenderId"
-                        style="width: 55%;margin-right: 80px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
+                        style="width: 55%;margin-right: 77px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;">
                     <?php foreach ($genders as $gender) {
                         if ($perfume['jenderId'] == $gender['jenderId']) { ?>
                             <option value="<?= $gender['jenderId'] ?>" selected
@@ -119,12 +120,19 @@ include("./mvc/view/page/header.php");
             <label class="frm-txt" style="margin-bottom: -135px;">نقد و بررسی</label>
             <textarea class="frm-discription" name="discription"
                       style="margin-top:10px;"><?= $perfume['discription'] ?></textarea>
+            <br><br><br><br>
+
+
+            <label class="frm-txt" style="margin-bottom: -30px;">آپلود تصویر عطر</label>
+            <input type="file" class="frm-upload" name="image" style="margin-right: 150px;">
             <br><br><br>
 
             <!-- BTN POST Data -->
-            <button value="register" id="btn-submit-uproduct"><i class="fa fa-pencil-square-o"
-                                                                 style="margin-left: 10px;"></i>ویرایش
+            <button value="Upload Image" id="btn-submit-uproduct" type="submit" name="upload"><i
+                        class="fa fa-pencil-square-o"
+                        style="margin-left: 10px;font-size: medium;"></i>ویرایش
             </button>
+
 
             <!-- BTN Cancel -->
             <button formaction="<?= baseUrl() ?>page/productsManager" id="btn-cancel-uproduct" type="submit"

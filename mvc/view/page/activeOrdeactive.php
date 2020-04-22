@@ -20,7 +20,7 @@ include("./mvc/view/page/header.php");
             <label class="frm-txt">غلظت عطر</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="densityId" name="densityId"
-                        style="width: 55%;margin-right: 54px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;"
+                        style="width: 55%;margin-right: 54px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;"
                         disabled>
                     <?php foreach ($densitys as $density) {
                         if ($perfume['jenderId'] == $density['densityId']) { ?>
@@ -38,7 +38,7 @@ include("./mvc/view/page/header.php");
             <label class="frm-txt">جنسیت</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="jenderId" name="jenderId"
-                        style="width: 55%;margin-right: 80px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;"
+                        style="width: 55%;margin-right: 80px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;"
                         disabled>
                     <?php foreach ($genders as $gender) {
                         if ($perfume['jenderId'] == $gender['jenderId']) { ?>
@@ -56,7 +56,7 @@ include("./mvc/view/page/header.php");
             <label class="frm-txt">برند</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="brandId" name="brandId"
-                        style="width: 55%;margin-right: 100px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;"
+                        style="width: 55%;margin-right: 100px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;"
                         disabled>
                     <?php foreach ($brands as $brand) {
                         if ($perfume['brandId'] == $brand['brandId']) { ?>
@@ -74,7 +74,7 @@ include("./mvc/view/page/header.php");
             <label class="frm-txt">کشور سازنده</label>
             <span class="sort-products">
                 <select class="sort-products theme-construction" id="countryId" name="countryId"
-                        style="width: 55%;margin-right: 46px;padding: 15px;text-align: center;text-align-last: center;font-size: 16px;"
+                        style="width: 55%;margin-right: 46px;padding: 15px;text-align: center;text-align-last: center;font-size: 20px;"
                         disabled>
                     <?php foreach ($countrys as $country) {
                         if ($perfume['countryId'] == $country['countryId']) { ?>

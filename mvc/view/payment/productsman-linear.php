@@ -45,20 +45,21 @@
 
                 <div class="product-wish-add-btns">
                     <?php if ($managers['accessId'] == 1) { ?>
-                        <div class="addToCart-btn-detail4">
-                            <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
+                        <div class="addToCart-btn-detail4" style="font-size: medium;">
+                            <i class="fa fa-shopping-cart" style="padding: 5px;margin-right: 10px;"></i>
                             <span style="font-size: medium;"> اضافه به سبد خرید</span>
                         </div>
 
                     <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
-                        <div class="addToCart-btn-linear2">
-                            <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
-                            <span style="font-size: large;"> اضافه به سبد خرید</span>
+                        <div class="addToCart-btn-linear2" style="font-size: medium;">
+                            <i class="fa fa-shopping-cart" style="padding: 5px;margin-right: 10px;"></i>
+                            <span style="font-size: medium;"> اضافه به سبد خرید</span>
                         </div>
                     <?php } else { ?>
-                        <div class="addToCart-btn-linear" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
-                            <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
-                            <span style="font-size: large;"> اضافه به سبد خرید</span>
+                        <div class="addToCart-btn-linear" onclick="addProduct(<?= $perfume['perfumeId'] ?>)"
+                             style="font-size: medium;">
+                            <i class="fa fa-shopping-cart" style="padding: 5px;margin-right: 10px;"></i>
+                            <span style="font-size: medium;"> اضافه به سبد خرید</span>
                         </div>
                     <?php } ?>
                 </div>
@@ -70,7 +71,7 @@
                     <br>
 
                     <button value="details" id="details-btn" class="btn-details-linear"><i class="fa fa-info"
-                                                                                           style="padding:0 5px 0 5px;"></i>
+                                                                                           style="padding-left:5px;"></i>
                         <span style="font-size: large;">جزییات</span>
                     </button>
                 </form>

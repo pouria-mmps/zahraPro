@@ -138,4 +138,5 @@ include("./mvc/view/page/footer.php");
         e.preventDefault();
         $('html, body').animate({scrollTop: 0}, '300');
     });
+
 </script>

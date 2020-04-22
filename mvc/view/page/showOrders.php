@@ -74,7 +74,7 @@ include("./mvc/view/page/header.php");
     <form class="frm-log-cancelOrder"
           action="<?= baseUrl() ?>productsman/cancelOrders/<?= $product['cartId'] ?>"
           method="post">
-        <button value="cancelOrder" id="cancelorder-btn" class="btn-cancel-order">
+        <button value="cancelOrder" id="cancelorder-btn" class="btn-cancel-order" style="font-size: large;">
             <label hidden>
                 <input type="hidden" name="cartId" value="<?= $product['cartId'] ?>">
                 <input type="hidden" name="hasButton" value="true">

@@ -38,19 +38,20 @@
             <br>
 
             <?php if ($managers['accessId'] == 1) { ?>
-                <div class="addToCart-btn-detail3">
+                <div class="addToCart-btn-detail3" style="font-size: medium;">
                     <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
                     <span style="font-size: medium;"> اضافه به سبد خرید</span>
                 </div>
 
             <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
-                <span class="addToCart-btn2">
-                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
-            </span>
+                <span class="addToCart-btn2" style="font-size: medium;">
+                    <i class="fa fa-shopping-cart" style="margin-left: 5px;"></i>اضافه به سبد خرید
+                </span>
             <?php } else { ?>
-                <span class="addToCart-btn" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
-                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
-            </span>
+                <span class="addToCart-btn" onclick="addProduct(<?= $perfume['perfumeId'] ?>)"
+                      style="font-size: medium;">
+                    <i class="fa fa-shopping-cart" style="margin-left: 5px;"></i>اضافه به سبد خرید
+                </span>
             <?php } ?>
 
             <form class="frm-log" action="<?= baseUrl() ?>page/details/<?= $perfume['perfumeId'] ?>" method="post">
@@ -58,8 +59,9 @@
                     <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
                 </label>
                 <br>
-                <button value="details" id="details-btn" class="btn-details"><i class="fa fa-info"
-                                                                                style="padding:0 5px 0 5px;"></i>جزییات
+                <button value="details" id="details-btn" class="btn-details" style="font-size: medium;"><i
+                        class="fa fa-info"
+                        style="padding-left: 5px;"></i>جزییات
                 </button>
             </form>
         </div>

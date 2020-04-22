@@ -30,7 +30,7 @@ include("./mvc/view/page/header.php");
     <?php foreach ($addresses as $address) {
         if ($address['userId'] == $userId && $address['deleteLogic'] == 1) { ?>
             <tr>
-                <td>
+                <td style="padding: 15px;">
                     <span style="font-size: larger;"><?php echo $i; ?></span>
                     <?php $i++; ?>
                 </td>
@@ -59,7 +59,7 @@ include("./mvc/view/page/header.php");
                     <span style="font-size: large;"><?= $address['tranPCode'] ?></span>
                 </td>
 
-                <td style="padding: 55px 100px 55px 100px;">
+                <td style="padding: 50px 90px 50px 90px;">
                     <form class="frm-select-address"
                           action="<?= baseUrl() ?>productsman/factor"
                           method="post">

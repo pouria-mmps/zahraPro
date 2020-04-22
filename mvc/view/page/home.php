@@ -9,23 +9,23 @@
     <div class="slideshow-container">
         <!-- Img1 Slide Show -->
         <div class="mySlides fade">
-            <div class="numbertext">3 / 1</div>
+            <div class="numbertext" style="color: #777;">3 / 1</div>
             <img src="/MainProject/image/SlideShow1.jpg" class="slideshow-img" alt="Atkinsins" style="height: 450px;">
-            <div class="text-img-slide">بهترین عطرهای مردانه</div>
+            <div class="text-img-slide">بهترین عطرهای زنانه</div>
         </div>
 
         <!-- Img2 Slide Show -->
         <div class="mySlides fade">
             <div class="numbertext">3 / 2</div>
             <img src="/MainProject/image/SlideShow2.jpg" class="slideshow-img" alt="Dior" style="height: 450px">
-            <div class="text-img-slide">کلکسیونی از خوش بوترین عطرها</div>
+            <div class="text-img-slide" style="color: white;">کلکسیونی از خوش بوترین عطرها</div>
         </div>
 
         <!-- Img3 Slide Show -->
         <div class="mySlides fade">
             <div class="numbertext">3 / 3</div>
             <img src="/MainProject/image/SlideShow3.jpg" class="slideshow-img" alt="Perfumes" style="height: 450px">
-            <div class="text-img-slide">بهترین عطرهای زنانه</div>
+            <div class="text-img-slide" style="color: white;">بهترین عطرهای مردانه</div>
         </div>
     </div>
     <br>
@@ -109,14 +109,22 @@
                 </div>
                 <br>
 
-                <?php if ($perfume['perfumeCounter'] == 0) { ?>
-                    <span class="addToCart-btn2">
-                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
-            </span>
+
+                <?php if ($managers['accessId'] == 1) { ?>
+                    <div class="addToCart-btn-detail3" style="font-size: medium;">
+                        <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
+                        <span style="font-size: medium;"> اضافه به سبد خرید</span>
+                    </div>
+
+                <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
+                    <span class="addToCart-btn2" style="font-size: medium;">
+                        <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
+                    </span>
                 <?php } else { ?>
-                    <span class="addToCart-btn" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
-                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
-            </span>
+                    <span class="addToCart-btn" style="font-size: medium;"
+                          onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
+                        <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
+                    </span>
                 <?php } ?>
 
                 <form class="frm-log" action="<?= baseUrl() ?>page/details/<?= $perfume['perfumeId'] ?>" method="post">
@@ -124,8 +132,9 @@
                         <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
                     </label>
                     <br>
-                    <button value="details" id="details-btn" class="btn-details"><i class="fa fa-info"
-                                                                                    style="padding:0 5px 0 5px;"></i>جزییات
+                    <button value="details" id="details-btn" class="btn-details" style="font-size: medium;"><i
+                                class="fa fa-info"
+                                style="padding-left: 5px;"></i>جزییات
                     </button>
                 </form>
             </div>
@@ -205,9 +214,9 @@
 
 
                 <div class="priceWraper">
-                    <span class="newPrice"
-                          style="font-size: 18px;"><i
-                                style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?></i> تومان </span>
+                    <span class="newPrice" style="font-size: 18px;">
+                        <i style="font-size: larger;"><?= $perfume['price'] - ($perfume['price'] * $perfume['discount'] / 100) ?></i>
+                    تومان </span>
 
                     <?php if ($perfume['discount'] > 0) { ?>
                         <span class="oldPrice" style="font-size: 15px;"><?= $perfume['price'] ?> تومان </span>
@@ -215,14 +224,22 @@
                 </div>
                 <br>
 
-                <?php if ($perfume['perfumeCounter'] == 0) { ?>
-                    <span class="addToCart-btn2">
-                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
-            </span>
+
+                <?php if ($managers['accessId'] == 1) { ?>
+                    <div class="addToCart-btn-detail3" style="font-size: medium;">
+                        <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
+                        <span style="font-size: medium;"> اضافه به سبد خرید</span>
+                    </div>
+
+                <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
+                    <span class="addToCart-btn2" style="font-size: medium;">
+                        <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
+                    </span>
                 <?php } else { ?>
-                    <span class="addToCart-btn" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
-                <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
-            </span>
+                    <span class="addToCart-btn" style="font-size: medium;"
+                          onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
+                        <i class="fa fa-shopping-cart" style="margin-left: 5px"></i>اضافه به سبد خرید
+                    </span>
                 <?php } ?>
 
                 <form class="frm-log" action="<?= baseUrl() ?>page/details/<?= $perfume['perfumeId'] ?>" method="post">
@@ -230,8 +247,9 @@
                         <input type="hidden" name="perfumeId" value="<?= $perfume['perfumeId'] ?>">
                     </label>
                     <br>
-                    <button value="details" id="details-btn" class="btn-details"><i class="fa fa-info"
-                                                                                    style="padding:0 5px 0 5px;"></i>جزییات
+                    <button value="details" id="details-btn" class="btn-details" style="font-size: medium;"><i
+                                class="fa fa-info"
+                                style="padding-left: 5px;"></i>جزییات
                     </button>
                 </form>
 

@@ -34,7 +34,7 @@ include("./mvc/view/page/header.php");
         </div>
 
         <div class="col-sm-4">
-            <a href="/MainProject/page/usersManager">
+            <a href="/MainProject/page/userManager">
                 <div class="hvrbox panel-up">
                     <img src="../image/User.jpg" alt="Mountains" class="hvrbox-layer_bottom">
                     <div class="hvrbox-layer_top">

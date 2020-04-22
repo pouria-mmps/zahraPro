@@ -5,10 +5,11 @@ class UserModel
     public static function insert($userName, $userFamilyName, $jenderId, $userTell, $userMobile, $userEmail, $userPassword)
     {
         $db = Db::getInstance();
-        $db->insert("INSERT INTO user (userName,userFamilyName,jenderId,accessId,userTell,userMobile,userEmail,userPassword)
-            VALUES ('$userName','$userFamilyName','$jenderId','2','$userTell','$userMobile','$userEmail','$userPassword')"
+        $db->insert("INSERT INTO user (userName,userFamilyName,jenderId,accessId,blockId,userTell,userMobile,userEmail,userPassword)
+            VALUES ('$userName','$userFamilyName','$jenderId','2','1','$userTell','$userMobile','$userEmail','$userPassword')"
         );
     }
+
 
     public static function fetch_by_email($userEmail)
     {
@@ -17,16 +18,30 @@ class UserModel
         return $record;
     }
 
+
     public static function fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $perfumeCounter, $countryId, $breif, $discription)
     {
         $db = Db::getInstance();
 
         $record = $db->first("SELECT perfumeId FROM perfume WHERE perfumeName='$perfumeName' AND densityId='$densityId' AND jenderId='$jenderId' AND brandId='$brandId' AND typeSmell='$typeSmell' AND structrueSmell='$structrueSmell' AND discount='$discount' AND price='$price' AND perfumeCounter='$perfumeCounter' AND countryId='$countryId' AND breif='$breif' AND discription='$discription'");
-        if ($record != null && (null == $perfumeId || $record != $perfumeId)) {
+        if ($record != null && (null == $perfumeId || $record["perfumeId"] != $perfumeId)) {
             require_once("./mvc/view/page/header.php");
-            message('fail', " عطر موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/page/updateProduct"> کلیک </a>' . 'کنید.', true);
+            message('fail', " عطر موردنظر قبلا ثبت شده است. " . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         }
     }
+
+
+    public static function fetch_Duplicate_Perfume2($perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $perfumeCounter, $countryId, $breif, $discription)
+    {
+        $db = Db::getInstance();
+
+        $record = $db->first("SELECT * FROM perfume WHERE perfumeName='$perfumeName' AND densityId='$densityId' AND jenderId='$jenderId' AND brandId='$brandId' AND typeSmell='$typeSmell' AND structrueSmell='$structrueSmell' AND discount='$discount' AND price='$price' AND perfumeCounter='$perfumeCounter' AND countryId='$countryId' AND breif='$breif' AND discription='$discription'");
+        if ($record != null) {
+            require_once("./mvc/view/page/header.php");
+            message('fail', " عطر موردنظر قبلا ثبت شده است. " . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+    }
+
 
     public static function insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode, $deleteLogic)
     {
@@ -36,6 +51,7 @@ class UserModel
         );
     }
 
+
     public static function fetch_Duplicate_Address($addressId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode)
     {
         $db = Db::getInstance();
@@ -43,9 +59,10 @@ class UserModel
         $record = $db->first("SELECT addressId FROM address WHERE tranName='$tranName' AND tranLName='$tranLName' AND tranTell='$tranTell' AND tranPhone='$tranPhone' AND tranAddress='$tranAddress' AND tranPCode='$tranPCode'");
         if ($record != null && (null == $addressId || $record != $addressId)) {
             require_once("./mvc/view/page/header.php");
-            message('fail', " آدرس موردنظر قبلا ثبت شده است. " . '<br><br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/updateAddress"> کلیک </a>' . 'کنید.', true);
+            message('fail', " آدرس موردنظر قبلا ثبت شده است. " . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/updateAddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         }
     }
+
 
     public static function update($userEmail, $userName, $userFamilyName, $jenderId, $userTell, $userMobile)
     {
@@ -59,6 +76,7 @@ class UserModel
             'userMobile' => $userMobile,
         ));
     }
+
 
     public static function updatePass($userEmail, $userPassword)
     {

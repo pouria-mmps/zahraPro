@@ -115,17 +115,17 @@ include("./mvc/view/page/header.php");
             <div class="wish-add-btn-detail">
                 <?php if ($managers['accessId'] == 1) { ?>
                     <div class="addToCart-btn-detail2">
-                        <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
-                        <span style="font-size: large;"> اضافه به سبد خرید</span>
+                        <i class="fa fa-shopping-cart" style="padding: 5px;padding-right: 10px;"></i>
+                        <span style="font-size: large;""> اضافه به سبد خرید</span>
                     </div>
                 <?php } elseif ($perfume['perfumeCounter'] == 0) { ?>
                     <div class="addToCart-btn-detail2">
-                        <i class="fa fa-shopping-cart" style="padding: 5px;"></i>
-                        <span style="font-size: large;"> اضافه به سبد خرید</span>
+                        <i class="fa fa-shopping-cart" style="padding: 5px;;padding-right: 10px;"></i>
+                        <span style="font-size: large""> اضافه به سبد خرید</span>
                     </div>
                 <?php } else { ?>
                     <div class="addToCart-btn-detail" onclick="addProduct(<?= $perfume['perfumeId'] ?>)">
-                        <i class="fa fa-shopping-cart" style="padding-left: 5px;padding-right: 5px;"></i>
+                        <i class="fa fa-shopping-cart" style="padding-left: 5px;padding-right: 10px;"></i>
                         <span style="font-size: large;"> اضافه به سبد خرید</span>
                     </div>
                 <?php } ?>
