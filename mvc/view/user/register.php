@@ -25,9 +25,9 @@ require_once("./mvc/view/page/header.php");
         <br><br><br>
 
         <!--Gender-->
-        <label class="frm-txt"><i style="color: red;"> * </i>جنسیت</label>
+        <label class="frm-txt">جنسیت</label>
         <span>
-            <label><input type="radio" name="jenderId" value="1" style="margin-right: 140px;"></label>
+            <label><input type="radio" name="jenderId" value="1" style="margin-right: 140px;" checked></label>
             <label style="font-size: large;color: #777;">   مرد</label>
             <label><input type="radio" name="jenderId" value="2" style="margin-right: 90px;"></label>
             <label style="font-size: large;color: #777;">   زن</label>
@@ -50,7 +50,7 @@ require_once("./mvc/view/page/header.php");
 
         <!--Email-->
         <label class="frm-txt"><i style="color: red;"> * </i>ایمیل</label>
-        <input type="email" class="frm-input-email" placeholder="آدرس ایمیل خود را وارد کنید" name="userEmail">
+        <input type="text" class="frm-input-email" placeholder="آدرس ایمیل خود را وارد کنید" name="userEmail">
 
         <br><br><br>
 

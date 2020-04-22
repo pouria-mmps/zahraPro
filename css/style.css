@@ -76,7 +76,7 @@ body {
 .frm-tran-lname, .frm-tran-tell, .frm-tran-phone, .frm-tran-address, .frm-tran-pcode, .frm-input-username, .frm-input-password,
 .frm-input-fname, .frm-input-lname, .frm-input-tell, .frm-input-mobile, .frm-input-email, .frm-input-pass, .frm-input-confirm-pass,
 .frm-input-textarea, .frm-txt-address, .frm-profile-name, .frm-profile-lname, .frm-profile-tell, .frm-profile-phone,
-.frm-profile-pass, .frm-profile-email, .frm-chenge-pass, .frm-change-confirm-pass, .frm-number {
+.frm-profile-pass, .frm-profile-email, .frm-chenge-pass, .frm-change-confirm-pass, .frm-number, .frm-upload {
     width: 55%;
     border: none;
     padding: 15px;
@@ -238,8 +238,8 @@ a.menu-item2 {
 
 /* Slide Show IMG */
 #box-slide {
-    margin: auto;
     width: 100%;
+    margin: auto;
 }
 
 .mySlides {
@@ -248,7 +248,6 @@ a.menu-item2 {
 
 .slideshow-img {
     width: 1340px;
-    height: 900px;
     margin-top: -15px;
     vertical-align: middle;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.39), 0 6px 20px 0 rgba(0, 0, 0, 0.25);
@@ -267,16 +266,18 @@ a.menu-item2 {
     color: #777;
     bottom: 8px;
     width: 100%;
+    font-size: 22px;
     text-align: left;
-    font-size: large;
-    padding: 20px 35px;
     position: absolute;
+    padding-left: 70px;
+    padding-bottom: 30px;
 }
 
 /* Number text (1/3 etc) */
 .numbertext {
     color: #f2f2f2;
-    font-size: 12px;
+    font-size: medium;
+    font-weight: bold;
     padding: 8px 12px;
     position: absolute;
 }
@@ -345,6 +346,13 @@ a.menu-item2 {
     width: 95%;
     margin: auto;
     height: auto;
+    margin-top: -20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.13);
+}
+
+.call-panel {
+    width: 100%;
+    height: 500px;
     margin-top: -20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.25), 0 6px 20px 0 rgba(0, 0, 0, 0.13);
 }
@@ -480,7 +488,7 @@ h3 {
 #btn-submit, #btn-cancel, #btn-submit-reg, #btn-cancel-reg, .btn-sale-myorders, #btn-submit-uproduct, #btn-cancel-uproduct,
 .insert-product, #btn-submit-uaddress, #btn-cancel-uaddress, .signupbtn, .cancelbtn, #btn-submit-dproduct, .btn-change-pass,
 #btn-submit-uprofile, #btn-submit-activeproduct, #btn-submit-addproduct, #show-orders-btn, #cancel-order-btn, .btn-cancel-order,
-.btn-ordersorders-manager {
+.btn-ordersorders-manager, #btn-forgot {
     width: 25%;
     color: #777;
     border: none;
@@ -499,6 +507,7 @@ h3 {
 
 .btn-cancel-order {
     width: 10%;
+    padding: 5px;
     margin-top: 60px;
     margin-right: 200px;
 }
@@ -533,7 +542,7 @@ h3 {
     margin-bottom: 40px;
 }
 
-#btn-cancel, #btn-cancel-reg {
+#btn-cancel-reg, #btn-cancel {
     margin-right: 50px;
 }
 
@@ -970,7 +979,6 @@ div.scrollmenu-products {
     width: 250px;
     height: 350px;
     transition: 0.3s;
-    cursor: pointer;
     overflow: hidden;
     margin-left: 20px;
     margin-right: 55px;
@@ -983,7 +991,6 @@ div.scrollmenu-products {
 }
 
 .product-panel-grid:hover {
-    cursor: pointer;
     transition: 0.3s;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px #c6c6c6;
@@ -991,19 +998,19 @@ div.scrollmenu-products {
 
 .product-panel-grid:hover > .sale-btn {
     opacity: 1;
-    padding-left: 20px;
+    padding-left: 30px;
     transition: all 0.3s;
 }
 
 .product-panel-grid:hover > .nosale-btn {
     opacity: 1;
-    padding-left: 20px;
+    padding-left: 30px;
     transition: all 0.3s;
 }
 
 .product-panel-grid:hover > .discount-btn {
     opacity: 1;
-    padding-left: 20px;
+    padding-left: 30px;
     transition: all 0.3s;
 }
 
@@ -1026,14 +1033,6 @@ div.scrollmenu-products {
     padding: 4px;
     margin-right: 80px;
 }
-
-.btn-details:hover {
-    color: #fff;
-    transition: all 0.3s;
-    background-color: #a1cfb8;
-    border-bottom: 3px solid #78af93;
-}
-
 
 /* Products Linear Page */
 /* Products Linear Panel */
@@ -1203,14 +1202,6 @@ div.scrollmenu-products {
     background-color: #f0eeee;
     border-bottom: 3px solid #cbc8c8;
 }
-
-.btn-details-linear:hover {
-    color: #fff;
-    transition: all 0.3s;
-    background-color: #a1cfb8;
-    border-bottom: 3px solid #78af93;;
-}
-
 
 /* Cart Preview Page */
 /* Cart Preview Panel */
@@ -1745,7 +1736,7 @@ button {
 }
 
 .btn-updateProduct, #select-address-btn, #delete-address-btn, #update-address-btn, #portal-btn, .btn-active, .btn-update-pass-user,
-.btn-deactive-user, .btn-active-user, .btn-update-user {
+.btn-deactive-user, .btn-active-user, .btn-update-user, .btn-update-user2 {
     width: 80px;
     color: #777;
     cursor: pointer;
@@ -1780,6 +1771,12 @@ button {
     margin-right: 20px;
 }
 
+.btn-update-user2 {
+    width: 115px;
+    margin-top: -61px;
+    margin-right: -20px;
+}
+
 .btn-updateProduct {
     margin-top: -30px;
 }
@@ -1803,7 +1800,7 @@ button {
 }
 
 .btn-updateProduct:hover, #update-address-btn:hover, #btn-submit-uaddress:hover, #btn-submit-uproduct:hover,
-#btn-submit-uprofile:hover, .btn-update-user:hover {
+#btn-submit-uprofile:hover, .btn-details-linear:hover, .btn-details:hover, #btn-forgot:hover, .btn-update-user:hover {
     color: #fff;
     transition: all 0.3s;
     background-color: #feca38;
@@ -1880,7 +1877,7 @@ button {
 .frm-breif:focus, .frm-discription:focus, .frm-tran-name:focus, .frm-tran-lname:focus, .frm-tran-tell:focus, .frm-tran-phone:focus,
 .frm-tran-address:focus, .frm-tran-pcode:focus, .frm-input-username:focus, .frm-input-password:focus, .frm-profile-name:focus,
 .frm-profile-lname:focus, .frm-profile-tell:focus, .frm-profile-phone:focus, .frm-profile-pass:focus, .frm-profile-email:focus,
-.frm-chenge-pass:focus, .frm-change-confirm-pass:focus, .frm-number:focus {
+.frm-chenge-pass:focus, .frm-change-confirm-pass:focus, .frm-number:focus, .frm-upload:focus {
     outline: none;
     background-color: #ddd;
 }
@@ -1942,6 +1939,10 @@ button {
     margin-right: 30px;
     background: #f1f1f1;
     display: inline-block;
+}
+
+.frm-upload {
+    font-size: 16px;
 }
 
 .frm-discription {
@@ -2028,7 +2029,7 @@ button {
 
 #delete-address-btn {
     width: 100px;
-    margin-top: 2px;
+    margin-top: -2px;
     margin-right: -50px;
 }
 

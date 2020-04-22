@@ -35,27 +35,40 @@ class UserController
         $userPassword = $_POST['userPassword'];
         require_once("./mvc/view/page/header.php");
 
+
         $record = UserModel::fetch_by_email($userEmail);
         if ($record['blockId'] == 2) {
             message('fail', "شما دسترسی ورود به سایت را ندارید.", true);
         }
 
-        if ($userPassword == null || $userEmail == null) {
-            message('fail', "نام کاربری یا گذرواژه خود را وارد نکرده اید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
+        if ($userPassword == null && $userEmail == null) {
+            message('fail', "نام کاربری و گذرواژه خود را وارد نکرده اید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if ($userEmail == null) {
+            message('fail', "نام کاربری خود را وارد نکرده اید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if ($userPassword == null) {
+            message('fail', "گذرواژه خود را وارد نکرده اید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
+            message('fail', "نام کاربری خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         }
 
         if ($record == null) {
-            message('fail', "نام کاربری یا گذرواژه نادرست است." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
+            message('fail', "نام کاربری یا گذرواژه نادرست است." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/login" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         } else {
             $hashedPassword = md5($userPassword);
             if ($hashedPassword == $record['userPassword']) {
                 $_SESSION['userEmail'] = $record['userEmail'];
                 $_SESSION['userId'] = $record['userId'];
                 $_SESSION['accessId'] = $record['accessId'];
-                message('success', "شما با موفقیت وارد شده اید. جهت ورود به صفحه اصلی " . '<a href="/MainProject/page/home"> کلیک </a>' . 'کنید.', true);
+                message('success', "شما با موفقیت وارد شده اید. جهت ورود به صفحه اصلی " . '<a href="/MainProject/page/home" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
             } else {
                 message('fail', "گذرواژه شما نادرست است." . '<br><br>' . 'لطفا برای تلاش مجدد  ' .
-                    '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.'
+                    '<a href="/MainProject/user/login" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.'
                     , true);
             }
         }
@@ -95,25 +108,46 @@ class UserController
 
         $record = UserModel::fetch_by_email($userEmail);
 
-        if ($userName == null || $userFamilyName == null || $jenderId == null || $userEmail == null || $userPassword == null) {
-            message('fail', "لطفا فیلدهای ستاره دار را پر کنید. " . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+
+        if ($userName == null || $userFamilyName == null || $userEmail == null || $userPassword == null || $userPasswordConfirm == null) {
+            message('fail', "لطفا تمام فیلدهای ستاره دار را پر کنید. " . '<br><br>' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> تلاش مجدد </a>', true);
+        }
+
+        if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ']+)$/", $userName)) {
+            message('fail', "برای نام خود از اعداد و علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ']+)$/", $userFamilyName)) {
+            message('fail', "برای نام خانوادگی خود از اعداد و علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['0123456789']+)$/", $userTell) && $userTell != null) {
+            message('fail', "تلفن خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['0123456789']+)$/", $userMobile) && $userMobile != null) {
+            message('fail', "شماره تلفن همراه خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!filter_var($userEmail, FILTER_VALIDATE_EMAIL) && $userEmail != null) {
+            message('fail', "ایمیل خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         }
 
         if ($record != null) {
-            message('fail', " شما پیشتر با این ایمیل ثبت نام کرده اید کافیست وارد سایت شوید " . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', " شما پیشتر با این ایمیل ثبت نام کرده اید کافیست وارد سایت شوید " . '<br><br>' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> تلاش مجدد </a>', true);
         }
 
         if (strlen($userPassword) < 3 || strlen($userPasswordConfirm) < 3) {
-            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد" . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد" . '<br><br>' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> تلاش مجدد </a>', true);
         }
 
         if ($userPassword != $userPasswordConfirm) {
-            message('fail', "گذرواژه ها با هم مطابقت ندارند" . '<br><br><br>' . '<a href="/MainProject/user/register"> تلاش مجدد </a>', true);
+            message('fail', "گذرواژه ها با هم مطابقت ندارند" . '<br><br>' . '<a href="/MainProject/user/register" style="font-size: large;font-weight: bold;"> تلاش مجدد </a>', true);
         }
 
         $hashedPassword = md5($userPassword);
         UserModel::insert($userName, $userFamilyName, $jenderId, $userTell, $userMobile, $userEmail, $hashedPassword);
-        message('success', "با موفقیت ثبت نام شدید" . '<br><br><br>' . '<span style="color: red;font-size: larger;">' . $userName . " " . $userFamilyName . '</span>' . '   ' . ' برای ادامه لطفا' . '<a href="/MainProject/user/login"> کلیک </a>' . 'کنید.', true);
+        message('success', "با موفقیت ثبت نام شدید" . '<br><br>' . '<span style="color: red;font-size: larger;">' . $userName . " " . $userFamilyName . '</span>' . ' برای ادامه لطفا' . '<a href="/MainProject/user/login" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 

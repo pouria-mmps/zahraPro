@@ -28,13 +28,39 @@ class ProductsmanController
         $deleteLogic = 1;
 
         if ($userId != null && $tranName != null && $tranLName != null && $tranTell != null && $tranPhone != null && $tranAddress != null && $tranPCode != null) {
+
+            require_once("./mvc/view/page/header.php");
+            if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ']+)$/", $tranName)) {
+                message('fail', "برای نام خود از اعداد و علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+            }
+
+            if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ']+)$/", $tranLName)) {
+                message('fail', "برای نام خانوادگی خود از اعداد و علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+            }
+
+            if (!preg_match("/^(['0123456789']+)$/", $tranTell) && $tranTell != null) {
+                message('fail', "تلفن خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+            }
+
+            if (!preg_match("/^(['0123456789']+)$/", $tranPhone) && $tranPhone != null) {
+                message('fail', "شماره تلفن همراه خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+            }
+
+            if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی 0123456789']+)$/", $tranAddress)) {
+                message('fail', "برای آدرس خود از علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+            }
+
+            if (!preg_match("/^(['0123456789']+)$/", $tranPCode) && $tranPCode != null) {
+                message('fail', "کدپستی خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+            }
+
             UserModel::insert2($userId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode, $deleteLogic);
 
             require_once("./mvc/view/page/header.php");
-            message('success', " افزودن آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
+            message('success', " افزودن آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         } else {
             require_once("./mvc/view/page/header.php");
-            message('fail', " لطفا تمامی اطلاعات را کامل پر نمایید. " . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/insertAddress"> کلیک </a>' . 'کنید.', true);
+            message('fail', " لطفا تمامی اطلاعات را کامل پر نمایید. " . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/insertAddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         }
     }
 
@@ -47,7 +73,7 @@ class ProductsmanController
         $db->modify("UPDATE address SET deleteLogic=2 WHERE addressId='$addressId'");
 
         require_once("./mvc/view/page/header.php");
-        message('success', "حذف آدرس انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
+        message('success', "حذف آدرس انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -73,7 +99,38 @@ class ProductsmanController
         $tranAddress = $_POST['tranAddress'];
         $tranPCode = $_POST['tranPCode'];
 
+        require_once("./mvc/view/page/header.php");
+
         $record = UserModel::fetch_Duplicate_Address($addressId, $tranName, $tranLName, $tranTell, $tranPhone, $tranAddress, $tranPCode);
+
+        if ($tranName == null || $tranLName == null || $tranTell == null || $tranPhone == null || $tranAddress == null || $tranPCode == null) {
+            require_once("./mvc/view/page/header.php");
+            message('fail', "تمامی اطلاعات تحویل گیرنده را وارد کنید." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ']+)$/", $tranName)) {
+            message('fail', "برای نام خود از اعداد و علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ']+)$/", $tranLName)) {
+            message('fail', "برای نام خانوادگی خود از اعداد و علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['0123456789']+)$/", $tranTell) && $tranTell != null) {
+            message('fail', "تلفن خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['0123456789']+)$/", $tranPhone) && $tranPhone != null) {
+            message('fail', "شماره تلفن همراه خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی 0123456789']+)$/", $tranAddress)) {
+            message('fail', "برای آدرس خود از علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['0123456789']+)$/", $tranPCode) && $tranPCode != null) {
+            message('fail', "کدپستی خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
 
         $db = Db::getInstance();
         $db->modify("UPDATE address 
@@ -87,7 +144,7 @@ class ProductsmanController
         ));
 
         require_once("./mvc/view/page/header.php");
-        message('success', " ویرایش آدرس با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress"> کلیک </a>' . 'کنید.', true);
+        message('success', " ویرایش آدرس با موفقیت انجام شد. " . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/productsman/getaddress" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -117,7 +174,7 @@ class ProductsmanController
         } else {
 
             require_once("./mvc/view/page/header.php");
-            message('fail', $quantity . ' عدد از عطر ' . $names . ' باقی مانده است. ' . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/myorders"> کلیک </a>' . 'کنید.', true);
+            message('fail', $quantity . ' عدد از عطر ' . $names . ' باقی مانده است. ' . '<br><br>' . 'برای ویرایش مجدد لطفا ' . '<a href="/MainProject/productsman/myorders" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         }
     }
 
@@ -140,7 +197,7 @@ class ProductsmanController
         $data['orders'] = $orders;
 
 
-        $orders = $db->modify("UPDATE cart SET addressId=$addressId WHERE cart.cartId=:cartId", array(
+        $db->modify("UPDATE cart SET addressId=$addressId WHERE cart.cartId=:cartId", array(
             'cartId' => $cart['cartId'],
         ));
 
@@ -250,11 +307,27 @@ class ProductsmanController
         $record = UserModel::fetch_by_email($userEmail);
 
         if ($userName == null || $userFamilyName == null || $userTell == null || $userMobile == null) {
-            message('fail', "قبل از فشردن دکمه ویرایش می بایست تمامی فیلدها پر شده باشد. " . '<br><br><br>' . ' برای ویرایش مجدد ' . '<a href="/MainProject/productsman/editProfile"> کلیک </a>' . ' کنید. ', true);
+            message('fail', "قبل از فشردن دکمه ویرایش می بایست تمامی فیلدها پر شده باشد. " . '<br><br>' . ' برای ویرایش مجدد ' . '<a href="/MainProject/productsman/editProfile" style="font-size: large;font-weight: bold;"> کلیک </a>' . ' کنید. ', true);
+        }
+
+        if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ']+)$/", $userName)) {
+            message('fail', "برای نام خود از اعداد و علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/editProfile" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['آابپتثجچحخدذرزژسشصضطظعغفقکگلمنوهی ']+)$/", $userFamilyName)) {
+            message('fail', "برای نام خانوادگی خود از اعداد و علائم و حروف انگلیسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/editProfile" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['0123456789']+)$/", $userTell)) {
+            message('fail', "تلفن خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/editProfile" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^(['0123456789']+)$/", $userMobile)) {
+            message('fail', "شماره تلفن همراه خود را نادرست وارد کردید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/productsman/editProfile" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         }
 
         UserModel::update($userEmail, $userName, $userFamilyName, $jenderId, $userTell, $userMobile);
-        message('success', "ویرایش با موفقیت ثبت نام شد." . '<br><br><br>' . '<span style="color: red;font-size: larger;">' . $userName . " " . $userFamilyName . '</span>' . '   ' . '  برای ادامه لطفا' . '<a href="/MainProject/page/home"> کلیک </a>' . 'کنید.', true);
+        message('success', "ویرایش با موفقیت ثبت نام شد." . '<br><br>' . '<span style="color: red;font-size: larger;">' . $userName . " " . $userFamilyName . '</span>' . '   ' . '  برای ادامه لطفا' . '<a href="/MainProject/page/home" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -274,21 +347,21 @@ class ProductsmanController
         $record = UserModel::fetch_by_email($userEmail);
 
         if ($userPassword == null || $userPasswordConfirm == null) {
-            message('fail', "قبل از فشردن دکمه ویرایش می بایست تمامی فیلدها پر شده باشد. " . '<br><br><br>' . ' برای ویرایش مجدد ' . '<a href="/MainProject/productsman/resetPassword"> کلیک </a>' . ' کنید. ', true);
+            message('fail', "قبل از فشردن دکمه ویرایش می بایست تمامی فیلدها پر شده باشد. " . '<br><br>' . ' برای ویرایش مجدد ' . '<a href="/MainProject/productsman/resetPassword" style="font-size: large;font-weight: bold;"> کلیک </a>' . ' کنید. ', true);
         }
 
         if (strlen($userPassword) < 3 || strlen($userPasswordConfirm) < 3) {
-            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد" . '<br><br><br>' . '<a href="/MainProject/productsman/resetPassword"> تلاش مجدد </a>', true);
+            message('fail', "گذرواژه به اندازه کافی قوی نمی باشد" . '<br><br>' . '<a href="/MainProject/productsman/resetPassword" style="font-size: large;font-weight: bold;"> تلاش مجدد </a>', true);
         }
 
         if ($userPassword != $userPasswordConfirm) {
-            message('fail', "گذرواژه ها با هم مطابقت ندارند" . '<br><br>' . '<a href="/MainProject/productsman/resetPassword"> تلاش مجدد </a>', true);
+            message('fail', "گذرواژه ها با هم مطابقت ندارند" . '<br><br>' . '<a href="/MainProject/productsman/resetPassword" style="font-size: large;font-weight: bold;"> تلاش مجدد </a>', true);
         }
 
 
         $hashedPassword = md5($userPassword);
         UserModel::updatePass($userEmail, $hashedPassword);
-        message('success', "ویرایش رمزعبور با موفقیت انجام شد." . '<br><br><br>' . ' برای ادامه لطفا' . '<a href="/MainProject/productsman/editProfile"> کلیک </a>' . 'کنید.', true);
+        message('success', "ویرایش رمزعبور با موفقیت انجام شد." . '<br><br>' . ' برای ادامه لطفا' . '<a href="/MainProject/productsman/editProfile" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -336,11 +409,10 @@ class ProductsmanController
         $db = Db::getInstance();
         $cartId = $_POST['cartId'];
 
-        $orders = $db->query("UPDATE cart SET cStatusId=3 WHERE cart.cartId='$cartId'");
-        $data['orders'] = $orders;
+        $db->modify("UPDATE cart SET cStatusId=3 WHERE cart.cartId='$cartId'");
 
         require_once("./mvc/view/page/header.php");
-        message('success', " درخواست شما پذیرفته شد. " . '<br><br>' . 'همکاران ما جهت بازپس گیری کالا مراجعه و وجه مسترد خواهد شد. ' . '<br><br>' . 'برای مشاهده وضعیت سفارشات' . '<a href="/MainProject/productsman/showOrders"> کلیک </a>' . 'کنید.', true);
+        message('success', " درخواست شما پذیرفته شد. " . '<br><br>' . 'همکاران ما جهت بازپس گیری کالا مراجعه و وجه مسترد خواهد شد. ' . '<br><br>' . 'برای مشاهده وضعیت سفارشات' . '<a href="/MainProject/productsman/ordersStatus" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -377,18 +449,23 @@ class ProductsmanController
         $userId = getUserId();
         $sessionId = session_id();
 
+        $managers = $db->first("SELECT * FROM user WHERE userId='$userId'");
+
+
         $lastestCart = $this->findLatestCart();
         if ($lastestCart != null) {
             return $lastestCart;
         }
 
-        $db->insert("INSERT INTO cart (userId, sessionId, cStatusId) VALUES (:userId, :sessionId, 1)", array(
-            'userId' => $userId,
-            'sessionId' => $sessionId,
-        ));
+        if ($managers['accessId'] != 1) {
+            $db->insert("INSERT INTO cart (userId, sessionId, cStatusId) VALUES (:userId, :sessionId, 1)", array(
+                'userId' => $userId,
+                'sessionId' => $sessionId,
+            ));
 
-        $lastestCart = $this->findLatestCart();
-        return $lastestCart;
+            $lastestCart = $this->findLatestCart();
+            return $lastestCart;
+        }
     }
 
 

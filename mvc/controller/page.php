@@ -5,6 +5,8 @@ class PageController
     public function home()
     {
         $db = Db::getInstance();
+        $userId = getUserId();
+
         $products = $db->query("SELECT * FROM perfume");
         $data['perfumes'] = $products;
 
@@ -19,6 +21,9 @@ class PageController
         $brands = $db->query("SELECT * FROM brand");
         $data['brands'] = $brands;
 
+
+        $managers = $db->first("SELECT * FROM user WHERE userId='$userId'");
+        $data['managers'] = $managers;
 
         View::render("./mvc/view/page/home.php", $data);
     }
@@ -126,7 +131,17 @@ class PageController
         $breif = $_POST['breif'];
         $discription = $_POST['discription'];
 
-        $record = UserModel::fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $perfumeCounter, $countryId, $breif, $discription);
+        UserModel::fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $perfumeCounter, $countryId, $breif, $discription);
+
+        if ($perfumeName == null) {
+            require_once("./mvc/view/page/header.php");
+            message('fail', "حتما نام عطر را وارد کنید." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        if (!preg_match("/^[a-zA-Z0-9- ]*$/", $perfumeName)) {
+            require_once("./mvc/view/page/header.php");
+            message('fail', "برای نام عطر از علائم و حروف فارسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
 
         $db = Db::getInstance();
         $db->modify("UPDATE perfume 
@@ -145,8 +160,16 @@ class PageController
             'discription' => $discription,
         ));
 
-        require_once("./mvc/view/page/managerHeader.php");
-        message('success', " ویرایش عطر با موفقیت انجام شد. " . '<br><br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
+        if (isset($_POST['upload'])) {
+            $target = "C:/xampp/htdocs/MainProject/image/Perfumes/" . $perfumeId . ".jpg";
+
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+                require_once("./mvc/view/page/header.php");
+                message('success', " تصویر عطر تغییر یافت." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+            }
+        }
+        require_once("./mvc/view/page/header.php");
+        message('success', "ویرایش اطلاعات عطر انجام شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -181,17 +204,38 @@ class PageController
         $structrueSmell = $_POST['structrueSmell'];
         $discount = $_POST['discount'];
         $price = $_POST['price'];
+        $perfumeCounter = $_POST['perfumeCounter'];
         $countryId = $_POST['countryId'];
         $deleteLogic = 1;
         $breif = $_POST['breif'];
         $discription = $_POST['discription'];
 
-        $record = UserModel::fetch_Duplicate_Perfume($perfumeId, $perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $countryId, $breif, $discription);
+        require_once("./mvc/view/page/header.php");
+
+        if ($perfumeName == null) {
+            message('fail', "حتما نام عطر را وارد کنید." . '<br><br>' . ' برای ویرایش مجدد ' . '<a href="/MainProject/page/insertProduct" style="font-size: large;font-weight: bold;"> کلیک </a>' . ' کنید. ', true);
+        }
+
+        if (!preg_match("/^[a-zA-Z0-9- ]*$/", $perfumeName)) {
+            message('fail', "برای نام عطر از علائم و حروف فارسی استفاده نکنید." . '<br><br>' . ' برای تلاش مجدد لطفا ' . '<a href="/MainProject/page/insertProduct" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+        }
+
+        UserModel::fetch_Duplicate_Perfume2($perfumeName, $densityId, $jenderId, $brandId, $typeSmell, $structrueSmell, $discount, $price, $perfumeCounter, $countryId, $breif, $discription);
 
         $db = Db::getInstance();
         $db->insert("INSERT INTO perfume (perfumeName,densityId,jenderId,brandId,typeSmell,structrueSmell,discount,price,countryId,deleteLogic,breif,discription)
             VALUES ('$perfumeName','$densityId','$jenderId','$brandId','$typeSmell','$structrueSmell','$discount','$price','$countryId','$deleteLogic','$breif','$discription')"
         );
+
+        $id = $db->first("SELECT perfumeId FROM perfume ORDER BY perfumeId DESC LIMIT 1");
+        if (isset($_POST['upload'])) {
+            $target = "C:/xampp/htdocs/MainProject/image/Perfumes/" . $id['perfumeId'] . ".jpg";
+
+            if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+                require_once("./mvc/view/page/header.php");
+                message('success', "عطر جدید ثبت شد." . '<br><br>' . ' برای ادامه ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
+            }
+        }
     }
 
 
@@ -226,8 +270,8 @@ class PageController
         $db = Db::getInstance();
         $db->modify("UPDATE perfume SET deleteLogic=1 WHERE perfumeId='$perfumeId'");
 
-        require_once("./mvc/view/page/managerHeader.php");
-        message('success', " عطر مورد نظر فعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
+        require_once("./mvc/view/page/header.php");
+        message('success', " عطر مورد نظر فعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -238,19 +282,21 @@ class PageController
         $db = Db::getInstance();
         $db->modify("UPDATE perfume SET deleteLogic=2 WHERE perfumeId='$perfumeId'");
 
-        require_once("./mvc/view/page/managerHeader.php");
+        require_once("./mvc/view/page/header.php");
 
-        message('success', " عطر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager"> کلیک </a>' . 'کنید.', true);
+        message('success', " عطر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/productsManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
-    public function usersManager()
+    public function userManager()
     {
-        $db = Db::getInstance();
-        $users = $db->query("SELECT * FROM user LEFT OUTER JOIN jender ON user.jenderId=jender.jenderId LEFT OUTER JOIN user_access ON user.accessId=user_access.accessId ");
-        $data['users'] = $users;
 
-        View::render("./mvc/view/page/usersManager.php", $data);
+        $db = Db::getInstance();
+
+        $customers = $db->query("SELECT * FROM user LEFT JOIN user_access ON user.accessId = user_access.accessId");
+        $data['customers'] = $customers;
+
+        View::render("./mvc/view/page/userManager.php", $data);
     }
 
 
@@ -261,9 +307,9 @@ class PageController
         $db = Db::getInstance();
         $db->modify("UPDATE user SET blockId=1 WHERE userId='$userId'");
 
-        require_once("./mvc/view/page/managerHeader.php");
+        require_once("./mvc/view/page/header.php");
 
-        message('success', " کاربر مورد نظر فعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+        message('success', " کاربر مورد نظر فعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/userManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
 
     }
 
@@ -275,9 +321,9 @@ class PageController
         $db = Db::getInstance();
         $db->modify("UPDATE user SET blockId=2 WHERE userId='$userId'");
 
-        require_once("./mvc/view/page/managerHeader.php");
+        require_once("./mvc/view/page/header.php");
 
-        message('success', " کاربر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+        message('success', " کاربر مورد نظر غیرفعال شد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/userManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -291,8 +337,8 @@ class PageController
         $hashedPassword = md5($userPassword);
         $db->modify("UPDATE user SET userPassword='$hashedPassword' WHERE userId='$userId'");
 
-        require_once("./mvc/view/page/managerHeader.php");
-        message('success', "گذرواژه کاربر به حالت پیش فرض تغییر کرد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+        require_once("./mvc/view/page/header.php");
+        message('success', "گذرواژه کاربر به حالت پیش فرض تغییر کرد." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/userManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
     }
 
 
@@ -306,13 +352,13 @@ class PageController
         if ($accessId['accessId'] == 1) {
             $db->modify("UPDATE user SET accessId='2' WHERE userId='$userId'");
 
-            require_once("./mvc/view/page/managerHeader.php");
-            message('success', "سطح دسترسی به کاربر تغییر یافت." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+            require_once("./mvc/view/page/header.php");
+            message('success', "سطح دسترسی به کاربر تغییر یافت." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/userManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         } elseif ($accessId['accessId'] == 2) {
             $db->modify("UPDATE user SET accessId='1' WHERE userId='$userId'");
 
-            require_once("./mvc/view/page/managerHeader.php");
-            message('success', "سطح دسترسی به مدیر سایت تغییر یافت." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/usersManager"> کلیک </a>' . 'کنید.', true);
+            require_once("./mvc/view/page/header.php");
+            message('success', "سطح دسترسی به مدیر سایت تغییر یافت." . '<br><br>' . 'برای ادامه لطفا ' . '<a href="/MainProject/page/userManager" style="font-size: large;font-weight: bold;"> کلیک </a>' . 'کنید.', true);
         }
     }
 
@@ -321,7 +367,7 @@ class PageController
     {
         $db = Db::getInstance();
 
-        $orders = $db->query("SELECT * FROM cart LEFT OUTER JOIN user ON cart.userId=user.userId");
+        $orders = $db->query("SELECT * FROM cart LEFT OUTER JOIN user ON cart.userId=user.userId ORDER BY cart.userId");
         $data['orders'] = $orders;
 
         $cartStatuses = $db->query("SELECT * FROM cart_status");
