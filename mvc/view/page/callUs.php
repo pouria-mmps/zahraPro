@@ -35,20 +35,20 @@ include("./mvc/view/page/header.php");
     <br><br>
 
     <span style="font-size: large;color: #777;margin-right: 70px;font-weight: bolder;"> تلفن: </span><span
-        style="font-size: large;"> 66580280-021 </span>
+            style="font-size: large;"> 66580280-021 </span>
     <br><br>
 
     <span style="font-size: large;color: #777;margin-right: 70px;font-weight: bolder;"> کد پستی: </span><span
-        style="font-size: large;"> 7896565686 </span>
+            style="font-size: large;"> 7896565686 </span>
     <br><br>
 
     <span style="font-size: large;color: #777;margin-right: 70px;font-weight: bolder;">آدرس: </span><span
-        style="font-size: large;"> تهران، خیابان ستارخان، خیابان </span>
-    شهرآرا، پلاک 12
+            style="font-size: large;"> تهران، خیابان ستارخان، خیابان
+    شهرآرا، پلاک 12</span>
     <br><br>
 
     <span style="font-size: large;color: #777;margin-right: 70px;font-weight: bolder;"> ساعات پاسخ گویی:  </span><span
-        style="font-size: large;"> شنبه تا چهارشنبه 9:00 تا 17:00</span>
+            style="font-size: large;"> شنبه تا چهارشنبه 9:00 تا 17:00</span>
     <br><br>
 
 </div>
