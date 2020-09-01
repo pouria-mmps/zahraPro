@@ -190,6 +190,9 @@ include("./mvc/view/page/header.php");
                     <?php } elseif ($perfume['countryId'] == 6) {
                         ?>
                         <span> اسپانیا </span>
+                    <?php } elseif ($perfume['countryId'] == 7) {
+                        ?>
+                        <span> امارات </span>
                     <?php } ?>
                 </div>
 
